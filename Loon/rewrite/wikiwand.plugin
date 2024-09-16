@@ -1,9 +1,9 @@
 #!name= wikiwand
 #!desc= 最后更新时间 2024-09-16 19:25:44
-#!openUrl= https://github.com/blackmatrix7/ios_rule_script
-#!author= blackmatrix7
-#!homepage= https://github.com/blackmatrix7/ios_rule_script
-#!icon= https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/avatar.jpg
+#!openUrl= 
+#!author= MESSIUINIMI
+#!homepage= 
+#!icon= https://avatars.githubusercontent.com/u/117837071?v=4&size=40
 #!redirect= 60
 #!mitm= 2
 #!total= 2
