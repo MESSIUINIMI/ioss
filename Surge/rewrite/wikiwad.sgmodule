@@ -1,0 +1,16 @@
+#!name= wikiwand
+#!desc= 最后更新时间 2024-09-16 19:32:44
+#!openUrl= https://github.com/MESSIUINIMI/ioss
+#!author= MESSIUINIMI
+#!homepage= https://github.com/MESSIUINIMI/ioss
+#!icon= https://avatars.githubusercontent.com/u/117837071?v=4&size=40
+#!redirect= 60
+#!mitm= 2
+#!total= 2
+
+[URL Rewrite]
+^https://(\w*).(m.)?wikipedia.org/wiki https://www.wikiwand.com/$1 302
+^https://zh.(m.)?wikipedia.org/zh(-\w*)?(?=/) https://www.wikiwand.com/zh$2 302
+
+[MITM]
+hostname = *.wikipedia.org, *.wikiwand.com
