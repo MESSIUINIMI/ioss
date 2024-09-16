@@ -1,0 +1,16 @@
+#!name= wikiwand
+#!desc= 最后更新时间 2024-09-16 19:25:44
+#!openUrl= https://github.com/blackmatrix7/ios_rule_script
+#!author= blackmatrix7
+#!homepage= https://github.com/blackmatrix7/ios_rule_script
+#!icon= https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/avatar.jpg
+#!redirect= 60
+#!mitm= 2
+#!total= 2
+
+[Rewrite]
+^https://(\w*).(m.)?wikipedia.org/wiki 302 https://www.wikiwand.com/$1
+^https://zh.(m.)?wikipedia.org/zh(-\w*)?(?=/) 302 https://www.wikiwand.com/zh$2
+
+[MITM]
+hostname = *.wikiwand.com, *.wikipedia.org
