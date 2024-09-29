@@ -1,18 +1,24 @@
 # Emby
-DOMAIN,music.iuii.org,🎉𝐄𝐦𝐛𝐲
-DOMAIN,1.4545.cf,🎉𝐄𝐦𝐛𝐲
-DOMAIN,oversea.alphatvapp.top,🎉𝐄𝐦𝐛𝐲
-DOMAIN,1.aganemby.top, 🎉𝐄𝐦𝐛𝐲
-# HOST,film.ohhhh.org,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,ntrrr.top,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,te.sb,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,lilyya.xyz,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,embyplus.org,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,811861.xyz,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,mcjoker.xyz,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,bangumi.ca,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,mius.uk,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,nijigem.by,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,emby.eu.org,🎉𝐄𝐦𝐛𝐲
-DOMAIN-SUFFIX,as174.com,🎉𝐄𝐦𝐛𝐲
-# DOMAIN-KEYWORD,emby,🎉𝐄𝐦𝐛𝐲
+DOMAIN,music.iuii.org,Emby
+DOMAIN,1.4545.cf,Emby
+DOMAIN,oversea.alphatvapp.top,Emby
+DOMAIN,1.aganemby.top,Emby
+DOMAIN-SUFFIX,odysseyplus.site,Emby
+DOMAIN-SUFFIX,emby.wtf,Emby
+DOMAIN-SUFFIX,term.wtf,Emby
+DOMAIN-SUFFIX,ntrrr.top,Emby
+DOMAIN-SUFFIX,imetyou.top,Emby
+DOMAIN-SUFFIX,lilyya.xyz,Emby
+DOMAIN-SUFFIX,embyplus.org,Emby
+DOMAIN-SUFFIX,811861.xyz,Emby
+DOMAIN-SUFFIX,mcjoker.xyz,Emby
+DOMAIN-SUFFIX,123456.al,Emby
+DOMAIN-SUFFIX,bangumi.ca,Emby
+DOMAIN-SUFFIX,mius.uk,Emby
+DOMAIN-SUFFIX,nijigem.by,Emby
+DOMAIN-SUFFIX,emby.eu.org,Emby
+DOMAIN-SUFFIX,as174.com,Emby
+DOMAIN-KEYWORD,odysseyplus,Emby
+DOMAIN-KEYWORD,emby.wtf,Emby
+DOMAIN-KEYWORD,term.wtf,Emby
+DOMAIN-KEYWORD,emby,Emby
