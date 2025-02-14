@@ -1,44 +1,5 @@
 {
   "version": 2,
   "rules": [
-    {
-      "domain": [
-        "music.iuii.org",
-        "1.4545.cf",
-        "oversea.alphatvapp.top",
-        "cfhd.xmsl.org"
-      ]
-    },
-    {
-      "domain_suffix": [
-        "odysseyplus.site",
-        "emby.wtf",
-        "term.wtf",
-        "ntrrr.top",
-        "imetyou.top",
-        "lilyya.xyz",
-        "embyplus.org",
-        "nebula-media.org",
-        "mcjoker.xyz",
-        "123456.al",
-        "bangumi.ca",
-        "mius.uk",
-        "9521732.xyz",
-        "tanhuatv.site",
-        "nanflix.net",
-        "aliz.work",
-        "nijigem.by",
-        "emby.eu.org",
-        "emby.moe"
-      ]
-    },
-    {
-      "domain_keyword": [
-        "odysseyplus",
-        "emby.wtf",
-        "term.wtf",
-        "emby"
-      ]
-    }
   ]
 }
