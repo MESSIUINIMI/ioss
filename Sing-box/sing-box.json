@@ -112,7 +112,7 @@
           {"tag": "Twitch", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-twitch.srs", "download_detour": "🇺🇸 US" },
           {"tag": "Facebook", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-facebook.srs", "download_detour": "🇺🇸 US" },
           {"tag": "AI", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "🇺🇸 US" },
-          {"tag": "Emby", "type": "remote", "format": "binary", "url": "https://github.com/Repcz/Tool/raw/X/sing-box/Rules/Emby.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Emby", "type": "remote", "format": "binary", "url": "https://github.com/MESSIUINIMI/ioss/raw/main/Sing-box/ruleset/Emby.srs", "download_detour": "🇺🇸 US" },
           {"tag": "Media-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media-cn.srs","download_detour": "🇺🇸 US"},
           {"tag": "Media","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media.srs","download_detour": "🇺🇸 US"},
           {"tag": "Apple", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-apple.srs", "download_detour": "🇺🇸 US" },
