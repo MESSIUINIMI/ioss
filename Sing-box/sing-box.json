@@ -1,0 +1,150 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "output": "sing-box.log",
+    "timestamp": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": true
+    },
+    "clash_api": {
+      "default_mode": "Rule",
+      "external_controller": "0.0.0.0:9909",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+      "external_ui_download_detour": "🖲️Proxy"
+    }
+  },
+  "dns": {
+      "servers": [
+          {"tag": "homeproxy","address": "tcp://192.168.1.1","detour": "🖲 Proxy"},
+          {"tag": "home","address": "192.168.1.1","address_strategy": "prefer_ipv6","strategy": "prefer_ipv6", "detour": "direct"},
+          {"tag": "remote_fakeip","address": "fakeip"}
+      ],
+      "rules": [
+          {"outbound": "any","server": "home"},
+          {"clash_mode": "Direct","action": "route","server": "home"},
+          {"clash_mode": "Global","action": "route","server": "homeproxy"},
+          {"rule_set": ["GeoSite@CN","Apple"],"action": "route","server": "home"},
+          {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip"}
+      ],
+      "fakeip": {"enabled": true,"inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"},
+      "independent_cache": true,
+      "strategy": "prefer_ipv6"
+  },
+  "inbounds": [
+      {
+          "type": "mixed",
+          "tag": "mixed",
+          "listen": "127.0.0.1",
+          "listen_port": 7080,
+          "set_system_proxy": false
+      },
+      {
+          "type": "tun",
+          "tag": "tun",
+          "address": [
+              "172.18.0.1/30",
+              "fdfe:dcba:9876::1/126"
+          ],
+          "platform": {
+              "http_proxy": {
+                  "enabled": true,
+                  "server": "127.0.0.1",
+                  "server_port": 7080
+              }
+          },
+          "stack": "mixed",
+          "auto_route": true
+      }
+  ],
+  "outbounds": [
+      {"tag": "🖲 Proxy","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🖥 Netflix","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🎬 YouTube","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🤖 AI","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🎧 Spotily","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🔍 Google","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🗂️ Microsoft","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "📲 Twitter","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "📱 Telegram","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🎉 Emby","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "📼 GlobalMedia","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🍎 Apple","type": "selector","outbounds": ["🖲 Proxy","🕹 Final","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "🕹 Final","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🎯 Select","direct"],"default": "direct","interrupt_exist_connections": true},
+      {"tag": "direct","type": "direct"},
+      
+      {"tag": "🎯 Select","type": "selector","outbounds": [],"interrupt_exist_connections": true},
+      {"tag": "🇭🇰 HK","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇼🇸 TW","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇺🇸 US","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇸🇬 SG","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇯🇵 JP","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇰🇷 KR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇬🇧 UK","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇷🇺 RU","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇩🇪 DE","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇫🇷 FR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇦🇺 AU","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇧🇷 BR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇮🇳 IN","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇳🇱 NL","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇨🇦 CA","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇹🇷 TR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false},
+      {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "10m","tolerance": 0,"interrupt_exist_connections": false}
+  ],
+  "route": {
+      "rule_set": [
+          {"tag": "Ads","type": "remote","format": "binary","url": "https://github.com/Repcz/Tool/raw/X/sing-box/Rules/Ads_SukkaW.srs","download_detour": "🇺🇸 US"},
+          {"tag": "httpdns-cn-Ads","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-httpdns-cn@ads.srs","download_detour": "🇺🇸 US"},
+          {"tag": "Netflix", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-netflix.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Telegram", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-telegram.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Spotily", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-spotify.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "YouTube", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-youtube.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Google", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-google.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Microsoft", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-microsoft.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "OneDrive", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-onedrive.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Github", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-github.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Twitter", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-twitter.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Twitch", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-twitch.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Facebook", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-facebook.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "AI", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Emby", "type": "remote", "format": "binary", "url": "https://github.com/Repcz/Tool/raw/X/sing-box/Rules/Emby.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "Media-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media-cn.srs","download_detour": "🇺🇸 US"},
+          {"tag": "Media","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media.srs","download_detour": "🇺🇸 US"},
+          {"tag": "Apple", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-apple.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "geolocation-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-geolocation-cn.srs","download_detour": "🇺🇸 US"},
+          {"tag": "GeoSite@CN", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "GeoIP@CN", "type": "remote", "format": "binary", "url": "https://github.com/Loyalsoldier/geoip/raw/release/srs/cn.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "geolocation-!cn","type": "remote","format": "binary","url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/geolocation-!cn.srs","download_detour": "🇺🇸 US"}
+      ],
+      "rules": [
+          {"action": "sniff"},
+          {"protocol": "dns","action": "hijack-dns"},
+          {"clash_mode": "Direct","action": "route","outbound": "direct"},
+          {"clash_mode": "Global","action": "route","outbound": "🖲 Proxy"},
+          {"rule_set": ["Ads","httpdns-cn-Ads"],"action": "reject"},
+          {"rule_set": ["Netflix"],"action": "route","outbound": "🖥 Netflix"},
+          {"rule_set": ["YouTube"],"action": "route","outbound": "🎬 YouTube"},
+          {"rule_set": ["Spotily"],"action": "route","outbound": "🎧 Spotily"},
+          {"rule_set": ["AI"],"action": "route","outbound": "🤖 AI"},
+          {"rule_set": ["Google"],"action": "route","outbound": "🔍 Google"},
+          {"rule_set": ["Microsoft","OneDrive","Github"],"action": "route","outbound": "🗂️ Microsoft"},
+          {"rule_set": ["Twitter"],"action": "route","outbound": "📲 Twitter"},
+          {"rule_set": ["Telegram"],"action": "route","outbound": "📱 Telegram"},
+          {"rule_set": ["Emby"],"action": "route","outbound": "🎉 Emby"},
+          {"rule_set": ["Media-cn"],"action": "route","outbound": "direct"},
+          {"rule_set": ["Media","Facebook","Twitch"],"action": "route","outbound": "📼 GlobalMedia"},
+          {"rule_set": ["Apple"],"action": "route","outbound": "🍎 Apple"},
+          {"rule_set": ["geolocation-cn","GeoSite@CN","GeoIP@CN"],"action": "route","outbound": "direct"},
+          {"rule_set": ["geolocation-!cn"],"action": "route","outbound": "🖲 Proxy"},
+          {"ip_is_private": true,"outbound": "direct"}
+      ],
+      "find_process": false,
+      "auto_detect_interface": true,
+      "final": "🕹 Final"
+  }
+}
