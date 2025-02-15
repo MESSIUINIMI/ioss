@@ -100,6 +100,7 @@
       "rule_set": [
           {"tag": "Ads","type": "remote","format": "binary","url": "https://github.com/Repcz/Tool/raw/X/sing-box/Rules/Ads_SukkaW.srs","download_detour": "🇺🇸 US"},
           {"tag": "httpdns-cn-Ads","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-httpdns-cn@ads.srs","download_detour": "🇺🇸 US"},
+          {"tag": "UnBan","type": "remote","format": "binary","url": "https://github.com/MESSIUINIMI/ioss/raw/main/Sing-box/ruleset/UnBan.srs","download_detour": "🇺🇸 US"},
           {"tag": "Netflix", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-netflix.srs", "download_detour": "🇺🇸 US" },
           {"tag": "Telegram", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-telegram.srs", "download_detour": "🇺🇸 US" },
           {"tag": "Spotily", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-spotify.srs", "download_detour": "🇺🇸 US" },
@@ -116,6 +117,7 @@
           {"tag": "Media-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media-cn.srs","download_detour": "🇺🇸 US"},
           {"tag": "Media","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media.srs","download_detour": "🇺🇸 US"},
           {"tag": "Apple", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-apple.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "FixProxy","type": "remote","format": "binary","url": "https://github.com/MESSIUINIMI/ioss/raw/main/Sing-box/ruleset/FixProxy.srs","download_detour": "🇺🇸 US"},
           {"tag": "geolocation-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-geolocation-cn.srs","download_detour": "🇺🇸 US"},
           {"tag": "GeoSite@CN", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs", "download_detour": "🇺🇸 US" },
           {"tag": "GeoIP@CN", "type": "remote", "format": "binary", "url": "https://github.com/Loyalsoldier/geoip/raw/release/srs/cn.srs", "download_detour": "🇺🇸 US" },
@@ -127,6 +129,7 @@
           {"clash_mode": "Direct","action": "route","outbound": "direct"},
           {"clash_mode": "Global","action": "route","outbound": "🖲 Proxy"},
           {"rule_set": ["Ads","httpdns-cn-Ads"],"action": "reject"},
+          {"rule_set": ["UnBan"],"action": "direct"},
           {"rule_set": ["Netflix"],"action": "route","outbound": "🖥 Netflix"},
           {"rule_set": ["YouTube"],"action": "route","outbound": "🎬 YouTube"},
           {"rule_set": ["Spotily"],"action": "route","outbound": "🎧 Spotily"},
@@ -136,6 +139,7 @@
           {"rule_set": ["Twitter"],"action": "route","outbound": "📲 Twitter"},
           {"rule_set": ["Telegram"],"action": "route","outbound": "📱 Telegram"},
           {"rule_set": ["Emby"],"action": "route","outbound": "🎉 Emby"},
+          {"rule_set": ["FixProxy"],"action": "route","outbound": "🖲 Proxy"},
           {"rule_set": ["Media-cn"],"action": "route","outbound": "direct"},
           {"rule_set": ["Media","Facebook","Twitch"],"action": "route","outbound": "📼 GlobalMedia"},
           {"rule_set": ["Apple"],"action": "route","outbound": "🍎 Apple"},
@@ -147,4 +151,4 @@
       "auto_detect_interface": true,
       "final": "🕹 Final"
   }
-      }
+}
