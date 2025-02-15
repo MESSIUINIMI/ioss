@@ -29,7 +29,7 @@ jobs:
         sing-box version
         # 编译JSON
         for file in ioss-repo/Sing-box/ruleset/*.json; do
-            fi
+          if
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
             rm -rf sing-box sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
           else
