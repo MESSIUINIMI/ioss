@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain": [
+        "hls.vdtuzv.com"
+    },
+    {
+      "domain_suffix": [
+        "fkobu.cn",
+        "numbyg.cn",
+        "rwywfq.cn"
+    },
+    {
+      "domain_keyword": [
+        "18hlw",
+        "155.fun"
+    }
+  ]
+}
