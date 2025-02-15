@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain": [
+        "paper.nsns.in",
+        "go.itab.link",
+        "app.ledutianxia.comttps"
+      ]
+    },
+    {
+      "domain_suffix": [
+        "xdcs-collector.ximalaya.com",
+        "chiduilema.com",
+        "duoduo365.com",
+        "shike.com",
+        "duoduo363.com",
+        "leduokandian.com",
+        "ledutianxia.com",
+        "yiyikandian.com",
+        "wetab.link"
+      ]
+    }
+  ]
+}
