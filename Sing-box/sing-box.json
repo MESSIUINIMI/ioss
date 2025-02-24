@@ -8,10 +8,10 @@
             {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
         "rules": [
-            {"clash_mode": "direct","action": "route","server": [ "Ali","Ten"]},
+            {"clash_mode": "direct","action": "route","server": "Ali"},
             {"clash_mode": "🖲 Proxy","action": "route","server": "remote_fakeip"},
             {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip","rewrite_ttl": 1},
-            {"rule_set": ["GeoSite@CN","UnBan","Media-CN"],"action": "route","server": [ "Ali","Ten"]}
+            {"rule_set": ["GeoSite@CN","UnBan","Media-CN"],"action": "route","server": "Ali"}
         ],
         "final": "Cloudflare",
         "independent_cache": true,
