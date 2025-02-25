@@ -3,13 +3,13 @@
         "servers": [
             {"tag": "Google","type": "https","server": "8.8.8.8","server_port": 6450,"detour": "🔍 Google"},
             {"tag": "Ten","type": "https","server": "1.12.12.12","server_port": 6450,"detour": "direct"},
-            {"tag": "Cloudflare","type": "h3","server": "1.1.1.1","server_port": 6450,"detour": "🖲 Proxy"},
-            {"tag": "Ali","type": "h3","server": "223.5.5.5","server_port": 6450,"detour": "direct"},
+            {"tag": "Cloudflare","type": "https","server": "1.1.1.1","server_port": 6450,"detour": "🖲 Proxy"},
+            {"tag": "Ali","type": "https","server": "223.5.5.5","server_port": 6450,"detour": "direct"},
             {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
         "rules": [
-            {"clash_mode": "Direct","action": "route","server": "Ali"},
-            {"clash_mode": "Global","action": "route","server": "remote_fakeip"},
+            {"clash_mode": "🙅 Direct","action": "route","server": "Ali"},
+            {"clash_mode": "🌍 Global","action": "route","server": "remote_fakeip"},
             {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip","rewrite_ttl": 1},
             {"rule_set": ["GeoSite@CN","UnBan","Media-CN"],"action": "route","server": "Ali"}
         ],
@@ -35,23 +35,23 @@
       {"tag": "direct","type": "direct"},
       
       {"tag": "🎯 Select","type": "selector","outbounds": [],"interrupt_exist_connections": true},
-      {"tag": "🇭🇰 HK","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇼🇸 TW","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇺🇸 US","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇸🇬 SG","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇯🇵 JP","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇰🇷 KR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇬🇧 UK","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇷🇺 RU","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇩🇪 DE","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇫🇷 FR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇦🇺 AU","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇧🇷 BR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇮🇳 IN","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇳🇱 NL","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇨🇦 CA","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇹🇷 TR","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
-      {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://1.1.1.1/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true}
+      {"tag": "🇭🇰 HK","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇼🇸 TW","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇺🇸 US","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇸🇬 SG","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇯🇵 JP","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇰🇷 KR","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇬🇧 UK","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇷🇺 RU","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇩🇪 DE","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇫🇷 FR","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇦🇺 AU","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇧🇷 BR","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇮🇳 IN","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇳🇱 NL","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇨🇦 CA","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇹🇷 TR","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true},
+      {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://www.apple.com/library/test/success.html","interval": "2m","tolerance": 2,"interrupt_exist_connections": true}
   ],
   "route": {
         "default_domain_resolver": {"server": "Ali"},
@@ -91,8 +91,8 @@
         "rules": [
           {"action": "sniff","sniffer": ["http","tls","quic","dns"],"timeout": "500ms"},
           {"type": "logical","mode": "or","rules": [{"port": 53},{"protocol": "dns"}],"action": "hijack-dns"},
-          {"clash_mode": "Direct","action": "route","outbound": "direct"},
-          {"clash_mode": "Global","action": "route","outbound": "🖲 Proxy"},
+          {"clash_mode": "🙅 Direct","action": "route","outbound": "direct"},
+          {"clash_mode": "🌍 Global","action": "route","outbound": "🖲 Proxy"},
           {"rule_set": ["Ads","httpdns-cn-Ads"],"action": "reject"},
           {"rule_set": ["UnBan"],"action": "direct"},
           {"rule_set": ["Netflix"],"action": "route","outbound": "🖥 Netflix"},
@@ -130,7 +130,7 @@
             "store_fakeip": true
         },
         "clash_api": {
-            "default_mode": "Rule",
+            "default_mode": "🔀 Rule",
             "external_controller": "127.0.0.1:9090",
             "external_ui": "ui",
             "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
