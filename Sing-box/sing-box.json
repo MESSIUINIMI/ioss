@@ -1,10 +1,10 @@
 {
     "dns": {
         "servers": [
-            {"tag": "Google","type": "https","server": "8.8.8.8","server_port": 6450,"detour": "🔍 Google"},
-            {"tag": "Ten","type": "https","server": "1.12.12.12","server_port": 6450,"detour": "direct"},
-            {"tag": "Cloudflare","type": "https","server": "1.1.1.1","server_port": 6450,"detour": "🖲 Proxy"},
-            {"tag": "Ali","type": "https","server": "223.5.5.5","server_port": 6450,"detour": "direct"},
+            {"tag": "Google","type": "https","server": "8.8.8.8","detour": "🔍 Google"},
+            {"tag": "Ten","type": "https","server": "1.12.12.12","detour": "direct"},
+            {"tag": "Cloudflare","type": "https","server": "1.1.1.1","detour": "🖲 Proxy"},
+            {"tag": "Ali","type": "https","server": "223.5.5.5","detour": "direct"},
             {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
         "rules": [
