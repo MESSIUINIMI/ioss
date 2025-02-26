@@ -11,7 +11,7 @@
             {"clash_mode": "🙅 Direct","action": "route","server": "Ali"},
             {"clash_mode": "🌍 Global","action": "route","server": "remote_fakeip"},
             {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip","rewrite_ttl": 1},
-            {"rule_set": ["GeoSite@CN","UnBan","Media-CN"],"action": "route","server": "Ali"}
+            {"rule_set": ["UnBan","Media-CN","ChinaDomain"],"action": "route","server": "Ali"}
         ],
         "final": "Cloudflare",
         "independent_cache": true,
@@ -84,8 +84,8 @@
           {"tag": "Apple", "type": "remote", "format": "binary", "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-apple.srs", "download_detour": "🇺🇸 US" },
           {"tag": "FixProxy","type": "remote","format": "binary","url": "https://github.com/MESSIUINIMI/ioss/raw/main/Sing-box/ruleset/FixProxy.srs","download_detour": "🇺🇸 US"},
           {"tag": "geolocation-cn","type": "remote","format": "binary","url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-geolocation-cn.srs","download_detour": "🇺🇸 US"},
-          {"tag": "GeoSite@CN", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs", "download_detour": "🇺🇸 US" },
-          {"tag": "GeoIP@CN", "type": "remote", "format": "binary", "url": "https://github.com/Loyalsoldier/geoip/raw/release/srs/cn.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "ChinaDomain", "type": "remote", "format": "binary", "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs", "download_detour": "🇺🇸 US" },
+          {"tag": "CNIP", "type": "remote", "format": "binary", "url": "https://github.com/Loyalsoldier/geoip/raw/release/srs/cn.srs", "download_detour": "🇺🇸 US" },
           {"tag": "geolocation-!cn","type": "remote","format": "binary","url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/geolocation-!cn.srs","download_detour": "🇺🇸 US"}
       ],
         "rules": [
@@ -111,7 +111,7 @@
           {"rule_set": ["Apple"],"action": "route","outbound": "🍎 Apple"},
           {"rule_set": ["geolocation-!cn"],"action": "route","outbound": "🖲 Proxy"},
           {"action": "resolve"},
-          {"rule_set": ["geolocation-cn","GeoSite@CN","GeoIP@CN"],"action": "route","outbound": "direct"},
+          {"rule_set": ["geolocation-cn","ChinaDomain","CNIP"],"action": "route","outbound": "direct"},
           {"ip_is_private": true,"outbound": "direct"}
       ],
       "find_process": false,
