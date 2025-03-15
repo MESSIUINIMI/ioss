@@ -71,7 +71,11 @@ jobs:
                 ;;
               "ChinaIPs.list")
                 # 处理 ChinaIPs.list：只保留 IP-CIDR 和 IP6-CIDR，并转换为 blacklist-ip 格式
-                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{print "blacklist-ip " $1}' > "$file.tmp"
+                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{
+                  gsub("IP-CIDR,", "", $0);
+                  gsub("IP6-CIDR,", "", $0);
+                  print "blacklist-ip " $0
+                }' > "$file.tmp"
                 ;;
               *)
                 # 通用处理：只保留以 HOST 和 HOST-SUFFIX 开头的规则，并转换格式
