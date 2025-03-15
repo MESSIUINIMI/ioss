@@ -29,7 +29,7 @@ jobs:
           "Global.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list"
           "GlobalMedia.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GlobalMedia/GlobalMedia.list"
           "apple-cn.list https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt"
-          "lite_domain.list https://raw.githubusercontent.com/neodevpro/neodevhost/master/lite_domain"
+          "lite_domain.list https://github.com/neodevpro/neodevhost/raw/master/domain"
           "AdvertisingLite.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list"
           "GitHub.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GitHub/GitHub.list"
           "ChinaIPs.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaIPs/ChinaIPs.list"
