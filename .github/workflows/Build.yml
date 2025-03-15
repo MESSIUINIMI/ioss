@@ -1,56 +1,123 @@
-# form https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
+# from https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
 name: Build
-
 on:
-  workflow_dispatch:
-  schedule:
+  workflow_dispatch:  # 支持手动触发
+  schedule:           # 定时触发任务（每天12:05和00:05）
     - cron: "5 0,12 * * *"
 
 jobs:
   Build:
     runs-on: ubuntu-latest
     env:
-      TZ: "Asia/Shanghai"
-      SING_BOX_VERSION: 1.10.5
+      TZ: "Asia/Shanghai"  # 时区：上海时间
+      SING_BOX_VERSION: "1.10.5"
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4.2.2
+    # Step 1: 检出 ioss 仓库代码
+    - name: Checkout ioss Repository
+      uses: actions/checkout@v2
       with:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    - name: sing-box
+    # Step 2: 下载规则文件
+    - name: Download Rules
       run: |
-        # 安装 sing-box
+        mkdir -p ioss-repo/Ruleset
+        files=(
+          "ChinaMaxNoIP.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMaxNoIP/ChinaMaxNoIP.list"
+          "Global.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list"
+          "GlobalMedia.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GlobalMedia/GlobalMedia.list"
+          "apple-cn.list https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt"
+          "lite_domain.list https://raw.githubusercontent.com/neodevpro/neodevhost/master/lite_domain"
+          "AdvertisingLite.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list"
+          "GitHub.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GitHub/GitHub.list"
+          "ChinaIPs.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaIPs/ChinaIPs.list"
+          "ChinaMedia.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMedia/ChinaMedia.list"
+          "Apple.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list"
+        )
+        for file in "${files[@]}"; do
+          set -- $file
+          echo "Downloading: $2"
+          curl -A "Quantumult%2520X%2F1.0.30%20(iPhone14%2C2%3B%20iOS%2015.6)" -f -L -o "ioss-repo/Ruleset/$1" "$2" || { echo "Download failed: $2"; exit 1; }
+        done
+        echo "All files downloaded successfully."
+
+    # Step 3: 处理规则文件
+    - name: Process Rule Files
+      run: |
+        for file in ioss-repo/Ruleset/*.list; do
+          if [[ -f "$file" ]]; then
+            case "$(basename "$file")" in
+              "apple-cn.list")
+                # 处理 apple-cn.list：提取 full 开头规则
+                grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$file"
+                ;;
+              "ChinaIPs.list")
+                # 处理 ChinaIPs.list：只保留 IP-CIDR 和 IP6-CIDR，并转换为 blacklist-ip 格式
+                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{print "blacklist-ip " $1}' > "$file"
+                ;;
+              *)
+                # 通用处理：只保留以 HOST 和 HOST-SUFFIX 开头的规则，并转换格式
+                grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '
+                  {
+                    if ($1 == "HOST") {
+                      print "-." $2
+                    } else if ($1 == "HOST-SUFFIX") {
+                      print "*." $2
+                    }
+                  }
+                ' > "$file"
+                ;;
+            esac
+          else
+            echo "File not found: $file"
+          fi
+        done
+
+    # Step 4: 复制文件到 Smartdns 目录
+    - name: Copy Files to Smartdns Directory
+      run: |
+        rm -rf ioss-repo/Smartdns/Rules
+        mkdir -p ioss-repo/Smartdns/Rules
+        for file in ioss-repo/Ruleset/*.list; do
+          filename=$(basename "$file")
+          cp "$file" "ioss-repo/Smartdns/Rules/$filename"
+        done
+
+    # Step 5: 安装并配置 sing-box
+    - name: Install and Configure sing-box
+      run: |
+        # 下载和安装 sing-box
         curl -L -o sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
         tar -xzf sing-box.tar.gz
         chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
         sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
         sing-box version
-        # 编译JSON
-        for file in ioss-repo/Sing-box/ruleset/*.json; do
-        
-            sing-box rule-set compile "$file" -o "${file%.json}.srs"
-            rm -rf sing-box sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
-          
-        done
-        
 
-    - name: Push Update
+        # 编译 JSON 规则文件为 SRS 格式
+        for file in ioss-repo/Sing-box/ruleset/*.json; do
+          sing-box rule-set compile "$file" -o "${file%.json}.srs"
+        done
+        # 清理安装文件
+        rm -rf sing-box sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
+
+    # Step 6: 将更新推送到 ioss 仓库
+    - name: Commit and Push Updates
       run: |
         cd ioss-repo
-          if [[ -n $(git status -s) ]]; then
-            git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-            git config --local user.name "${{ github.actor }}"
-            git add -A
-            git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
-            git push origin main
-          else
-            echo "No changes to commit."
-          fi
+        if [[ -n $(git status -s) ]]; then
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add -A
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
+          git push origin main
+        else
+          echo "No changes to commit."
+        fi
 
-    - name: Cleanup Workflow
+    # Step 7: 清理历史 Workflow Runs
+    - name: Cleanup Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
       with:
         retain_days: 0
