@@ -120,6 +120,7 @@ jobs:
     # Step 5: 安装并配置 sing-box
     - name: Install and Configure sing-box
       run: |
+        rm -rf ioss-repo/Ruleset
         # 下载和安装 sing-box
         curl -L -o sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
         tar -xzf sing-box.tar.gz
