@@ -19915,7 +19915,6 @@
 -.trackinglabs.com
 -.trackkas.com
 -.tracklab.club
--.tracklog.58.com
 -.trackmethod.com
 -.trackmytarget.com
 -.trackmyusers.com
@@ -27987,6 +27986,7 @@
 *.deletemer.online
 *.deliver.ifeng.com
 *.deliver.kuwo.cn
+*.deliver.ptgncdn.com
 *.delivery-dev.thebloggernetwork.com
 *.delivery-pc.wasu.cn
 *.delivery.dmkt-sp.jp
@@ -34478,7 +34478,7 @@
 *.snnd.co
 *.snnnyy.com
 *.snow001.com
-*.snowflake.qq.com
+*.snowplow.swm.digital
 *.so9l.com
 *.soagrist.net
 *.soarfi.cn
@@ -35578,6 +35578,7 @@
 *.trackingapi.cloudapp.net
 *.trackingpro.pro
 *.trackingzen.com
+*.tracklog.58.com
 *.trackmackweldon.com
 *.trackpm.shop2market.com
 *.trackspeeder.com
