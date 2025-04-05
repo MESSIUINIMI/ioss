@@ -70,7 +70,7 @@
           {"tag": "Twitter", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-twitter.srs", "download_detour": "direct"},
           {"tag": "Twitch", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-twitch.srs", "download_detour": "direct"},
           {"tag": "Facebook", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-facebook.srs", "download_detour": "direct"},
-          {"tag": "AI", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "direct"},
+          {"tag": "AI", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "direct"},
           {"tag": "Emby", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/MESSIUINIMI/ioss/raw/main/Sing-box/ruleset/Emby.srs", "download_detour": "direct"},
           {"tag": "Bahamut", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-bahamut.srs", "download_detour": "direct"},
           {"tag": "Disney", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-disney.srs", "download_detour": "direct"},
