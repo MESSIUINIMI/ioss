@@ -17912,6 +17912,7 @@ blacklist-ip 98.124.142.100/30
 blacklist-ip 98.124.142.112/30
 blacklist-ip 98.124.142.128/28
 blacklist-ip 98.124.142.88/30
+blacklist-ip 98.158.28.0/22
 blacklist-ip 98.96.246.0/23
 blacklist-ip 99.77.241.0/24
 blacklist-ip 99.83.96.0/24
