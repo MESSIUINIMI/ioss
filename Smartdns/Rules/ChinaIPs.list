@@ -736,6 +736,7 @@ blacklist-ip 103.114.176.0/22
 blacklist-ip 103.114.193.32/27
 blacklist-ip 103.114.212.0/22
 blacklist-ip 103.114.236.0/22
+blacklist-ip 103.114.236.0/24
 blacklist-ip 103.114.240.0/22
 blacklist-ip 103.114.28.0/22
 blacklist-ip 103.114.4.0/22
@@ -1085,7 +1086,7 @@ blacklist-ip 103.143.16.0/23
 blacklist-ip 103.143.174.0/23
 blacklist-ip 103.143.18.0/23
 blacklist-ip 103.143.228.0/23
-blacklist-ip 103.143.230.0/23
+blacklist-ip 103.143.231.0/24
 blacklist-ip 103.143.31.0/24
 blacklist-ip 103.143.74.0/23
 blacklist-ip 103.143.92.0/23
@@ -2627,10 +2628,8 @@ blacklist-ip 103.236.220.0/22
 blacklist-ip 103.236.232.0/22
 blacklist-ip 103.236.24.0/22
 blacklist-ip 103.236.240.0/20
-blacklist-ip 103.236.240.0/21
 blacklist-ip 103.236.240.0/22
 blacklist-ip 103.236.244.0/22
-blacklist-ip 103.236.248.0/21
 blacklist-ip 103.236.248.0/22
 blacklist-ip 103.236.252.0/22
 blacklist-ip 103.236.28.0/22
@@ -8625,11 +8624,10 @@ blacklist-ip 125.208.0.0/18
 blacklist-ip 125.208.0.0/19
 blacklist-ip 125.208.32.0/24
 blacklist-ip 125.208.34.0/23
-blacklist-ip 125.208.36.0/24
+blacklist-ip 125.208.36.0/22
 blacklist-ip 125.208.37.0/24
-blacklist-ip 125.208.38.0/23
+blacklist-ip 125.208.40.0/23
 blacklist-ip 125.208.40.0/24
-blacklist-ip 125.208.41.0/24
 blacklist-ip 125.208.42.0/24
 blacklist-ip 125.208.45.0/24
 blacklist-ip 125.208.46.0/23
@@ -9262,6 +9260,8 @@ blacklist-ip 154.208.144.0/20
 blacklist-ip 154.208.160.0/21
 blacklist-ip 154.208.172.0/23
 blacklist-ip 154.209.251.0/24
+blacklist-ip 154.213.176.0/23
+blacklist-ip 154.213.178.0/24
 blacklist-ip 154.213.4.0/23
 blacklist-ip 154.23.188.0/22
 blacklist-ip 154.36.92.0/23
@@ -15016,11 +15016,11 @@ blacklist-ip 42.62.184.0/21
 blacklist-ip 42.63.0.0/16
 blacklist-ip 42.80.0.0/15
 blacklist-ip 42.83.128.0/17
+blacklist-ip 42.83.128.0/22
 blacklist-ip 42.83.128.0/23
-blacklist-ip 42.83.130.0/23
 blacklist-ip 42.83.133.0/24
-blacklist-ip 42.83.134.0/23
 blacklist-ip 42.83.134.0/24
+blacklist-ip 42.83.135.0/24
 blacklist-ip 42.83.136.0/21
 blacklist-ip 42.83.138.0/23
 blacklist-ip 42.83.140.0/22
