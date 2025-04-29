@@ -1,5 +1,4 @@
 -.apps.apple.com
--.itunes.apple.com
 -.a1.mzstatic.com
 -.a2.mzstatic.com
 -.a3.mzstatic.com
@@ -242,6 +241,8 @@
 -.devimages-cdn.apple.com
 -.devstreaming-cdn.apple.com
 -.docs-assets.developer.apple.com
+-.hls-svod.itunes.apple.com
+-.itunes.apple.com
 -.js-cdn.music.apple.com
 -.lookup-api.apple.com
 -.mask-api.fe.apple-dns.net
@@ -265,7 +266,6 @@
 -.fmipmobile.icloud.com
 -.statici.icloud.com
 -.amp-api.fitness.apple.com
--.hls-svod.itunes.apple.com
 -.guzzoni.apple.com
 -.beta.apple.com
 -.testflight.apple.com
@@ -1776,11 +1776,9 @@
 *.wwwipodlounge.com
 *.wwwmacbookair.com
 *.apple.comscoreresearch.com
-*.apple.news
 *.appleenews.com
 *.applemusic.berlin
 *.applemusic.co
-*.applemusic.com
 *.applemusic.com.au
 *.applemusic.hamburg
 *.applemusic.wang
@@ -1813,9 +1811,11 @@
 *.iphoto.wang
 *.musickit.net
 *.wwwapplemusic.com
+*.applemusic.com
 *.apple-dns.net
+*.apple.news
+*.cdn-apple.com
 *.digicert.com
 *.apple-cloudkit.com
 *.apple-livephotoskit.com
 *.apzones.com
-*.cdn-apple.com
