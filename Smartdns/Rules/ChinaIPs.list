@@ -6956,7 +6956,7 @@ blacklist-ip 117.122.192.0/18
 blacklist-ip 117.124.0.0/14
 blacklist-ip 117.124.231.0/24
 blacklist-ip 117.124.232.0/22
-blacklist-ip 117.124.236.0/24
+blacklist-ip 117.124.236.0/23
 blacklist-ip 117.124.98.0/24
 blacklist-ip 117.126.0.0/16
 blacklist-ip 117.128.0.0/10
@@ -17878,9 +17878,8 @@ blacklist-ip 8.148.32.0/21
 blacklist-ip 8.148.32.0/22
 blacklist-ip 8.148.36.0/23
 blacklist-ip 8.148.38.0/24
-blacklist-ip 8.148.40.0/23
+blacklist-ip 8.148.40.0/22
 blacklist-ip 8.148.42.0/24
-blacklist-ip 8.148.43.0/24
 blacklist-ip 8.148.44.0/22
 blacklist-ip 8.148.48.0/20
 blacklist-ip 8.148.64.0/18
