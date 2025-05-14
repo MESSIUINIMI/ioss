@@ -29236,6 +29236,10 @@
 *.nightswatch.top
 *.nih.gov
 *.nike.com
+*.nikke-en.com
+*.nikke-jp.com
+*.nikke-kr.com
+*.nikke.hotcool.tw
 *.nikkei.com
 *.nikonpc.com
 *.nimg.jp
@@ -29275,6 +29279,7 @@
 *.nordstromrack.com
 *.nordvpn.com
 *.nos.nl
+*.notebooklm.google
 *.notepad-plus-plus.org
 *.notion.so
 *.nottinghampost.com
