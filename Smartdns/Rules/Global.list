@@ -252,6 +252,7 @@
 -.ntp-c.colorado.edu
 -.ntp-d.nist.gov
 -.ntp-wwv.nist.gov
+-.ntp.ubuntu.com
 -.ntp0.ntp-servers.net
 -.ntp1.ntp-servers.net
 -.ntp2.ntp-servers.net
@@ -412,10 +413,12 @@
 -.time-e-wwv.nist.gov
 -.time.apple.com
 -.time.aws.com
+-.time.cloudflare.com
 -.time.euro.apple.com
 -.time.facebook.com
 -.time.google.com
 -.time.nist.gov
+-.time.windows.com
 -.time1.facebook.com
 -.time1.google.com
 -.time2.facebook.com
@@ -11467,7 +11470,16 @@
 *.ibeatsbydre.cc
 *.ibeatsbydre.com
 *.ibis.ac.uk
+*.ibkr.ca
+*.ibkr.co.in
+*.ibkr.co.uk
 *.ibkr.com
+*.ibkr.com.au
+*.ibkr.com.hk
+*.ibkr.com.sg
+*.ibkr.eu
+*.ibkr.ie
+*.ibkrguides.com
 *.ibllc.com
 *.ibm.com
 *.ibm.eu
@@ -15335,6 +15347,7 @@
 *.mql5.com
 *.mr-apple.com.tw
 *.mr-tireman.jp
+*.mradx.net
 *.mray.club
 *.mrbasic.com
 *.mrbdsm.com
@@ -19100,6 +19113,7 @@
 *.rosetta.ac.uk
 *.roshy.tv
 *.roslin.ac.uk
+*.rostaxi.org
 *.rothamsted.ac.uk
 *.rotherham-coll.ac.uk
 *.rotherham.ac.uk
@@ -23059,6 +23073,7 @@
 *.vixen.com
 *.vixvids.to
 *.viznet.ac.uk
+*.vk-analytics.ru
 *.vk-apps.com
 *.vk-apps.ru
 *.vk-cdn.me
@@ -24560,6 +24575,8 @@
 *.yamaxun.com
 *.yammer.com
 *.yamoon.club
+*.yandex-bank.net
+*.yandex-images.clstorage.net
 *.yandex.aero
 *.yandex.az
 *.yandex.by
@@ -24587,7 +24604,10 @@
 *.yandex.tm
 *.yandex.ua
 *.yandex.uz
+*.yandexadexchange.net
 *.yandexcloud.net
+*.yandexcom.net
+*.yandexwebcache.org
 *.yaohubaba.com
 *.yaoimangaonline.com
 *.yaoiotaku.com
