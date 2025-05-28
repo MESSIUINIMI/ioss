@@ -37,6 +37,7 @@
 -.alt8-mtalk.google.com
 -.amp-api.podcasts.apple.com
 -.amp.akamaized.net
+-.android.googlesource.com
 -.angle.com.tw
 -.anime-rule34-world.b-cdn.net
 -.aod-pod-uk-live.akamaized.net
@@ -27319,6 +27320,7 @@
 *.geekheart.info
 *.gekikame.com
 *.gelbooru.com
+*.gemini.google
 *.generated.photos
 *.geni.us
 *.genius.com
