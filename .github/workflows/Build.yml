@@ -34,6 +34,11 @@ jobs:
           "ChinaIPs.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaIPs/ChinaIPs.list"
           "ChinaMedia.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMedia/ChinaMedia.list"
           "Apple.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list"
+          "JingDong.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/JingDong/JingDong.list"
+          "bilibili.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/BiliBili/BiliBili.list"
+          "Alibaba.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Alibaba/Alibaba.list"
+          "Tencent.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Tencent/Tencent.list"
+
         )
         for file in "${files[@]}"; do
           set -- $file
