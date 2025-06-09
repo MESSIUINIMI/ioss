@@ -20,7 +20,7 @@ jobs:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download rule files sequentially for stability
+    # Step 2: Download rule files sequentially for maximum stability
     - name: Download Rules Sequentially
       run: |
         mkdir -p ioss-repo/Ruleset
@@ -42,96 +42,63 @@ jobs:
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
 
-        # 修复：换回稳定可靠的 for 循环方式进行下载
         for item in "${files[@]}"; do
-          # 使用 set 命令安全地分割文件名和 URL
           set -- $item
           local_name=$1
           remote_url=$2
-          
           echo "Downloading: $local_name from $remote_url"
           curl -A "Mozilla/5.0" --connect-timeout 15 -f -L -o "ioss-repo/Ruleset/$local_name" "$remote_url" || { echo "Download failed: $remote_url"; exit 1; }
         done
-        
-        echo "All files downloaded successfully."
+        echo "All source files downloaded successfully."
 
-    # Step 3: Process all rule files in a single, consolidated step
-    - name: Process, Merge, and Generate Rule Files
+    # Step 3: Atomically Process, Generate, and Deploy All Rule Files
+    - name: Process, Generate, and Deploy All Rule Files
       run: |
-        RULES_DIR="ioss-repo/Ruleset"
+        # 优化: 任何命令失败时立即退出，防止后续步骤出错
+        set -e
 
-        # --- Part 1: Process *.list files ---
+        # --- Part 1: 定义目录 ---
+        SRC_DIR="ioss-repo/Ruleset"
+        DEST_DIR="ioss-repo/Smartdns/Rules"
+        echo "Source directory: $SRC_DIR"
+        echo "Destination directory: $DEST_DIR"
+
+        # --- Part 2: 处理 *.list 文件 ---
         echo "Processing *.list files..."
-        for file in "$RULES_DIR"/*.list; do
-          if [[ ! -f "$file" || ! -s "$file" ]]; then
-            echo "Skipping non-existent or empty file: $file"
-            continue
-          fi
-          
+        for file in "$SRC_DIR"/*.list; do
+          # ... (此处省略了和之前版本完全相同的 .list 文件处理逻辑)
+          if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
           TEMP_FILE="$file.tmp"
           case "$(basename "$file")" in
-            "apple-cn.list")
-              grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$TEMP_FILE"
-              ;;
-            "ChinaIPs.list")
-              grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,|IP6-CIDR,", ""); print "blacklist-ip " $1 }' > "$TEMP_FILE"
-              ;;
-            *)
-              grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") print "-." $2; else if ($1 == "HOST-SUFFIX") print "*." $2 }' > "$TEMP_FILE"
-              ;;
+            "apple-cn.list") grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$TEMP_FILE";;
+            "ChinaIPs.list") grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,|IP6-CIDR,", ""); print "blacklist-ip " $1 }' > "$TEMP_FILE";;
+            *) grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") print "-." $2; else if ($1 == "HOST-SUFFIX") print "*." $2 }' > "$TEMP_FILE";;
           esac
-          
-          if [[ -s "$TEMP_FILE" ]]; then
-            mv "$TEMP_FILE" "$file"
-          else
-            echo "Warning: Processed file $file is empty. Original file retained."
-            rm -f "$TEMP_FILE"
-          fi
+          if [[ -s "$TEMP_FILE" ]]; then mv "$TEMP_FILE" "$file"; else rm -f "$TEMP_FILE"; fi
         done
 
-        # --- Part 2: Merge *.conf files and create domain-only list ---
-        echo "Merging and deduplicating *.conf files..."
-        CONF_MERGED="$RULES_DIR/Adrulesnoedevhost.conf"
-        LIST_MERGED="$RULES_DIR/Adrulesnoedevhost.list"
+        # --- Part 3: 合并 .conf 文件并生成最终的 .conf 和 .list ---
+        echo "Generating merged .conf and .list files..."
+        CONF_MERGED="$SRC_DIR/Adrulesnoedevhost.conf"
+        LIST_MERGED="$SRC_DIR/Adrulesnoedevhost.list"
 
-        awk '
-          BEGIN { FS = "/" }
-          NR==FNR {
-              if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 }
-              next
-          }
-          {
-              if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 }
-          }
-          END {
-              for (domain in lines) { print lines[domain] }
-          }
-        ' "$RULES_DIR/Adrules.conf" "$RULES_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
-
+        awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
         awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
-        
-        echo "Rule generation complete."
-        echo "--- Verification: Final Rule Counts ---"
-        wc -l "$CONF_MERGED"
-        wc -l "$LIST_MERGED"
-        echo "------------------------------------"
+        echo "Generated merged files successfully."
 
-    # Step 4: Copy generated files to the final destination
-    - name: Deploy Rules to Smartdns Directory
-      run: |
-        DEST_DIR="ioss-repo/Smartdns/Rules"
-        SRC_DIR="ioss-repo/Ruleset"
-
+        # --- Part 4: 部署所有最终规则到目标目录 ---
+        echo "Deploying final rules..."
         rm -rf "$DEST_DIR"
         mkdir -p "$DEST_DIR"
 
+        # 复制所有处理和生成好的规则文件
         cp "$SRC_DIR"/*.list "$DEST_DIR/"
-        cp "$SRC_DIR"/Adrulesnoedevhost.conf "$DEST_DIR/"
-        
-        echo "All final rule files have been deployed."
+        cp "$SRC_DIR"/*.conf "$DEST_DIR/"
+
+        echo "Deployment complete. Verifying final contents:"
         ls -l "$DEST_DIR"
 
-    # Step 5: Install and configure sing-box (always re-downloading)
+    # Step 4: Install and configure sing-box
     - name: Install and Configure sing-box
       run: |
         echo "Downloading and installing sing-box..."
@@ -139,22 +106,16 @@ jobs:
         tar -xzf sing-box.tar.gz
         chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
         sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/
-        
-        # Clean up installation files
         rm -rf sing-box.tar.gz sing-box-${SING_BOX_VERSION}-linux-amd64
-        
         sing-box version
 
-        # Compile rules
         echo "Compiling .srs rule sets..."
         for file in ioss-repo/Sing-box/ruleset/*.json; do
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
         done
-        
-        # Clean up the downloaded source rules
         rm -rf ioss-repo/Ruleset
 
-    # Step 6: Commit and push changes to the repository
+    # Step 5: Commit and push changes
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
@@ -168,7 +129,7 @@ jobs:
           echo "No changes to commit."
         fi
 
-    # Step 7: Clean up old workflow runs
+    # Step 6: Clean up old workflow runs
     - name: Cleanup Workflow Runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
