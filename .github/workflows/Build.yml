@@ -38,7 +38,8 @@ jobs:
           "bilibili.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/BiliBili/BiliBili.list"
           "Alibaba.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Alibaba/Alibaba.list"
           "Tencent.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Tencent/Tencent.list"
-
+          "Adrules.conf https://adrules.top/smart-dns.conf"
+          "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
         for file in "${files[@]}"; do
           set -- $file
@@ -48,7 +49,7 @@ jobs:
         echo "All files downloaded successfully."
         
         # 检查下载的文件是否有内容
-        for file in ioss-repo/Ruleset/*.list; do
+        for file in ioss-repo/Ruleset/*; do
           if [ ! -s "$file" ]; then
             echo "警告: $file 文件为空，尝试重新下载..."
             filename=$(basename "$file")
@@ -106,12 +107,20 @@ jobs:
             echo "文件不存在或为空: $file"
           fi
         done
+        
+        # 新增：合并 Adrules.conf 和 neodevhost.conf，并按域名去重
+        echo "Processing Adrules.conf and neodevhost.conf with domain deduplication..."
+        cat ioss-repo/Ruleset/Adrules.conf ioss-repo/Ruleset/neodevhost.conf | \
+        grep '^address \/' | \
+        awk -F'/' '!seen[$2]++' > ioss-repo/Ruleset/Adrulesnoedevhost.conf
+        echo "Created Adrulesnoedevhost.conf"
 
     # Step 4: 复制文件到 Smartdns 目录
     - name: Copy Files to Smartdns Directory
       run: |
         rm -rf ioss-repo/Smartdns/Rules
         mkdir -p ioss-repo/Smartdns/Rules
+        # 复制 .list 文件
         for file in ioss-repo/Ruleset/*.list; do
           if [ -s "$file" ]; then
             filename=$(basename "$file")
@@ -121,6 +130,13 @@ jobs:
             echo "跳过复制空文件: $file"
           fi
         done
+        # 复制新合并的 .conf 文件
+        if [ -s "ioss-repo/Ruleset/Adrulesnoedevhost.conf" ]; then
+          cp "ioss-repo/Ruleset/Adrulesnoedevhost.conf" "ioss-repo/Smartdns/Rules/Adrulesnoedevhost.conf"
+          echo "已复制 Adrulesnoedevhost.conf 到 Smartdns/Rules 目录"
+        else
+          echo "跳过复制空文件: Adrulesnoedevhost.conf"
+        fi
 
     # Step 5: 安装并配置 sing-box
     - name: Install and Configure sing-box
