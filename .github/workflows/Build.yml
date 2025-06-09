@@ -38,7 +38,6 @@ jobs:
           "bilibili.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/BiliBili/BiliBili.list"
           "Alibaba.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Alibaba/Alibaba.list"
           "Tencent.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Tencent/Tencent.list"
-          # 更新：使用 Cats-Team 的规则链接
           "Adrules.conf https://github.com/Cats-Team/AdRules/raw/main/smart-dns.conf"
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
@@ -68,53 +67,55 @@ jobs:
     # Step 3: 处理规则文件
     - name: Process Rule Files
       run: |
+        # 处理 .list 文件
         for file in ioss-repo/Ruleset/*.list; do
           if [[ -f "$file" && -s "$file" ]]; then
             case "$(basename "$file")" in
               "apple-cn.list")
-                # 处理 apple-cn.list：提取 full 开头规则
                 grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$file.tmp"
                 ;;
               "ChinaIPs.list")
-                # 处理 ChinaIPs.list：只保留 IP-CIDR 和 IP6-CIDR，并转换为 blacklist-ip 格式
-                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{
-                  gsub("IP-CIDR,", "", $0);
-                  gsub("IP6-CIDR,", "", $0);
-                  print "blacklist-ip " $1
-                }' > "$file.tmp"
+                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,", "", $0); gsub("IP6-CIDR,", "", $0); print "blacklist-ip " $1 }' > "$file.tmp"
                 ;;
               *)
-                # 通用处理：只保留以 HOST 和 HOST-SUFFIX 开头的规则，并转换格式
-                grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '
-                  {
-                    if ($1 == "HOST") {
-                      print "-." $2
-                    } else if ($1 == "HOST-SUFFIX") {
-                      print "*." $2
-                    }
-                  }
-                ' > "$file.tmp"
+                grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") { print "-." $2 } else if ($1 == "HOST-SUFFIX") { print "*." $2 } }' > "$file.tmp"
                 ;;
             esac
-            
-            # 检查处理后的文件是否有内容
-            if [ -s "$file.tmp" ]; then
-              mv "$file.tmp" "$file"
-            else
-              echo "警告: 处理后的 $file 文件为空，保留原始文件"
-              rm -f "$file.tmp"
-            fi
+            if [ -s "$file.tmp" ]; then mv "$file.tmp" "$file"; else echo "警告: 处理后的 $file 文件为空，保留原始文件"; rm -f "$file.tmp"; fi
           else
             echo "文件不存在或为空: $file"
           fi
         done
         
-        # 合并 Adrules.conf 和 neodevhost.conf，并按域名去重
-        echo "Processing Adrules.conf and neodevhost.conf with domain deduplication..."
-        cat ioss-repo/Ruleset/Adrules.conf ioss-repo/Ruleset/neodevhost.conf | \
-        grep '^address \/' | \
-        awk -F'/' '!seen[$2]++' > ioss-repo/Ruleset/Adrulesnoedevhost.conf
-        echo "Created Adrulesnoedevhost.conf"
+        # 已修复：使用健壮的 awk 脚本正确地合并与去重 conf 文件
+        echo "Correctly merging and deduplicating ad rules..."
+        awk '
+        BEGIN { FS = "/" }
+        # 第一阶段：处理优先文件 Adrules.conf
+        NR==FNR {
+            if ($0 ~ /^address \// && !seen[$2]) {
+                lines[$2] = $0
+                seen[$2] = 1
+            }
+            next
+        }
+        # 第二阶段：处理 neodevhost.conf，只添加新规则
+        {
+            if ($0 ~ /^address \// && !seen[$2]) {
+                lines[$2] = $0
+                seen[$2] = 1
+            }
+        }
+        END {
+            for (domain in lines) {
+                print lines[domain]
+            }
+        }
+        ' ioss-repo/Ruleset/Adrules.conf ioss-repo/Ruleset/neodevhost.conf | sort > ioss-repo/Ruleset/Adrulesnoedevhost.conf
+
+        echo "Created Adrulesnoedevhost.conf successfully."
+        echo "Final rule count:"
+        wc -l ioss-repo/Ruleset/Adrulesnoedevhost.conf
 
     # Step 4: 复制文件到 Smartdns 目录
     - name: Copy Files to Smartdns Directory
