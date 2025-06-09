@@ -1,29 +1,29 @@
 # from https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
 name: Build
 on:
-  workflow_dispatch:  # 支持手动触发
-  schedule:           # 定时触发任务（每天12:05和00:05）
+  workflow_dispatch:  # Allows manual triggering
+  schedule:           # Triggers the workflow on a schedule
     - cron: "5 0,12 * * *"
 
 jobs:
   Build:
     runs-on: ubuntu-latest
     env:
-      TZ: "Asia/Shanghai"  # 时区：上海时间
+      TZ: "Asia/Shanghai"
       SING_BOX_VERSION: "1.10.5"
 
     steps:
-    # Step 1: 检出 ioss 仓库代码
+    # Step 1: Checkout the repository code
     - name: Checkout ioss Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: 下载规则文件
-    - name: Download Rules
+    # Step 2: Download rule files in parallel for speed
+    - name: Download Rules in Parallel
       run: |
-        mkdir -p ioss-repo/Ruleset
+        # Define the list of files to download
         files=(
           "ChinaMaxNoIP.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMaxNoIP/ChinaMaxNoIP.list"
           "Global.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list"
@@ -41,140 +41,134 @@ jobs:
           "Adrules.conf https://github.com/Cats-Team/AdRules/raw/main/smart-dns.conf"
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
-        for file in "${files[@]}"; do
-          set -- $file
-          echo "Downloading: $2"
-          curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1" -f -L -o "ioss-repo/Ruleset/$1" "$2" || { echo "Download failed: $2"; exit 1; }
-        done
+
+        # 优化: 使用 xargs -P 实现并行下载，最多8个并发
+        printf "%s\n" "${files[@]}" | xargs -n 2 -P 8 sh -c '
+          filename=$1
+          url=$2
+          echo "Downloading: $filename from $url"
+          curl -A "Mozilla/5.0" --connect-timeout 10 -f -L -o "ioss-repo/Ruleset/$filename" "$url" || exit 255
+        '
         echo "All files downloaded successfully."
-        
-        # 检查下载的文件是否有内容
-        for file in ioss-repo/Ruleset/*; do
-          if [ ! -s "$file" ]; then
-            echo "警告: $file 文件为空，尝试重新下载..."
-            filename=$(basename "$file")
-            for item in "${files[@]}"; do
-              if [[ $item == *"$filename"* ]]; then
-                url=$(echo $item | awk '{print $2}')
-                echo "重新下载: $url"
-                curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1" -f -L -o "$file" "$url" || echo "重新下载失败: $url"
-                break
-              fi
-            done
+
+    # Step 3: Process all rule files in a single, consolidated step
+    - name: Process, Merge, and Generate Rule Files
+      run: |
+        RULES_DIR="ioss-repo/Ruleset"
+
+        # --- Part 1: Process *.list files ---
+        echo "Processing *.list files..."
+        for file in "$RULES_DIR"/*.list; do
+          if [[ ! -f "$file" || ! -s "$file" ]]; then
+            echo "Skipping non-existent or empty file: $file"
+            continue
+          fi
+          
+          TEMP_FILE="$file.tmp"
+          case "$(basename "$file")" in
+            "apple-cn.list")
+              grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$TEMP_FILE"
+              ;;
+            "ChinaIPs.list")
+              grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,|IP6-CIDR,", ""); print "blacklist-ip " $1 }' > "$TEMP_FILE"
+              ;;
+            *)
+              grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") print "-." $2; else if ($1 == "HOST-SUFFIX") print "*." $2 }' > "$TEMP_FILE"
+              ;;
+          esac
+          
+          if [[ -s "$TEMP_FILE" ]]; then
+            mv "$TEMP_FILE" "$file"
+          else
+            echo "Warning: Processed file $file is empty. Original file retained."
+            rm -f "$TEMP_FILE"
           fi
         done
 
-    # Step 3: 处理规则文件
-    - name: Process Rule Files
-      run: |
-        # 处理 .list 文件
-        for file in ioss-repo/Ruleset/*.list; do
-          if [[ -f "$file" && -s "$file" ]]; then
-            case "$(basename "$file")" in
-              "apple-cn.list")
-                grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$file.tmp"
-                ;;
-              "ChinaIPs.list")
-                grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,", "", $0); gsub("IP6-CIDR,", "", $0); print "blacklist-ip " $1 }' > "$file.tmp"
-                ;;
-              *)
-                grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") { print "-." $2 } else if ($1 == "HOST-SUFFIX") { print "*." $2 } }' > "$file.tmp"
-                ;;
-            esac
-            if [ -s "$file.tmp" ]; then mv "$file.tmp" "$file"; else echo "警告: 处理后的 $file 文件为空，保留原始文件"; rm -f "$file.tmp"; fi
-          else
-            echo "文件不存在或为空: $file"
-          fi
-        done
-        
-        # 已修复：使用健壮的 awk 脚本正确地合并与去重 conf 文件
-        echo "Correctly merging and deduplicating ad rules..."
+        # --- Part 2: Merge *.conf files and create domain-only list ---
+        echo "Merging and deduplicating *.conf files..."
+        CONF_MERGED="$RULES_DIR/Adrulesnoedevhost.conf"
+        LIST_MERGED="$RULES_DIR/Adrulesnoedevhost.list"
+
         awk '
-        BEGIN { FS = "/" }
-        # 第一阶段：处理优先文件 Adrules.conf
-        NR==FNR {
-            if ($0 ~ /^address \// && !seen[$2]) {
-                lines[$2] = $0
-                seen[$2] = 1
-            }
-            next
-        }
-        # 第二阶段：处理 neodevhost.conf，只添加新规则
-        {
-            if ($0 ~ /^address \// && !seen[$2]) {
-                lines[$2] = $0
-                seen[$2] = 1
-            }
-        }
-        END {
-            for (domain in lines) {
-                print lines[domain]
-            }
-        }
-        ' ioss-repo/Ruleset/Adrules.conf ioss-repo/Ruleset/neodevhost.conf | sort > ioss-repo/Ruleset/Adrulesnoedevhost.conf
+          BEGIN { FS = "/" }
+          NR==FNR {
+              if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 }
+              next
+          }
+          {
+              if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 }
+          }
+          END {
+              for (domain in lines) { print lines[domain] }
+          }
+        ' "$RULES_DIR/Adrules.conf" "$RULES_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
 
-        echo "Created Adrulesnoedevhost.conf successfully."
-        echo "Final rule count:"
-        wc -l ioss-repo/Ruleset/Adrulesnoedevhost.conf
+        awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
+        
+        echo "Rule generation complete."
+        echo "--- Verification: Final Rule Counts ---"
+        wc -l "$CONF_MERGED"
+        wc -l "$LIST_MERGED"
+        echo "------------------------------------"
 
-    # Step 4: 复制文件到 Smartdns 目录
-    - name: Copy Files to Smartdns Directory
+    # Step 4: Copy generated files to the final destination
+    - name: Deploy Rules to Smartdns Directory
       run: |
-        rm -rf ioss-repo/Smartdns/Rules
-        mkdir -p ioss-repo/Smartdns/Rules
-        # 复制 .list 文件
-        for file in ioss-repo/Ruleset/*.list; do
-          if [ -s "$file" ]; then
-            filename=$(basename "$file")
-            cp "$file" "ioss-repo/Smartdns/Rules/$filename"
-            echo "已复制 $filename 到 Smartdns/Rules 目录"
-          else
-            echo "跳过复制空文件: $file"
-          fi
-        done
-        # 复制新合并的 .conf 文件
-        if [ -s "ioss-repo/Ruleset/Adrulesnoedevhost.conf" ]; then
-          cp "ioss-repo/Ruleset/Adrulesnoedevhost.conf" "ioss-repo/Smartdns/Rules/Adrulesnoedevhost.conf"
-          echo "已复制 Adrulesnoedevhost.conf 到 Smartdns/Rules 目录"
-        else
-          echo "跳过复制空文件: Adrulesnoedevhost.conf"
-        fi
+        DEST_DIR="ioss-repo/Smartdns/Rules"
+        SRC_DIR="ioss-repo/Ruleset"
 
-    # Step 5: 安装并配置 sing-box
+        rm -rf "$DEST_DIR"
+        mkdir -p "$DEST_DIR"
+
+        cp "$SRC_DIR"/*.list "$DEST_DIR/"
+        cp "$SRC_DIR"/Adrulesnoedevhost.conf "$DEST_DIR/"
+        
+        echo "All final rule files have been deployed."
+        ls -l "$DEST_DIR"
+
+    # Step 5: Install and configure sing-box (always re-downloading)
     - name: Install and Configure sing-box
       run: |
-        rm -rf ioss-repo/Ruleset
-        # 下载和安装 sing-box
-        curl -L -o sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz
+        echo "Downloading and installing sing-box..."
+        curl -sL -o sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz"
         tar -xzf sing-box.tar.gz
         chmod +x sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box
-        sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/sing-box
+        sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/
+        
+        # Clean up installation files
+        rm -rf sing-box.tar.gz sing-box-${SING_BOX_VERSION}-linux-amd64
+        
         sing-box version
 
-        # 编译 JSON 规则文件为 SRS 格式
+        # Compile rules
+        echo "Compiling .srs rule sets..."
         for file in ioss-repo/Sing-box/ruleset/*.json; do
-          sing-box rule-set compile "$file" -o "${file%.json}.srs"
+            sing-box rule-set compile "$file" -o "${file%.json}.srs"
         done
-        # 清理安装文件
-        rm -rf sing-box sing-box-${SING_BOX_VERSION}-linux-amd64 sing-box.tar.gz
+        
+        # Clean up the downloaded source rules
+        rm -rf ioss-repo/Ruleset
 
-    # Step 6: 将更新推送到 ioss 仓库
+    # Step 6: Commit and push changes to the repository
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
-        if [[ -n $(git status -s) ]]; then
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name "${{ github.actor }}"
+        # 优化: 仅当存在未暂存的更改时才执行提交
+        if ! git diff --quiet; then
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
-          git push origin main
+          git commit -m "Auto Update: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git push
         else
           echo "No changes to commit."
         fi
 
-    # Step 7: 清理历史 Workflow Runs
+    # Step 7: Clean up old workflow runs
     - name: Cleanup Workflow Runs
-      uses: Mattraks/delete-workflow-runs@main
+      uses: Mattraks/delete-workflow-runs@v2
       with:
-        retain_days: 0
+        token: ${{ github.token }}
+        retain_days: 1
         keep_minimum_runs: 2
