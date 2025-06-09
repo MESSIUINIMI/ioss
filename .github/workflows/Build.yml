@@ -20,10 +20,10 @@ jobs:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download rule files in parallel for speed
-    - name: Download Rules in Parallel
+    # Step 2: Download rule files sequentially for stability
+    - name: Download Rules Sequentially
       run: |
-        # Define the list of files to download
+        mkdir -p ioss-repo/Ruleset
         files=(
           "ChinaMaxNoIP.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMaxNoIP/ChinaMaxNoIP.list"
           "Global.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list"
@@ -42,13 +42,17 @@ jobs:
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
 
-        # 优化: 使用 xargs -P 实现并行下载，最多8个并发
-        printf "%s\n" "${files[@]}" | xargs -n 2 -P 8 sh -c '
-          filename=$1
-          url=$2
-          echo "Downloading: $filename from $url"
-          curl -A "Mozilla/5.0" --connect-timeout 10 -f -L -o "ioss-repo/Ruleset/$filename" "$url" || exit 255
-        '
+        # 修复：换回稳定可靠的 for 循环方式进行下载
+        for item in "${files[@]}"; do
+          # 使用 set 命令安全地分割文件名和 URL
+          set -- $item
+          local_name=$1
+          remote_url=$2
+          
+          echo "Downloading: $local_name from $remote_url"
+          curl -A "Mozilla/5.0" --connect-timeout 15 -f -L -o "ioss-repo/Ruleset/$local_name" "$remote_url" || { echo "Download failed: $remote_url"; exit 1; }
+        done
+        
         echo "All files downloaded successfully."
 
     # Step 3: Process all rule files in a single, consolidated step
@@ -154,7 +158,6 @@ jobs:
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
-        # 优化: 仅当存在未暂存的更改时才执行提交
         if ! git diff --quiet; then
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
