@@ -41,7 +41,6 @@ jobs:
           "Adrules.conf https://github.com/Cats-Team/AdRules/raw/main/smart-dns.conf"
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
         )
-
         for item in "${files[@]}"; do
           set -- $item
           echo "Downloading: $1 from $2"
@@ -54,7 +53,6 @@ jobs:
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-
         echo "Processing *.list files..."
         for file in "$SRC_DIR"/*.list; do
           if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
@@ -70,26 +68,24 @@ jobs:
         echo "Generating merged .conf and .list files..."
         CONF_MERGED="$SRC_DIR/Adrulesnoedevhost.conf"
         LIST_MERGED="$SRC_DIR/Adrulesnoedevhost.list"
-
         awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
         awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
         echo "Generated merged files successfully."
 
     # Step 4: Deploy final rules to destination directory
-    - name: Deploy Rules to Smartdns Directory
+    - name: Deploy Final Rules to Smartdns Directory
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
         DEST_DIR="ioss-repo/Smartdns/Rules"
-
         echo "Deploying final rules..."
         rm -rf "$DEST_DIR"
         mkdir -p "$DEST_DIR"
-
-        # 复制所有处理和生成好的规则文件
+        # 修正: 只复制我们需要的最终文件
+        echo "Copying all *.list files..."
         cp "$SRC_DIR"/*.list "$DEST_DIR/"
-        cp "$SRC_DIR"/*.conf "$DEST_DIR/"
-
+        echo "Copying Adrulesnoedevhost.conf..."
+        cp "$SRC_DIR/Adrulesnoedevhost.conf" "$DEST_DIR/"
         echo "Deployment complete. Verifying final contents:"
         ls -l "$DEST_DIR"
 
@@ -103,7 +99,6 @@ jobs:
         sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/
         rm -rf sing-box.tar.gz sing-box-${SING_BOX_VERSION}-linux-amd64
         sing-box version
-
         echo "Compiling .srs rule sets..."
         for file in ioss-repo/Sing-box/ruleset/*.json; do
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
