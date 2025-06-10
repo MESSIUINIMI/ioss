@@ -20,7 +20,7 @@ jobs:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download rule files sequentially for maximum stability
+    # Step 2: Download rule files sequentially for stability
     - name: Download Rules Sequentially
       run: |
         mkdir -p ioss-repo/Ruleset
@@ -44,29 +44,19 @@ jobs:
 
         for item in "${files[@]}"; do
           set -- $item
-          local_name=$1
-          remote_url=$2
-          echo "Downloading: $local_name from $remote_url"
-          curl -A "Mozilla/5.0" --connect-timeout 15 -f -L -o "ioss-repo/Ruleset/$local_name" "$remote_url" || { echo "Download failed: $remote_url"; exit 1; }
+          echo "Downloading: $1 from $2"
+          curl -A "Mozilla/5.0" --connect-timeout 15 -f -L -o "ioss-repo/Ruleset/$1" "$2" || { echo "Download failed: $2"; exit 1; }
         done
         echo "All source files downloaded successfully."
 
-    # Step 3: Atomically Process, Generate, and Deploy All Rule Files
-    - name: Process, Generate, and Deploy All Rule Files
+    # Step 3: Process, Merge, and Generate Rule Files
+    - name: Process, Merge, and Generate Rule Files
       run: |
-        # 优化: 任何命令失败时立即退出，防止后续步骤出错
         set -e
-
-        # --- Part 1: 定义目录 ---
         SRC_DIR="ioss-repo/Ruleset"
-        DEST_DIR="ioss-repo/Smartdns/Rules"
-        echo "Source directory: $SRC_DIR"
-        echo "Destination directory: $DEST_DIR"
 
-        # --- Part 2: 处理 *.list 文件 ---
         echo "Processing *.list files..."
         for file in "$SRC_DIR"/*.list; do
-          # ... (此处省略了和之前版本完全相同的 .list 文件处理逻辑)
           if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
           TEMP_FILE="$file.tmp"
           case "$(basename "$file")" in
@@ -77,7 +67,6 @@ jobs:
           if [[ -s "$TEMP_FILE" ]]; then mv "$TEMP_FILE" "$file"; else rm -f "$TEMP_FILE"; fi
         done
 
-        # --- Part 3: 合并 .conf 文件并生成最终的 .conf 和 .list ---
         echo "Generating merged .conf and .list files..."
         CONF_MERGED="$SRC_DIR/Adrulesnoedevhost.conf"
         LIST_MERGED="$SRC_DIR/Adrulesnoedevhost.list"
@@ -86,7 +75,13 @@ jobs:
         awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
         echo "Generated merged files successfully."
 
-        # --- Part 4: 部署所有最终规则到目标目录 ---
+    # Step 4: Deploy final rules to destination directory
+    - name: Deploy Rules to Smartdns Directory
+      run: |
+        set -e
+        SRC_DIR="ioss-repo/Ruleset"
+        DEST_DIR="ioss-repo/Smartdns/Rules"
+
         echo "Deploying final rules..."
         rm -rf "$DEST_DIR"
         mkdir -p "$DEST_DIR"
@@ -98,7 +93,7 @@ jobs:
         echo "Deployment complete. Verifying final contents:"
         ls -l "$DEST_DIR"
 
-    # Step 4: Install and configure sing-box
+    # Step 5: Install and configure sing-box
     - name: Install and Configure sing-box
       run: |
         echo "Downloading and installing sing-box..."
@@ -115,24 +110,23 @@ jobs:
         done
         rm -rf ioss-repo/Ruleset
 
-    # Step 5: Commit and push changes
+    # Step 6: 将更新推送到 ioss 仓库
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
-        if ! git diff --quiet; then
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+        if [[ -n $(git status -s) ]]; then
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
           git add -A
-          git commit -m "Auto Update: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          git push
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
+          git push origin main
         else
           echo "No changes to commit."
         fi
 
-    # Step 6: Clean up old workflow runs
+    # Step 7: 清理历史 Workflow Runs
     - name: Cleanup Workflow Runs
-      uses: Mattraks/delete-workflow-runs@v2
+      uses: Mattraks/delete-workflow-runs@main
       with:
-        token: ${{ github.token }}
-        retain_days: 1
+        retain_days: 0
         keep_minimum_runs: 2
