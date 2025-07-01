@@ -1,3 +1,24 @@
+!
+! Compiled by @adguard/hostlist-compiler v1.0.35
+! Description: List composed of several filters (AdGuard Base filter, Social Media filter, Tracking Protection filter, Mobile Ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking
+! Description: The DNS Filters
+! Expires: 1 (update frequency)
+! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
+! Homepage: https://github.com/Cats-Team/AdRules
+! Last modified: 2025-07-01T06:11:12.391Z
+! Powerd by Cats-Team
+! Title: AdGuard DNS filter
+! Title: AdRules DNS List
+! Total count: 119617
+! Update: 2025-07-01 14:05:10(GMT+8)
+! Version: 1.0.28.87
+#
+# Last update: 2025-06-30
+# Number of domains: 90457
+# Power By NEO DEV Team
+# Project home page: https://github.com/neodevpro/neodevhost
+# Title: NEO DEV HOST
+#=====================================
 *ad.durasite.net^
 -adrevenue.appsflyersdk.com^
 -adx-*.rayjump.com^
@@ -241,7 +262,7 @@
 @@||oa.tr.line.me^|
 @@||obituaries.therecord.com^|
 @@||official.paymaya.com^|
-@@||omniture.walmart.com^|#=====================================
+@@||omniture.walmart.com^|
 @@||omsc.kpn.com^|
 @@||oneline.nextday.media^|
 @@||pagead.l.doubleclick.net^|
