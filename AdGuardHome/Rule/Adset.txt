@@ -1,3 +1,24 @@
+!
+! Compiled by @adguard/hostlist-compiler v1.0.35
+! Description: List composed of several filters (AdGuard Base filter, Social Media filter, Tracking Protection filter, Mobile Ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking
+! Description: The DNS Filters
+! Expires: 1 (update frequency)
+! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
+! Homepage: https://github.com/Cats-Team/AdRules
+! Last modified: 2025-07-01T04:20:48.247Z
+! Powerd by Cats-Team
+! Title: AdGuard DNS filter
+! Title: AdRules DNS List
+! Total count: 119580
+! Update: 2025-07-01 08:15:49(GMT+8)
+! Version: 1.0.28.86
+#
+# Last update: 2025-06-30
+# Number of domains: 90457
+# Power By NEO DEV Team
+# Project home page: https://github.com/neodevpro/neodevhost
+# Title: NEO DEV HOST
+#=====================================
 *ad.durasite.net^
 -adrevenue.appsflyersdk.com^
 -adx-*.rayjump.com^
@@ -8341,6 +8362,7 @@ vkcdnservice.appspot.com^
 ||abodedistributionpan.com^
 ||abody.39.net^
 ||abolid.com^
+||abomacappy.shop^
 ||abonnementtripleexplore.com^
 ||aboriginesbestowmail.com^
 ||aboriginesprimary.com^
@@ -16894,6 +16916,7 @@ vkcdnservice.appspot.com^
 ||analytics.ly200.com^
 ||analytics.m7g.twitch.tv^
 ||analytics.mabra.com^
+||analytics.macpaw.com^
 ||analytics.maikel.pro^
 ||analytics.mail-corp.com^
 ||analytics.maileon.com^
@@ -20214,6 +20237,7 @@ vkcdnservice.appspot.com^
 ||arpxs.com^
 ||arqddo.fogliettoillustrativo.net^
 ||arqddo.prezzifarmaco.it^
+||arqjnojtrrwfd.space^
 ||arrangedateslocally.com^
 ||arrangementsfilter.com^
 ||arrayasolutions.actonservice.com^
@@ -21205,6 +21229,7 @@ vkcdnservice.appspot.com^
 ||audiencies.3cat.cat^
 ||audiencies.ccma.cat^
 ||audiens.com^
+||audiensi.com^
 ||audienzz.ch^
 ||audio-pa-service.de^
 ||audioad.zenomedia.com^
@@ -21580,6 +21605,7 @@ vkcdnservice.appspot.com^
 ||avvxcexk.com^
 ||avvzamazdpa.com^
 ||avwjyvwqyymm.top^
+||avwjyvwqyzma.top^
 ||avwjyvzeymmb.top^
 ||avworld.activehosted.com^
 ||avworld.lt.acemlnc.com^
@@ -31588,6 +31614,7 @@ vkcdnservice.appspot.com^
 ||cnadid.cn^
 ||cnadid.com^
 ||cnahwyisopurj.online^
+||cnajiemqpr.com^
 ||cnalzlf.top^
 ||cname-aa.022022.net^
 ||cname-aa.engineersguide.jp^
@@ -33517,6 +33544,7 @@ vkcdnservice.appspot.com^
 ||coolerads.com^
 ||coolerconvent.com^
 ||coolerpassagesshed.com^
+||coolersweedy.top^
 ||coolest3d.com^
 ||coolestbasis.com^
 ||coolestcatcare.com^
@@ -53355,6 +53383,7 @@ vkcdnservice.appspot.com^
 ||frmebf.fratelligiacomel.it^
 ||frmmqfwviupoa.today^
 ||frms.fiserv.com^
+||frmwpkwntbyau.store^
 ||frntzz.xyz^
 ||froancefootball.fr^
 ||frockherbal.com^
@@ -53841,6 +53870,7 @@ vkcdnservice.appspot.com^
 ||fwpugy.savilerowco.com^
 ||fwsfwef2.fun^
 ||fwsgvo.takami-labo.com^
+||fwtmxfwijnpok.com^
 ||fwtntihjaqbko.com^
 ||fwtrck.com^
 ||fwuztm.sanarsaude.com^
@@ -67118,6 +67148,7 @@ vkcdnservice.appspot.com^
 ||irbvstqvt.com^
 ||irc.qubiankeji.com^
 ||ircftp.net^
+||irclsopmebtqz.space^
 ||irdlevxe.shelterbyg.dk^
 ||irduwhojas.ga^
 ||iready.curriculumassociates.com^
@@ -70628,6 +70659,7 @@ vkcdnservice.appspot.com^
 ||kkcmcp.printemps.com^
 ||kkeichcdm.xyz^
 ||kkeugrilxgql.com^
+||kkewvhijxhtns.online^
 ||kkfkao.bagstay.co.kr^
 ||kkgkpl.suzuki.com.mx^
 ||kkgrttfmi.com^
@@ -78032,6 +78064,7 @@ vkcdnservice.appspot.com^
 ||lrswl.com^
 ||lrtlisl.top^
 ||lrutvncl.top^
+||lrvwxbifst.xyz^
 ||lrxzfherqqllp.site^
 ||lryadsotb.com^
 ||lryofjrfogp.com^
@@ -78577,6 +78610,7 @@ vkcdnservice.appspot.com^
 ||lyvkvqitzktkx.store^
 ||lywasnothycanty.info^
 ||lywdoo.cn^
+||lywglywnlovz.top^
 ||lyxfra.shopee.com.my^
 ||lyypsy.unisportstore.se^
 ||lyz.radio366.com^
@@ -85599,6 +85633,7 @@ vkcdnservice.appspot.com^
 ||mgefhu.suomi24.fi^
 ||mgejbc.pamelalovenyc.com^
 ||mgepuynxttyi.com^
+||mgfutkkdzvwtg.site^
 ||mggakg.littleblack.co.kr^
 ||mghezaxh.com^
 ||mghkpg.com^
@@ -87173,6 +87208,7 @@ vkcdnservice.appspot.com^
 ||morningamidamaruhal.com^
 ||morningglory101.io^
 ||morningstarlincoln.co.uk^
+||morningstraws.com^
 ||moro-douga.link^
 ||morphonexptl.shop^
 ||morrabranta.shop^
@@ -87681,6 +87717,7 @@ vkcdnservice.appspot.com^
 ||msufcu.actonservice.com^
 ||msurjtivvsxvja.com^
 ||msvobeuhec.com^
+||msvwfupknauql.store^
 ||msyysajvion.com^
 ||msz3.destinia.cn^
 ||mszddprapuziw.vip^
@@ -87720,6 +87757,7 @@ vkcdnservice.appspot.com^
 ||mtest.fontself.com^
 ||mtfc8.com^
 ||mtg.lessecretsdusiam.com^
+||mtg.macpaw.com^
 ||mtg.resotainer.fr^
 ||mtga.setapp.com^
 ||mtgbhhzgsfp.com^
@@ -92103,6 +92141,7 @@ vkcdnservice.appspot.com^
 ||obwnaon.icu^
 ||obwwbbfcjwpd.com^
 ||obwyfc.juwelo.fr^
+||obxrgjqrbdyhb.website^
 ||obytag.kokiskashop.cz^
 ||obyuhk.mondoaffariweb.it^
 ||obyxuq.gazzy.com.br^
@@ -92287,6 +92326,7 @@ vkcdnservice.appspot.com^
 ||oekmddefrcntj.com^
 ||oeko.immergruen-energie.de^
 ||oeldtgynjxqbe.online^
+||oeletmolt.top^
 ||oelj.cn^
 ||oemeomlbkba.com^
 ||oempafnyfiexpe.com^
@@ -99522,6 +99562,7 @@ vkcdnservice.appspot.com^
 ||predrawburp.shop^
 ||predrawfixed.top^
 ||predskolaci.cz^
+||prefecturesuggestions.com^
 ||preferablycarbon.com^
 ||preference.marketing.nascar.com^
 ||preference.motorolasolutions.com^
@@ -101181,6 +101222,7 @@ vkcdnservice.appspot.com^
 ||pvnwap.zol.com.cn^
 ||pvnwfoxrfezes.space^
 ||pvoheg.bubbleroom.se^
+||pvopqweuwmjl.com^
 ||pvpffqip.com^
 ||pvpti222.com^
 ||pvrtx.net^
@@ -118800,6 +118842,7 @@ vkcdnservice.appspot.com^
 ||sofoseveralyears.org^
 ||sofq.site^
 ||soft-com.biz^
+||soft-sun.com^
 ||soft.110route.com^
 ||soft.data.weather.360.cn^
 ||soft.jiegeng.com^
@@ -132018,6 +132061,7 @@ vkcdnservice.appspot.com^
 ||tomechyki.pro^
 ||tomekas.com^
 ||tomeletparton.top^
+||tomgmuyntscpu.com^
 ||tomizizingeel.net^
 ||tomladvert.com^
 ||tomlldahehun.org^
@@ -137029,6 +137073,7 @@ vkcdnservice.appspot.com^
 ||trenhdg.com^
 ||trenhsmp.com^
 ||trenpyle.com^
+||trepanstaunch.com^
 ||treqonwyp.com^
 ||tres8.info^
 ||trespassapologies.com^
@@ -145126,6 +145171,7 @@ vkcdnservice.appspot.com^
 ||wco.crownpeak.com^
 ||wcoaswaxkrt.com^
 ||wcp.taobao.com^
+||wcpgtxpzhpdgy.website^
 ||wcs.naver.com^
 ||wcsbck.ecareer.ne.jp^
 ||wcsmvmf.icu^
@@ -149470,7 +149516,6 @@ vkcdnservice.appspot.com^
 ||www.vcentury01.com^
 ||www.vcrnads.com^
 ||www.vegaschina.cn^
-||www.vejaskor.com.se^
 ||www.venture-enterprising.com^
 ||www.vetxanh.edu.vn^
 ||www.viatrisneuropathicpain.co.uk^
