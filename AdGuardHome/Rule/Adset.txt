@@ -1,24 +1,3 @@
-!
-! Compiled by @adguard/hostlist-compiler v1.0.35
-! Description: List composed of several filters (AdGuard Base filter, Social Media filter, Tracking Protection filter, Mobile Ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking
-! Description: The DNS Filters
-! Expires: 1 (update frequency)
-! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
-! Homepage: https://github.com/Cats-Team/AdRules
-! Last modified: 2025-07-01T04:20:48.247Z
-! Powerd by Cats-Team
-! Title: AdGuard DNS filter
-! Title: AdRules DNS List
-! Total count: 119580
-! Update: 2025-07-01 08:15:49(GMT+8)
-! Version: 1.0.28.86
-#
-# Last update: 2025-06-30
-# Number of domains: 90457
-# Power By NEO DEV Team
-# Project home page: https://github.com/neodevpro/neodevhost
-# Title: NEO DEV HOST
-#=====================================
 *ad.durasite.net^
 -adrevenue.appsflyersdk.com^
 -adx-*.rayjump.com^
@@ -3017,7 +2996,6 @@ vkcdnservice.appspot.com^
 ||86222538.xyz^
 ||863my.com^
 ||864feb57ruary.com^
-||86f1b067c2.a2255d1d36.com^
 ||86fm.com^
 ||8707c7e689.dec0c1a14f.com^
 ||8731c6147b.ec6a7f5a62.com^
@@ -14388,6 +14366,7 @@ vkcdnservice.appspot.com^
 ||affluentretinueelegance.com^
 ||affmates.com^
 ||affnamzwon.com^
+||affoggsic.com^
 ||affordableforyouusa5.godaddysites.com^
 ||affordedseasick.com^
 ||affordnope.com^
@@ -16860,6 +16839,7 @@ vkcdnservice.appspot.com^
 ||analytics.knottenwolle.de^
 ||analytics.knowtheshow.com^
 ||analytics.koebogspar.dk^
+||analytics.komiku.org^
 ||analytics.komoder.at^
 ||analytics.komoder.be^
 ||analytics.komoder.bg^
@@ -20390,6 +20370,7 @@ vkcdnservice.appspot.com^
 ||asadcdn.com^
 ||asadirectrestof.com^
 ||asafesite.com^
+||asagazsfxlgvx.space^
 ||asajojgerewebnew.com^
 ||asakfreath.top^
 ||asakimerp.co.il^
@@ -26891,6 +26872,7 @@ vkcdnservice.appspot.com^
 ||buzzardcraizey.com^
 ||buzzcity.net^
 ||buzzdancing.com^
+||buzzdeal.com^
 ||buzzdeck.com^
 ||buzzer.xhamster.com^
 ||buzzer.xhofficial.com^
@@ -34240,6 +34222,7 @@ vkcdnservice.appspot.com^
 ||cpmpodmkqdjlsb.com^
 ||cpmprofitablenetwork.com^
 ||cpmrevenuegate.com^
+||cpmroi.com^
 ||cpms.now.com^
 ||cpmspace.com^
 ||cpmstar.com^
@@ -34594,6 +34577,7 @@ vkcdnservice.appspot.com^
 ||crf999.cn^
 ||crfuxo.foeth.com^
 ||crfvnt.easylunettes.fr^
+||crianthowdahs.com^
 ||cridotty.com^
 ||criesplucker.top^
 ||criesstarch.com^
@@ -42034,6 +42018,7 @@ vkcdnservice.appspot.com^
 ||degreewhether.com^
 ||degutu.xyz^
 ||deguxtdhf6d01.cloudfront.net^
+||dehhgudvuktktgk.com^
 ||dehua.ixinfan.com^
 ||dehua.mengtubo.com^
 ||deicedchooky.shop^
@@ -45490,6 +45475,7 @@ vkcdnservice.appspot.com^
 ||dxgo95ahe73e8.cloudfront.net^
 ||dxh2ivs16758.cloudfront.net^
 ||dxifoo.ecco-verde.de^
+||dxiilazmsqprw.online^
 ||dxj6cq8hj162l.cloudfront.net^
 ||dxk5g04fo96r4.cloudfront.net^
 ||dxkkb5tytkivf.cloudfront.net^
@@ -53327,7 +53313,6 @@ vkcdnservice.appspot.com^
 ||freshrelevance.com^
 ||freshzz00.duckdns.org^
 ||fresnel-events.vimeocdn.com^
-||frest.info^
 ||frestacero.com^
 ||fretishvelary.com^
 ||frettedmalta.top^
@@ -53639,6 +53624,7 @@ vkcdnservice.appspot.com^
 ||fulhamscaboose.website^
 ||fulheaddedfea.com^
 ||fuliwang.cc^
+||full-copy.com^
 ||fullcircleinsights.com^
 ||fullcrack4u.com^
 ||fullcrackedz.com^
@@ -67083,6 +67069,7 @@ vkcdnservice.appspot.com^
 ||iqfp1.com^
 ||iqgessh.icu^
 ||iqgoukn.cn^
+||iqgrerrkcwdxj.store^
 ||iqi4l.icu^
 ||iqiyi.irs01.com^
 ||iqiyi.m.cn.miaozhen.com^
@@ -88047,7 +88034,6 @@ vkcdnservice.appspot.com^
 ||musicnote.info^
 ||musicoholics.com^
 ||musikzoo.com^
-||musk-project.com^
 ||muskox.appital.io^
 ||muskusa.com^
 ||musselchangeableskier.com^
@@ -89274,7 +89260,6 @@ vkcdnservice.appspot.com^
 ||navi44.com^
 ||navi45.com^
 ||navi45.ru^
-||navi48.com^
 ||navi5.com^
 ||navi52.com^
 ||navi53.com^
@@ -103250,6 +103235,7 @@ vkcdnservice.appspot.com^
 ||rawasy.com^
 ||rawmeasurement.pro^
 ||rawoarsy.com^
+||raxxkxvipsusz.site^
 ||rayjump.com^
 ||rayli.adsame.com^
 ||raylnk.com^
@@ -108854,6 +108840,7 @@ vkcdnservice.appspot.com^
 ||sasc.solidworks.com^
 ||sascwt.cn^
 ||sashayzoist.top^
+||sashtrizone.com^
 ||sasinator.realestate.com.au^
 ||sasinsetuid.com^
 ||sasisa.ru^
@@ -109257,6 +109244,7 @@ vkcdnservice.appspot.com^
 ||schoonnonform.com^
 ||schoorsteen.geenstijl.nl^
 ||schprompt.dangdang.com^
+||schriktrachea.top^
 ||schumacher.adtech.fr^
 ||schumacher.adtech.us^
 ||schwacke.autovistagroup.com^
@@ -110604,7 +110592,6 @@ vkcdnservice.appspot.com^
 ||segs.jp^
 ||seguimiento.tramideudas.es^
 ||seguingjungled.com^
-||sehaleservices.com^
 ||sehiba.com^
 ||sehlicegxy.com^
 ||sehtjv.com^
@@ -114025,6 +114012,7 @@ vkcdnservice.appspot.com^
 ||slimads.vn^
 ||slimane.snyttet.website^
 ||slimelump.com^
+||slimeslangiel.com^
 ||slimespell.com^
 ||slimspots.com^
 ||slimturpis.shop^
@@ -118878,7 +118866,6 @@ vkcdnservice.appspot.com^
 ||softwares2015.com^
 ||softwaresdaily.com^
 ||softwebzone.com^
-||softzspot.com^
 ||soggingterman.com^
 ||soggy-personality.pro^
 ||soggy-surround.com^
@@ -120087,7 +120074,6 @@ vkcdnservice.appspot.com^
 ||sporingsserver.superwood.dk^
 ||sporingsserver.superwood.no^
 ||sporingsserver.superwood.se^
-||sport-specialoffers.shop^
 ||sportbets.su^
 ||sportpardon.com^
 ||sportradarserving.com^
@@ -125510,7 +125496,6 @@ vkcdnservice.appspot.com^
 ||stilanzeigen.net^
 ||stildell.com^
 ||stildreans.com^
-||stiloautoparts.online^
 ||stimaariraco.info^
 ||stimieddiehard.shop^
 ||stimiyb.top^
@@ -129705,6 +129690,7 @@ vkcdnservice.appspot.com^
 ||teamsperilous.com^
 ||teanlaxzia.cyou^
 ||teapotsobbing.com^
+||tearcatjunior.com^
 ||tearerernest.com^
 ||tearfulglass.com^
 ||tearingsinnerprinciples.com^
@@ -130028,7 +130014,6 @@ vkcdnservice.appspot.com^
 ||tendline.top^
 ||tendrepere.top^
 ||tenekslu.com^
-||teneta.add-group.site^
 ||tengfeidn.com^
 ||tengointernet.actonservice.com^
 ||tengyuncloud.cn^
@@ -132033,6 +132018,7 @@ vkcdnservice.appspot.com^
 ||toisecindery.top^
 ||toitingtansy.top^
 ||toitoidotkin.shop^
+||toitsjujuist.shop^
 ||tok.vaicore.xyz^
 ||token.rubiconproject.com^
 ||tokenads.com^
