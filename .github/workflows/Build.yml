@@ -1,4 +1,7 @@
 # from https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
+#
+# Final Workflow with Prioritized, Lossless Deduplication
+#
 name: Build
 on:
   workflow_dispatch:  # Allows manual triggering
@@ -76,21 +79,24 @@ jobs:
         awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
         awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
         echo "Generated merged files successfully."
-
-    # Step 4: Process AdGuard Home rules (Pure, Lossless Deduplication)
+        
+    # Step 4: Process AdGuard Home rules with prioritized deduplication
     - name: Process AdGuard Home Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
         
-        echo "Merging and deduplicating AdGuard Home rules without any modification..."
+        echo "Merging AdGuard Home rules with strict priority and no modification..."
         
-        # 终极核心逻辑: 合并 -> 排序并去重。不进行任何内容修改或过滤。
-        cat "$SRC_DIR/cats_dns.txt" "$SRC_DIR/neodev_adblocker.txt" "$SRC_DIR/adguard_filter_1.txt" \
-        | sort -u > "$SRC_DIR/Adset.txt"
+        # 核心逻辑: 使用 awk 按顺序处理文件，只添加新行，不修改任何内容
+        awk '!seen[$0]++' \
+          "$SRC_DIR/cats_dns.txt" \
+          "$SRC_DIR/neodev_adblocker.txt" \
+          "$SRC_DIR/adguard_filter_1.txt" \
+          > "$SRC_DIR/Adset.txt"
         
         echo "Generated Adset.txt successfully."
-        echo "Final Adset.txt total line count (including comments, etc.):"
+        echo "Final Adset.txt total line count:"
         wc -l "$SRC_DIR/Adset.txt"
 
     # Step 5: Deploy all final rules
@@ -136,7 +142,7 @@ jobs:
         done
         rm -rf ioss-repo/Ruleset
 
-    # Step 7: Commit and push changes
+    # Step 7: 将更新推送到 ioss 仓库
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
