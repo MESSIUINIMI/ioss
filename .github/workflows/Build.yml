@@ -20,11 +20,12 @@ jobs:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download rule files sequentially for stability
-    - name: Download Rules Sequentially
+    # Step 2: Download all rule files sequentially
+    - name: Download All Source Rules
       run: |
         mkdir -p ioss-repo/Ruleset
         files=(
+          # --- SmartDNS Rules ---
           "ChinaMaxNoIP.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMaxNoIP/ChinaMaxNoIP.list"
           "Global.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list"
           "GlobalMedia.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GlobalMedia/GlobalMedia.list"
@@ -40,6 +41,10 @@ jobs:
           "Tencent.list https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/Tencent/Tencent.list"
           "Adrules.conf https://github.com/Cats-Team/AdRules/raw/main/smart-dns.conf"
           "neodevhost.conf https://github.com/neodevpro/neodevhost/raw/master/smartdns.conf"
+          # --- AdGuard Home Rules ---
+          "adguard_filter_1.txt https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt"
+          "neodev_adblocker.txt https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker"
+          "cats_dns.txt https://raw.githubusercontent.com/Cats-Team/AdRules/main/dns.txt"
         )
         for item in "${files[@]}"; do
           set -- $item
@@ -48,12 +53,14 @@ jobs:
         done
         echo "All source files downloaded successfully."
 
-    # Step 3: Process, Merge, and Generate Rule Files
-    - name: Process, Merge, and Generate Rule Files
+    # Step 3: Process all downloaded files
+    - name: Process, Merge, and Generate All Rule Files
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-        echo "Processing *.list files..."
+
+        # --- Part 1: Process SmartDNS *.list files ---
+        echo "Processing SmartDNS *.list files..."
         for file in "$SRC_DIR"/*.list; do
           if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
           TEMP_FILE="$file.tmp"
@@ -65,30 +72,46 @@ jobs:
           if [[ -s "$TEMP_FILE" ]]; then mv "$TEMP_FILE" "$file"; else rm -f "$TEMP_FILE"; fi
         done
 
-        echo "Generating merged .conf and .list files..."
-        CONF_MERGED="$SRC_DIR/Adrulesnoedevhost.conf"
-        LIST_MERGED="$SRC_DIR/Adrulesnoedevhost.list"
-        awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
-        awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
-        echo "Generated merged files successfully."
+        # --- Part 2: Generate SmartDNS merged .conf and .list files ---
+        echo "Generating SmartDNS merged files..."
+        awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$SRC_DIR/Adrulesnoedevhost.conf"
+        awk -F'/' '{print $2}' "$SRC_DIR/Adrulesnoedevhost.conf" > "$SRC_DIR/Adrulesnoedevhost.list"
+        echo "Generated SmartDNS merged files successfully."
 
-    # Step 4: Deploy final rules to destination directory
-    - name: Deploy Final Rules to Smartdns Directory
+        # --- Part 3: Generate AdGuard Home merged file ---
+        echo "Generating AdGuard Home merged file (Adset.txt)..."
+        # 优化: 将新生成的 Adset.txt 也统一保存在 Ruleset 目录中
+        cat "$SRC_DIR/adguard_filter_1.txt" "$SRC_DIR/neodev_adblocker.txt" "$SRC_DIR/cats_dns.txt" \
+        | grep -vE '^!|^#|^\s*$' \
+        | sort -u > "$SRC_DIR/Adset.txt"
+        echo "Generated Adset.txt successfully in source directory."
+        wc -l "$SRC_DIR/Adset.txt"
+
+    # Step 4: Deploy all final rules to their destinations
+    - name: Deploy All Final Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-        DEST_DIR="ioss-repo/Smartdns/Rules"
-        echo "Deploying final rules..."
-        rm -rf "$DEST_DIR"
-        mkdir -p "$DEST_DIR"
-        # 修正: 只复制我们需要的最终文件
-        echo "Copying all *.list files..."
-        cp "$SRC_DIR"/*.list "$DEST_DIR/"
-        echo "Copying Adrulesnoedevhost.conf..."
-        cp "$SRC_DIR/Adrulesnoedevhost.conf" "$DEST_DIR/"
-        echo "Deployment complete. Verifying final contents:"
-        ls -l "$DEST_DIR"
+        
+        # --- Part 1: Deploy SmartDNS Rules ---
+        SMARTDNS_DEST_DIR="ioss-repo/Smartdns/Rules"
+        echo "Deploying final SmartDNS rules to $SMARTDNS_DEST_DIR"
+        rm -rf "$SMARTDNS_DEST_DIR"
+        mkdir -p "$SMARTDNS_DEST_DIR"
+        cp "$SRC_DIR"/*.list "$SMARTDNS_DEST_DIR/"
+        cp "$SRC_DIR/Adrulesnoedevhost.conf" "$SMARTDNS_DEST_DIR/"
+        echo "SmartDNS rules deployed. Verifying contents:"
+        ls -l "$SMARTDNS_DEST_DIR"
 
+        # --- Part 2: Deploy AdGuard Home Rules (New) ---
+        ADG_DEST_DIR="ioss-repo/AdGuardHome/Rule"
+        echo "Deploying final AdGuard Home rules to $ADG_DEST_DIR"
+        rm -rf "$ADG_DEST_DIR"
+        mkdir -p "$ADG_DEST_DIR"
+        cp "$SRC_DIR/Adset.txt" "$ADG_DEST_DIR/"
+        echo "AdGuard Home rules deployed. Verifying contents:"
+        ls -l "$ADG_DEST_DIR"
+        
     # Step 5: Install and configure sing-box
     - name: Install and Configure sing-box
       run: |
@@ -103,9 +126,10 @@ jobs:
         for file in ioss-repo/Sing-box/ruleset/*.json; do
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
         done
+        # 清理所有临时的源文件和中间文件
         rm -rf ioss-repo/Ruleset
 
-    # Step 6: 将更新推送到 ioss 仓库
+    # Step 6: Commit and push changes
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
