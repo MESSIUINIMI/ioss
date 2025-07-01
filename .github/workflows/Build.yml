@@ -20,7 +20,7 @@ jobs:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download all rule files sequentially
+    # Step 2: Download all rule files
     - name: Download All Source Rules
       run: |
         mkdir -p ioss-repo/Ruleset
@@ -53,13 +53,11 @@ jobs:
         done
         echo "All source files downloaded successfully."
 
-    # Step 3: Process all downloaded files
-    - name: Process, Merge, and Generate All Rule Files
+    # Step 3: Process SmartDNS rules
+    - name: Process SmartDNS Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-
-        # --- Part 1: Process SmartDNS *.list files ---
         echo "Processing SmartDNS *.list files..."
         for file in "$SRC_DIR"/*.list; do
           if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
@@ -71,48 +69,56 @@ jobs:
           esac
           if [[ -s "$TEMP_FILE" ]]; then mv "$TEMP_FILE" "$file"; else rm -f "$TEMP_FILE"; fi
         done
-
-        # --- Part 2: Generate SmartDNS merged .conf and .list files ---
         echo "Generating SmartDNS merged files..."
         awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$SRC_DIR/Adrulesnoedevhost.conf"
         awk -F'/' '{print $2}' "$SRC_DIR/Adrulesnoedevhost.conf" > "$SRC_DIR/Adrulesnoedevhost.list"
-        echo "Generated SmartDNS merged files successfully."
+        echo "SmartDNS rules processed successfully."
 
-        # --- Part 3: Generate AdGuard Home merged file ---
-        echo "Generating AdGuard Home merged file (Adset.txt)..."
-        # 优化: 将新生成的 Adset.txt 也统一保存在 Ruleset 目录中
+    # Step 4: Process AdGuard Home rules (Simple Deduplication)
+    - name: Process AdGuard Home Rules
+      run: |
+        set -e
+        SRC_DIR="ioss-repo/Ruleset"
+        
+        echo "Merging and deduplicating AdGuard Home rules without modification..."
+        
+        # 核心逻辑: 合并，排序，然后移除完全相同的行
         cat "$SRC_DIR/adguard_filter_1.txt" "$SRC_DIR/neodev_adblocker.txt" "$SRC_DIR/cats_dns.txt" \
-        | grep -vE '^!|^#|^\s*$' \
-        | sort -u > "$SRC_DIR/Adset.txt"
-        echo "Generated Adset.txt successfully in source directory."
+        | sort \
+        | uniq > "$SRC_DIR/Adset.txt"
+        
+        echo "Generated Adset.txt successfully."
+        echo "Final Adset.txt rule count:"
         wc -l "$SRC_DIR/Adset.txt"
 
-    # Step 4: Deploy all final rules to their destinations
+    # Step 5: Deploy all final rules
     - name: Deploy All Final Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
         
-        # --- Part 1: Deploy SmartDNS Rules ---
+        # Deploy SmartDNS Rules
         SMARTDNS_DEST_DIR="ioss-repo/Smartdns/Rules"
         echo "Deploying final SmartDNS rules to $SMARTDNS_DEST_DIR"
         rm -rf "$SMARTDNS_DEST_DIR"
         mkdir -p "$SMARTDNS_DEST_DIR"
         cp "$SRC_DIR"/*.list "$SMARTDNS_DEST_DIR/"
         cp "$SRC_DIR/Adrulesnoedevhost.conf" "$SMARTDNS_DEST_DIR/"
-        echo "SmartDNS rules deployed. Verifying contents:"
-        ls -l "$SMARTDNS_DEST_DIR"
-
-        # --- Part 2: Deploy AdGuard Home Rules (New) ---
+        
+        # Deploy AdGuard Home Rules
         ADG_DEST_DIR="ioss-repo/AdGuardHome/Rule"
         echo "Deploying final AdGuard Home rules to $ADG_DEST_DIR"
         rm -rf "$ADG_DEST_DIR"
         mkdir -p "$ADG_DEST_DIR"
         cp "$SRC_DIR/Adset.txt" "$ADG_DEST_DIR/"
-        echo "AdGuard Home rules deployed. Verifying contents:"
+        
+        echo "--- Verification ---"
+        echo "Contents of SmartDNS destination:"
+        ls -l "$SMARTDNS_DEST_DIR"
+        echo "Contents of AdGuard Home destination:"
         ls -l "$ADG_DEST_DIR"
         
-    # Step 5: Install and configure sing-box
+    # Step 6: Install and configure sing-box
     - name: Install and Configure sing-box
       run: |
         echo "Downloading and installing sing-box..."
@@ -126,7 +132,6 @@ jobs:
         for file in ioss-repo/Sing-box/ruleset/*.json; do
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
         done
-        # 清理所有临时的源文件和中间文件
         rm -rf ioss-repo/Ruleset
 
     # Step 6: Commit and push changes
