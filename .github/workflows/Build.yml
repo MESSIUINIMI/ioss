@@ -1,4 +1,5 @@
 # from https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
+
 name: Build
 on:
   workflow_dispatch:  # Allows manual triggering
@@ -74,7 +75,7 @@ jobs:
         awk -F'/' '{print $2}' "$SRC_DIR/Adrulesnoedevhost.conf" > "$SRC_DIR/Adrulesnoedevhost.list"
         echo "SmartDNS rules processed successfully."
 
-    # Step 4: Process AdGuard Home rules (Simple Deduplication)
+    # Step 4: Process AdGuard Home rules (Pure Deduplication)
     - name: Process AdGuard Home Rules
       run: |
         set -e
@@ -82,8 +83,9 @@ jobs:
         
         echo "Merging and deduplicating AdGuard Home rules without modification..."
         
-        # 核心逻辑: 合并，排序，然后移除完全相同的行
+        # 核心逻辑: 合并 -> 移除注释和空行 -> 排序 -> 移除完全相同的行
         cat "$SRC_DIR/adguard_filter_1.txt" "$SRC_DIR/neodev_adblocker.txt" "$SRC_DIR/cats_dns.txt" \
+        | grep -vE '^!|^#|^\s*$' \
         | sort \
         | uniq > "$SRC_DIR/Adset.txt"
         
