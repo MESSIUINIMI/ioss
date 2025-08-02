@@ -1,10 +1,8 @@
 {
     "dns": {
         "servers": [
-            {"tag": "Google","type": "https","server": "8.8.8.8","detour": "🔍 Google"},
-            {"tag": "Ten","type": "https","server": "1.12.12.12","detour": "direct"},
-            {"tag": "Cloudflare","type": "https","server": "1.1.1.1","detour": "🖲 Proxy"},
-            {"tag": "Ali","type": "https","server": "223.5.5.5","detour": "direct"},
+            {"tag": "Google","type": "https","server": "8.8.8.8","detour": "🖲 Proxy"},
+            {"tag": "Ali","type": "quic","server": "223.6.6.6","server_port": 853,"detour": "direct"},
             {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
         "rules": [
@@ -14,7 +12,7 @@
             {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip","rewrite_ttl": 1},
             {"rule_set": ["ChinaDomain","UnBan","Media-CN"],"action": "route","server": "Ali"}
         ],
-        "final": "Cloudflare",
+        "final": "Google",
         "independent_cache": true
     },
     "outbounds": [
@@ -110,9 +108,8 @@
           {"rule_set": ["Media-CN"],"action": "route","outbound": "direct"},
           {"rule_set": ["Bahamut","Disney","PrimeVideo","HBO","TikTok","Facebook","Twitch","Media"],"action": "route","outbound": "📼 GlobalMedia"},
           {"rule_set": ["Apple"],"action": "route","outbound": "🍎 Apple"},
-          {"rule_set": ["geolocation-!cn"],"action": "route","outbound": "🖲 Proxy"},
-          {"action": "resolve"},
-          {"rule_set": ["geolocation-cn","ChinaDomain","CNIP"],"action": "route","outbound": "direct"}
+          {"rule_set": ["geolocation-cn","ChinaDomain","CNIP"],"action": "route","outbound": "direct"},
+          {"rule_set": ["geolocation-!cn"],"action": "route","outbound": "🖲 Proxy"}
       ],
       "auto_detect_interface": true,
       "final": "🕹 Final"
@@ -157,6 +154,8 @@
                 }
             },
             "stack": "mixed",
+            "mtu": 9000,
+            "strict_route": true,
             "auto_route": true
         }
     ]
