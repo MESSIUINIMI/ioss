@@ -1,7 +1,7 @@
 {
     "dns": {
         "servers": [
-            {"tag": "Google","type": "https","server": "8.8.8.8","detour": "🖲 Proxy"},
+            {"tag": "Google","type": "https","server": "8.8.8.8","server_port": 443,"path": "/dns-quer","detour": "🖲 Proxy"},
             {"tag": "Ali","type": "quic","server": "223.6.6.6","server_port": 853,"detour": "direct"},
             {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
