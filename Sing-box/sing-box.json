@@ -2,16 +2,16 @@
     "dns": {
         "servers": [
             {"tag": "Google","type": "https","server": "8.8.8.8","server_port": 443,"path": "/dns-query","detour": "🖲 Proxy"},
-            {"tag": "Ali","type": "quic","server": "223.6.6.6","server_port": 853,"detour": "🎯 Direct"},
-            {"tag": "Alih3","type": "https","server": "223.6.6.6","server_port": 443,"path": "/dns-query","detour": "🎯 Direct"},
-            {"tag": "remote_fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
+            {"tag": "Ali","type": "quic","server": "223.6.6.6","server_port": 853},
+            {"tag": "H3","type": "h3","server": "223.6.6.6","server_port": 443,"path": "/dns-query"},
+            {"tag": "Fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"}
         ],
         "rules": [
-            {"clash_mode": "❌ Direct","action": "route","server": "Alih3"},
-            {"clash_mode": "🌍 Global","action": "route","server": "remote_fakeip"},
+            {"clash_mode": "❌ Direct","action": "route","server": "Ali"},
+            {"clash_mode": "🌍 Global","action": "route","server": "Fakeip"},
             {"query_type": "HTTPS","action": "reject"},
-            {"query_type": ["A","AAAA"],"action": "route","server": "remote_fakeip","rewrite_ttl": 1},
-            {"rule_set": ["ChinaDomain","UnBan","Media-CN"],"action": "route","server": "Alih3"}
+            {"query_type": ["A","AAAA"],"action": "route","server": "Fakeip","rewrite_ttl": 1},
+            {"rule_set": ["ChinaDomain","UnBan","Media-CN"],"action": "route","server": "Ali"}
         ],
         "final": "Google",
         "independent_cache": true
@@ -54,7 +54,7 @@
       {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://connectivitycheck.gstatic.com/generate_204","interval": "2m","tolerance": 2,"interrupt_exist_connections": true}
   ],
   "route": {
-        "default_domain_resolver": {"server": "Alih3"},
+        "default_domain_resolver": {"server": "Ali"},
       "rule_set": [
           {"tag": "Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/Repcz/Tool/raw/X/sing-box/Rules/Ads_SukkaW.srs","download_detour": "🎯 Direct"},
           {"tag": "httpdns-cn-Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-httpdns-cn@ads.srs","download_detour": "🎯 Direct"},
