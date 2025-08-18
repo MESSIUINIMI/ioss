@@ -9222,8 +9222,7 @@ blacklist-ip 154.8.48.0/20
 blacklist-ip 154.89.32.0/20
 blacklist-ip 154.89.49.0/24
 blacklist-ip 154.89.50.0/23
-blacklist-ip 154.89.52.0/24
-blacklist-ip 154.89.54.0/23
+blacklist-ip 154.89.52.0/22
 blacklist-ip 154.89.56.0/21
 blacklist-ip 154.91.158.0/23
 blacklist-ip 155.126.176.0/23
