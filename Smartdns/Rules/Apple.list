@@ -1,4 +1,5 @@
 -.apps.apple.com
+-.itunes.apple.com
 -.a1.mzstatic.com
 -.a2.mzstatic.com
 -.a3.mzstatic.com
@@ -230,6 +231,7 @@
 -.audio.itunes.apple.com
 -.mvod.itunes.apple.com
 -.streamingaudio.itunes.apple.com
+-.gspe1-ssl.ls.apple.com
 -.news-client-search.apple.com
 -.api-glb-sea.smoot.apple.com
 -.apple.comscoreresearch.com
@@ -240,9 +242,7 @@
 -.devimages-cdn.apple.com
 -.devstreaming-cdn.apple.com
 -.docs-assets.developer.apple.com
--.gspe1-ssl.ls.apple.com
 -.hls-svod.itunes.apple.com
--.itunes.apple.com
 -.js-cdn.music.apple.com
 -.lookup-api.apple.com
 -.mask-api.fe.apple-dns.net
@@ -1775,6 +1775,7 @@
 *.wwwipodlounge.com
 *.wwwmacbookair.com
 *.apple.comscoreresearch.com
+*.apple.news
 *.appleenews.com
 *.applemusic.berlin
 *.applemusic.co
@@ -1812,7 +1813,6 @@
 *.wwwapplemusic.com
 *.applemusic.com
 *.apple-dns.net
-*.apple.news
 *.appsto.re
 *.cdn-apple.com
 *.digicert.com
