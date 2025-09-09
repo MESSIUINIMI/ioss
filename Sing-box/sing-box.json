@@ -32,7 +32,7 @@
       {"tag": "Ⓜ️ Meta","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "🎉 Emby","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "🎮 Game","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
-      {"tag": "📼 GlobalMedia","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
+      {"tag": "📺 GlobalMedia","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "🍎 Apple","type": "selector","outbounds": ["🖲 Proxy","🕹 Final","🧐 Select","🎯 Direct"],"default": "🎯 Direct","interrupt_exist_connections": true},
       {"tag": "🕹 Final","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
 
@@ -119,7 +119,7 @@
           {"rule_set": ["FixProxy"],"action": "route","outbound": "🖲 Proxy"},
           {"rule_set": ["Steam","Epic"],"action": "route","outbound": "🎮 Game"},
           {"rule_set": ["Media-CN"],"action": "route","outbound": "🎯 Direct"},
-          {"rule_set": ["Bahamut","Disney","PrimeVideo","HBO","TikTok","Media"],"action": "route","outbound": "📼 GlobalMedia"},
+          {"rule_set": ["Bahamut","Disney","PrimeVideo","HBO","TikTok","Media"],"action": "route","outbound": "📺 GlobalMedia"},
           {"rule_set": ["Apple"],"action": "route","outbound": "🍎 Apple"},
           {"rule_set": ["CNdomain","ChinaDomain"],"action": "route","outbound": "🎯 Direct"},
           {"rule_set": ["Global"],"action": "route","outbound": "🖲 Proxy"},
