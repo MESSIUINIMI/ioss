@@ -4474,6 +4474,7 @@ blacklist-ip 103.79.208.0/21
 blacklist-ip 103.79.208.0/22
 blacklist-ip 103.79.212.0/22
 blacklist-ip 103.79.228.0/23
+blacklist-ip 103.79.228.0/24
 blacklist-ip 103.79.24.0/21
 blacklist-ip 103.79.24.0/22
 blacklist-ip 103.79.240.0/22
@@ -7785,6 +7786,8 @@ blacklist-ip 120.31.160.0/22
 blacklist-ip 120.31.168.0/21
 blacklist-ip 120.31.176.0/20
 blacklist-ip 120.31.192.0/18
+blacklist-ip 120.31.66.0/23
+blacklist-ip 120.31.68.0/22
 blacklist-ip 120.32.0.0/12
 blacklist-ip 120.32.0.0/13
 blacklist-ip 120.40.0.0/14
