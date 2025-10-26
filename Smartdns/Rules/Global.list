@@ -1882,6 +1882,7 @@
 *.alsod.ac.uk
 *.alt.ac.uk
 *.alt.com
+*.altera.co.jp
 *.altera.com
 *.alteraforum.com
 *.alteraforums.com
@@ -6025,6 +6026,7 @@
 *.cloudflarepartners.com
 *.cloudflareportal.com
 *.cloudflarepreview.com
+*.cloudflareregistrar.com
 *.cloudflareresolve.com
 *.cloudflaressl.com
 *.cloudflarestatus.com
@@ -6192,6 +6194,7 @@
 *.comicuniverse.org
 *.comixzilla.com
 *.comm-coll-hackney.ac.uk
+*.comm-verse.com
 *.commandandconquer.com
 *.commerceos.com
 *.commnet.ac.uk
@@ -7385,6 +7388,7 @@
 *.dm-event.net
 *.dmed.technology
 *.dmgmediaprivacy.co.uk
+*.dml-lang.org
 *.dml.ac.uk
 *.dmm-extension.com
 *.dmmapis.com
@@ -8095,6 +8099,7 @@
 *.ebsco.com
 *.ebsl.ac.uk
 *.ebslondon.ac.uk
+*.ebuyer.com
 *.ebuyheadphones.com
 *.eca.ac.uk
 *.ecampus-leeds.ac.uk
@@ -9704,6 +9709,11 @@
 *.fracebook.com
 *.fragment.com
 *.fragrancebay.com
+*.framer.com
+*.framer.website
+*.framercanvas.com
+*.framerstatic.com
+*.framerusercontent.com
 *.francecasquebeatssolde.com
 *.francemail.com
 *.francistowne.ac.uk
@@ -10555,6 +10565,7 @@
 *.grannytube.net
 *.grantham.ac.uk
 *.grantleyhall.ac.uk
+*.granulate.io
 *.graphenecentre.ac.uk
 *.graphengine.io
 *.gravitytank.com
@@ -10674,6 +10685,7 @@
 *.hackerguardian.com
 *.hackfacebook.com
 *.hackfacebookid.com
+*.hackharassment.com
 *.hacklang.org
 *.hackney.ac.uk
 *.hacksear.ch
@@ -12303,6 +12315,7 @@
 *.insider.com
 *.insiderdevtour.com
 *.insiderintelligence.com
+*.insight.tech
 *.inspire-dtp.ac.uk
 *.inspiretrust.ac.uk
 *.inst-of-oceanographic-sci.ac.uk
@@ -12394,6 +12407,7 @@
 *.intel.ch
 *.intel.cl
 *.intel.cm
+*.intel.co
 *.intel.co.ae
 *.intel.co.cr
 *.intel.co.id
@@ -12425,6 +12439,7 @@
 *.intel.cu
 *.intel.cz
 *.intel.de
+*.intel.dev
 *.intel.dk
 *.intel.dz
 *.intel.ec
@@ -12437,6 +12452,7 @@
 *.intel.ga
 *.intel.gd
 *.intel.ge
+*.intel.gg
 *.intel.gl
 *.intel.gm
 *.intel.gr
@@ -12447,6 +12463,7 @@
 *.intel.hn
 *.intel.ht
 *.intel.hu
+*.intel.id
 *.intel.ie
 *.intel.in
 *.intel.io
@@ -12544,6 +12561,8 @@
 *.intelplay.com
 *.intelquark.com
 *.intelrealsense.com
+*.intelrealsense.net
+*.intelreimbursement.com
 *.intelrxt.com
 *.intelsalestraining.com
 *.intelsecurity.com
@@ -14437,6 +14456,7 @@
 *.magnacartacollege.ac.uk
 *.mahajantech.com
 *.mahsc.ac.uk
+*.mail.com
 *.maileoch.com
 *.mailhealth.com
 *.mailonline.co.uk
@@ -14860,6 +14880,7 @@
 *.meawallet.app
 *.meb.gov.mm
 *.mebank.ir
+*.meccontroller.com
 *.meddyliwchamgymru.ac.uk
 *.mede-innovation.ac.uk
 *.medev.ac.uk
@@ -15711,6 +15732,7 @@
 *.movetv.com
 *.movidius.com
 *.movidius.net
+*.movidius.org
 *.movie-erog.com
 *.movie1000.xyz
 *.moviepost.com
@@ -17350,6 +17372,7 @@
 *.oncars.in
 *.one889.app
 *.oneapi.com
+*.oneapi.io
 *.onedinesfree.com
 *.onedrive.co
 *.onedrive.co.uk
@@ -17422,6 +17445,7 @@
 *.openapiplatform.com
 *.openapiservice.com
 *.openart.ai
+*.opencas.io
 *.opencollective.com
 *.opencreate.org
 *.opendesktop.org
@@ -17458,6 +17482,7 @@
 *.opentranslatorstothings.org
 *.openuniversity.ac.uk
 *.openurl.ac.uk
+*.openvino.ai
 *.openvinotoolkit.org
 *.openweather.co.uk
 *.openweathermap.org
@@ -17706,6 +17731,7 @@
 *.passage.id
 *.passion-hd.com
 *.passport.net
+*.passwordday.org
 *.pastahealth.com
 *.paston.ac.uk
 *.patentgold.net
@@ -18253,6 +18279,8 @@
 *.plymsea.ac.uk
 *.plzpf.com
 *.pm.me
+*.pmem.org
+*.pmem.us
 *.pml.ac.uk
 *.pms.ac.uk
 *.po18.tw
@@ -18807,6 +18835,7 @@
 *.projectapex.com
 *.projectara.com
 *.projectbaseline.com
+*.projectcircuitbreaker.com
 *.projecteuclid.org
 *.projectjav.com
 *.projectmurphy.net
@@ -19383,6 +19412,7 @@
 *.rems-cdt.ac.uk
 *.renaissanceskin.ac.uk
 *.renchead.com
+*.renderingtoolkit.org
 *.renderos.com
 *.reneerossvideos.com
 *.renminbao.com
@@ -20562,9 +20592,12 @@
 *.signalr.net
 *.signalusers.org
 *.sigops.org
+*.sigopt.com
 *.sihe.ac.uk
 *.sikh-uni.ac.uk
 *.sikiswap.com
+*.silicon-mobility.com
+*.siliconmobility.com
 *.silkengirl.com
 *.silverchair-cdn.com
 *.silversluts.com
@@ -20715,10 +20748,16 @@
 *.small-angle.ac.uk
 *.smallteenpussy.com
 *.smart-edge.com
+*.smart-edge.info
+*.smart-edge.io
+*.smart-edge.net
+*.smart-edge.org
+*.smart-edge.systems
 *.smart.ac.uk
 *.smartcommunitiescoalition.com
 *.smartcommunitiescoalition.org
 *.smartdnsoutside.com
+*.smartedge.info
 *.smartexpos.com
 *.smartfea.com
 *.smartline.com.au
@@ -21081,6 +21120,7 @@
 *.spizoo.com
 *.splatoon2tournament.com
 *.splint-cetl.ac.uk
+*.splunk.com
 *.spo-msedge.net
 *.spokenword.ac.uk
 *.sponichi.co.jp
@@ -21385,6 +21425,8 @@
 *.stonefoxlingerie.com
 *.stonefoxproductions.com
 *.stonyhurst.ac.uk
+*.storageclassmemory.io
+*.storageclassmemory.org
 *.storcuram.ac.uk
 *.store-bridgestonesports.com
 *.storesense.com
@@ -22191,6 +22233,7 @@
 *.thothub.to
 *.thottok.com
 *.thotvids.com
+*.threadingbuildingblocks.org
 *.thri.xxx
 *.thrixxx.com
 *.thtmod1.com
@@ -22791,7 +22834,9 @@
 *.uhsl.ac.uk
 *.uhtube.me
 *.uhub.com
+*.ui-portal.de
 *.ui.com
+*.uicdn.com
 *.uiporn.com
 *.uisp.com
 *.ujapanesesex.com
@@ -22924,6 +22969,7 @@
 *.universalorlando.com
 *.universalpictures.com
 *.universalpicturesinternational.com
+*.universalscalablefirmware.org
 *.universalstudioshollywood.com
 *.universities-scotland.ac.uk
 *.universitiesengland.ac.uk
