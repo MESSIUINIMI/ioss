@@ -110,9 +110,13 @@
 -.d1m7jfoe9zdc1j.cloudfront.net
 -.d1mhjrowxxagfy.cloudfront.net
 -.d1oca24q5dwo6d.cloudfront.net
+-.d1v5ir2lpwr8os.cloudfront.net
 -.d1w2poirtb3as9.cloudfront.net
 -.d1xhnb4ptk05mw.cloudfront.net
 -.d1ymi26ma8va5x.cloudfront.net
+-.d22qjgkvxw22r6.cloudfront.net
+-.d25xi40x97liuc.cloudfront.net
+-.d27xxe7juh1us6.cloudfront.net
 -.d29vzk4ow07wi7.cloudfront.net
 -.d2aba1wr3818hz.cloudfront.net
 -.d2anahhhmp1ffz.cloudfront.net
@@ -148,6 +152,7 @@
 -.dl.begellhouse.com
 -.dlgarenanow-a.akamaihd.net
 -.dlmobilegarena-a.akamaihd.net
+-.dmqdd6hw24ucf.cloudfront.net
 -.docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
 -.docker-pinata-support.s3.amazonaws.com
 -.download.visualstudio.microsoft.com
@@ -218,6 +223,9 @@
 -.hub.slarker.me
 -.hulu.playback.edge.bamgrid.com
 -.i.jeded.com
+-.images-eu.ssl-images-amazon.com
+-.images-fe.ssl-images-amazon.com
+-.images-na.ssl-images-amazon.com
 -.img-prod-cms-rt-microsoft-com.akamaized.net
 -.img-s-msn-com.akamaized.net
 -.impala-media-production.s3.amazonaws.com
@@ -242,6 +250,7 @@
 -.misa-prod.s3.ap-northeast-1.amazonaws.com
 -.mobilelive-hamivideo.cdn.hinet.net
 -.mscrl.microsoft.com
+-.msh.amazon.co.uk
 -.mtalk-dev.google.com
 -.mtalk-staging.google.com
 -.mtalk.google.com
@@ -418,6 +427,7 @@
 -.spotify.map.fastlylb.net
 -.ssl-lvlt.cdn.ea.com
 -.static-hamivideo.cdn.hinet.net
+-.static.siege-amazon.com
 -.statics-marketingsites-eas-ms-com.akamaized.net
 -.statics-marketingsites-eus-ms-com.akamaized.net
 -.statics-marketingsites-wcus-ms-com.akamaized.net
@@ -3118,6 +3128,7 @@
 *.awstrust.com
 *.awwcn.buzz
 *.awwcn.xyz
+*.awxcdn.com
 *.axbdoll.com.tw
 *.ayabank.com
 *.aylesbury.ac.uk
@@ -5323,7 +5334,6 @@
 *.canterbury.ac.uk
 *.canterburycollege.ac.uk
 *.canterburytrust.ac.uk
-*.canva.com
 *.cape.ac.uk
 *.capel.ac.uk
 *.capitalccg.ac.uk
@@ -5657,7 +5667,6 @@
 *.charticulator.com
 *.chase.ac.uk
 *.chasestudy.ac.uk
-*.chat.com
 *.chatango.com
 *.chatgpt.com
 *.chatgpt.livekit.cloud
@@ -8399,6 +8408,7 @@
 *.enmat.ac.uk
 *.enorf.ac.uk
 *.enos.ac.uk
+*.enpass.io
 *.enpirion.com
 *.ensa.ac.uk
 *.ensemble.ac.uk
@@ -13458,6 +13468,9 @@
 *.kedst.ac.uk
 *.keele.ac.uk
 *.keemail.me
+*.keepass.info
+*.keeper.io
+*.keepersecurity.com
 *.keepmovingwithmovefree.com
 *.keepyourcad.com
 *.keiba.net
@@ -13746,6 +13759,8 @@
 *.largeporntube.com
 *.lasersawapp.com
 *.last.fm
+*.lastpass.com
+*.lastpass.eu
 *.lasvegasbmw.com
 *.latampartneruniversity.com
 *.latamvmwareforum.com
@@ -14047,7 +14062,6 @@
 *.linotype.com
 *.linseysworld.com
 *.linst.ac.uk
-*.linux.do
 *.linux.org
 *.linuxfoundation.org
 *.linuxfromscratch.org
@@ -14288,6 +14302,7 @@
 *.lp99.pw
 *.lpc.ac.uk
 *.lpmde.ac.uk
+*.lputil.com
 *.lqh0bon3.xyz
 *.lqpjw.cyou
 *.lrfdsoftware.com
@@ -19618,6 +19633,7 @@
 *.road-crew.com
 *.roblox.qq.com
 *.robobat.com
+*.roboform.com
 *.roborecall.com
 *.robotoffice.com
 *.rochdalesfc.ac.uk
@@ -21572,6 +21588,7 @@
 *.strode-college.ac.uk
 *.strodes.ac.uk
 *.strodeslanguages.ac.uk
+*.strongboxsafe.com
 *.stroud.ac.uk
 *.stroudcol.ac.uk
 *.stroudcollege.ac.uk
@@ -26151,6 +26168,7 @@
 *.aolnews.com
 *.aomedia.org
 *.aomiwang.com
+*.aoxvpn.com
 *.ap.org
 *.apache.org
 *.apartmentratings.com
@@ -26384,6 +26402,7 @@
 *.bet365.com
 *.betaclouds.net
 *.betfair.com
+*.bettergpt.chat
 *.betterhash.net
 *.betternet.co
 *.bettervpn.com
@@ -26706,6 +26725,7 @@
 *.canadameet.com
 *.canalporno.com
 *.cantonese.asia
+*.canva.com
 *.canyu.org
 *.cao.im
 *.caobian.info
@@ -26749,6 +26769,7 @@
 *.ccdtr.org
 *.ccfd.org.tw
 *.cchere.com
+*.cchostvps.xyz
 *.ccim.org
 *.cclife.ca
 *.cclife.org
@@ -26813,7 +26834,9 @@
 *.chaos.social
 *.chapm25.com
 *.character.ai
+*.chat.com
 *.chatnook.com
+*.chatpdf.com
 *.chaturbate.com
 *.checkgfw.com
 *.chengmingmag.com
@@ -27172,6 +27195,7 @@
 *.daozhongxing.org
 *.darktech.org
 *.darktoy.net
+*.darmau.co
 *.darpa.mil
 *.darrenliuwei.com
 *.dartlang.org
@@ -27771,6 +27795,7 @@
 *.flitto.com
 *.flnet.org
 *.flog.tw
+*.flowgpt.com
 *.flowhongkong.net
 *.flypool.org
 *.flyvpn.com
@@ -27790,6 +27815,7 @@
 *.fooooo.com
 *.footwiball.com
 *.forbes.com
+*.forefront.ai
 *.foreignaffairs.com
 *.foreignpolicy.com
 *.form.new
@@ -28796,6 +28822,7 @@
 *.hxwk.org
 *.hxwq.org
 *.hybrid-analysis.com
+*.hyperbeam.com
 *.hyperrate.com
 *.hypothes.is
 *.hyread.com.tw
@@ -29320,6 +29347,7 @@
 *.letou.com
 *.letscorp.net
 *.level-plus.net
+*.lexica.art
 *.lflink.com
 *.lflinkup.com
 *.lflinkup.net
@@ -29365,6 +29393,7 @@
 *.linkuswell.com
 *.linode.com
 *.linpie.com
+*.linux.do
 *.linux.org.hk
 *.linuxtoy.org
 *.lionsroar.com
@@ -29402,6 +29431,7 @@
 *.lkcn.net
 *.llnwd.net
 *.llss.me
+*.lmarena.ai
 *.lmsys.org
 *.load.to
 *.lobsangwangyal.com
@@ -29437,6 +29467,7 @@
 *.lsmradio.com
 *.lsmwebcast.com
 *.lsxszzg.com
+*.lt.sntp.uk
 *.ltn.com.tw
 *.luckydesigner.space
 *.luckymobile.ca
@@ -30695,6 +30726,7 @@
 *.releaseinternational.org
 *.religionnews.com
 *.religioustolerance.org
+*.rentry.co
 *.renyurenquan.org
 *.research.google
 *.resilio.com
@@ -31410,6 +31442,7 @@
 *.tenzinpalmo.com
 *.terabox.com
 *.teraboxcdn.com
+*.terobox.com
 *.tew.org
 *.textnow.com
 *.textnow.me
