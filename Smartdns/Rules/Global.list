@@ -1334,7 +1334,6 @@
 *.adguard-dns.com
 *.adguard-dns.io
 *.adguard-mail.com
-*.adguard-vpn.com
 *.adguard-vpn.online
 *.adguard.app
 *.adguard.com
@@ -10868,7 +10867,6 @@
 *.hbogoasia.sg
 *.hbogoasia.tw
 *.hbomax-images.warnermediacdn.com
-*.hbomax.com
 *.hbomaxcdn.com
 *.hbonow.com
 *.hbox.jp
@@ -19837,7 +19835,6 @@
 *.russellgroup.ac.uk
 *.russianrape.org
 *.rust-lang.org
-*.rustdesk.com
 *.rustup.rs
 *.rutc.ac.uk
 *.rutherford.ac.uk
@@ -26054,6 +26051,7 @@
 *.addictedtocoffee.de
 *.addyoutube.com
 *.adelaidebbs.com
+*.adguard-vpn.com
 *.adguard.org
 *.adobe.com
 *.adobedtm.com
@@ -26081,6 +26079,7 @@
 *.ahcdn.com
 *.ai-kan.net
 *.ai-wen.net
+*.ai.dev
 *.ai.google
 *.aiosearch.com
 *.aiph.net
@@ -28618,6 +28617,7 @@
 *.have8.com
 *.hbg.com
 *.hbo.com
+*.hbomax.com
 *.hcaptcha.com
 *.hclips.com
 *.hdlt.me
@@ -29758,6 +29758,7 @@
 *.mixx.com
 *.mizzmona.com
 *.mjib.gov.tw
+*.mjj.rip
 *.mk5000.com
 *.mlc.ai
 *.mlcool.com
@@ -30856,6 +30857,7 @@
 *.rumble.com
 *.runbtx.com
 *.rushbee.com
+*.rustdesk.com
 *.rusvpn.com
 *.ruten.com.tw
 *.rutracker.net
