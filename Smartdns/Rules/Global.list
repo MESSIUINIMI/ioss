@@ -110,6 +110,7 @@
 -.d1m7jfoe9zdc1j.cloudfront.net
 -.d1mhjrowxxagfy.cloudfront.net
 -.d1oca24q5dwo6d.cloudfront.net
+-.d1unuk07s6td74.cloudfront.net
 -.d1v5ir2lpwr8os.cloudfront.net
 -.d1w2poirtb3as9.cloudfront.net
 -.d1xhnb4ptk05mw.cloudfront.net
@@ -269,6 +270,8 @@
 -.notary-submissions-prod.s3-accelerate.amazonaws.com
 -.notary-submissions-prod.s3.us-west-2.amazonaws.com
 -.notify.ppy.sh
+-.ntdofifreepc-tgc.cdn.hinet.net
+-.ntdofifreevcpc-tgc.cdn.hinet.net
 -.ntp-b.nist.gov
 -.ntp-c.colorado.edu
 -.ntp-d.nist.gov
@@ -321,6 +324,9 @@
 -.pvr-hamivideo.cdn.hinet.net
 -.qualcomm.sc.omtrdc.net
 -.rink.hockeyapp.net
+-.roblox-load-generator-configuration.s3.us-east-2.amazonaws.com
+-.roblox-poc.global.ssl.fastly.net
+-.robloxcorp.s.llnwi.net
 -.rss.4040940.xyz
 -.rss.datuan.dev
 -.rss.littlebaby.life
@@ -1499,6 +1505,7 @@
 *.adwordsexpress.com
 *.adx.promo
 *.ae-ad-1.myhuaweicloud.com
+*.ae-rus.net
 *.aeasyshop.com
 *.aebn.com
 *.aecc-chiropractic.ac.uk
@@ -1513,6 +1520,7 @@
 *.aerospace-design.com
 *.aerospace-training-wales.ac.uk
 *.aes.ac.uk
+*.aestatic.net
 *.aesworkshops.com
 *.af-east-201.myhuaweicloud.com
 *.af-north-1.myhuaweicloud.com
@@ -6217,6 +6225,9 @@
 *.comet-study.ac.uk
 *.cometotheduckside.com
 *.comffvpn.com
+*.comfy.org
+*.comfyci.org
+*.comfyregistry.org
 *.comicbox.xyz
 *.comico.tw
 *.comics.ac.uk
@@ -17413,6 +17424,7 @@
 *.offshorerenewables.ac.uk
 *.offworldindustries.com
 *.offworldindustries.net
+*.ofiii.com
 *.ofs.ac.uk
 *.ogakikyoritsu.co.jp
 *.ogameblog.com
@@ -17749,6 +17761,7 @@
 *.oxwasp-cdt.ac.uk
 *.oxyporn.com
 *.oyeloca.com
+*.oystermercury.top
 *.ozeex.com
 *.ozodi.org
 *.ozodlik.org
@@ -19331,6 +19344,7 @@
 *.rbgkew.ac.uk
 *.rbgrads.com
 *.rbgraduates.com
+*.rblx.org
 *.rbmavericks.com
 *.rbnainternational.com
 *.rbplc.com
@@ -19339,6 +19353,8 @@
 *.rbsl.ac.uk
 *.rbslondon.ac.uk
 *.rbspeakup.com
+*.rbx.com
+*.rbxcdn.com
 *.rc-harwell.ac.uk
 *.rca.ac.uk
 *.rcahmw.ac.uk
@@ -19686,7 +19702,10 @@
 *.rnngroup.ac.uk
 *.ro89.com
 *.road-crew.com
+*.roblox-api.arkoselabs.co
+*.roblox.com
 *.roblox.qq.com
+*.robloxlabs.com
 *.robobat.com
 *.roboform.com
 *.roborecall.com
