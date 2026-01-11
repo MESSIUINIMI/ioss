@@ -28,6 +28,7 @@
       {"tag": "🗂️ Microsoft","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "𝕏 Twitter","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "📱 Telegram","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
+      {"tag": "☁️ Amazon","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "🔴 Twitch","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "Ⓜ️ Meta","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
       {"tag": "🎉 Emby","type": "selector","outbounds": ["🖲 Proxy","🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇼🇸 TW","🇰🇷 KR","🇬🇧 UK","🇷🇺 RU","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
@@ -58,7 +59,7 @@
       {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://connectivitycheck.gstatic.com/generate_204","interval": "1m","tolerance": 1,"interrupt_exist_connections": true}
   ],
   "route": {
-        "default_domain_resolver": {"server": "Ali"},
+        "default_domain_resolver": {"server": "home"},
       "rule_set": [
           {"tag": "Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/Repcz/Tool/raw/X/sing-box/Rules/Ads_SukkaW.srs","download_detour": "🎯 Direct"},
           {"tag": "httpdns-cn-Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-httpdns-cn@ads.srs","download_detour": "🎯 Direct"},
@@ -85,6 +86,8 @@
           {"tag": "PrimeVideo", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-primevideo.srs","download_detour": "🎯 Direct" },
           {"tag": "HBO", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-hbo.srs","download_detour": "🎯 Direct" },
           {"tag": "TikTok", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-tiktok.srs","download_detour": "🎯 Direct" },
+        {"tag": "AmazonCN", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-amazon@cn.srs","download_detour": "🎯 Direct" },
+        {"tag": "Amazon", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-amazon.srs","download_detour": "🎯 Direct" },
           {"tag": "Epic", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/Repcz/Tool/raw/X/sing-box/Rules/Epic.srs","download_detour": "🎯 Direct"},
           {"tag": "Steam", "type": "remote", "format": "binary", "url": "https://git.repcz.link/github.com/Repcz/Tool/raw/X/sing-box/Rules/Steam.srs","download_detour": "🎯 Direct"},
           {"tag": "Media-CN","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-media-cn.srs","download_detour": "🎯 Direct"},
@@ -113,6 +116,8 @@
           {"rule_set": ["Microsoft","OneDrive","Github"],"action": "route","outbound": "🗂️ Microsoft"},
           {"rule_set": ["Twitter"],"action": "route","outbound": "𝕏 Twitter"},
           {"rule_set": ["Telegram"],"action": "route","outbound": "📱 Telegram"},
+        {"rule_set": ["Amazon CN"],"action": "route","outbound": "🎯 Direct"},
+        {"rule_set": ["Amazon"],"action": "route","outbound": "☁️ Amazon"},
           {"rule_set": ["Twitch"],"action": "route","outbound": "🔴 Twitch"},
           {"rule_set": ["Meta"],"action": "route","outbound": "Ⓜ️ Meta"},
           {"rule_set": ["Emby"],"action": "route","outbound": "🎉 Emby"},
