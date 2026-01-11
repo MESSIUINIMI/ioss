@@ -59,7 +59,7 @@
       {"tag": "🇿🇦 ZA","type": "urltest","outbounds": [],"url": "http://connectivitycheck.gstatic.com/generate_204","interval": "1m","tolerance": 1,"interrupt_exist_connections": true}
   ],
   "route": {
-        "default_domain_resolver": {"server": "home"},
+        "default_domain_resolver": {"server": "Ali"},
       "rule_set": [
           {"tag": "Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/Repcz/Tool/raw/X/sing-box/Rules/Ads_SukkaW.srs","download_detour": "🎯 Direct"},
           {"tag": "httpdns-cn-Ads","type": "remote","format": "binary","url": "https://git.repcz.link/github.com/SagerNet/sing-geosite/raw/rule-set/geosite-category-httpdns-cn@ads.srs","download_detour": "🎯 Direct"},
