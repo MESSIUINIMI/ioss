@@ -40,6 +40,8 @@
 -.android.googlesource.com
 -.angle.com.tw
 -.anime-rule34-world.b-cdn.net
+-.antigravity-pa.googleapis.com
+-.antigravity.googleapis.com
 -.aod-pod-uk-live.akamaized.net
 -.api-p.videomarket.jp
 -.api.viu.now.com
@@ -97,6 +99,8 @@
 -.client-teamviewer-com.trafficmanager.net
 -.clients1.google.com
 -.cloud-cdn-digitalocean-com.global.ssl.fastly.net
+-.cloudaicompanion.googleapis.com
+-.cloudcode-pa.googleapis.com
 -.cloudsync-prod.s3.amazonaws.com
 -.clubhouse.pubnubapi.com
 -.community.oneplus.com
@@ -136,6 +140,7 @@
 -.d3vd9lfkzbru3h.cloudfront.net
 -.d6d4ismr40iw.cloudfront.net
 -.d6tizftlrpuof.cloudfront.net
+-.daily-cloudcode-pa.googleapis.com
 -.databank.worldbank.org
 -.database.asahi.com
 -.datarouter.apps.netherrealm.com
@@ -269,6 +274,8 @@
 -.news-events.apple.com
 -.notary-submissions-prod.s3-accelerate.amazonaws.com
 -.notary-submissions-prod.s3.us-west-2.amazonaws.com
+-.notebooklm-pa.googleapis.com
+-.notebooklm.googleapis.com
 -.notify.ppy.sh
 -.ntdfreemobile-tgc.cdn.hinet.net
 -.ntdfreepc-tgc.cdn.hinet.net
@@ -7353,6 +7360,7 @@
 *.dilcdn.com
 *.dilstoncollege.ac.uk
 *.dingchin.com.tw
+*.dinopoloclub.com
 *.dinotube.com
 *.dippam.ac.uk
 *.dirac.ac.uk
@@ -15936,6 +15944,7 @@
 *.mobileview.page
 *.mobilevrxxx.com
 *.mobilitymoodplace.ac.uk
+*.mobimon.com.tw
 *.mobmyanmar.com
 *.mochajs.org
 *.mocloudplus.com
@@ -17181,6 +17190,9 @@
 *.nikezoom.com
 *.nikkan-gendai.com
 *.nikkansports.com
+*.nikke-de.com
+*.nikke-fr.com
+*.nikke-sea.com
 *.nikkei-cnbc.co.jp
 *.nikkei.co.jp
 *.nikkei.jp
@@ -17373,6 +17385,7 @@
 *.nowe.hk
 *.nowjav.com
 *.nox.ac.uk
+*.noxygames.com
 *.nozomi.la
 *.npcrdc.ac.uk
 *.nphcardiac-research.ac.uk
@@ -19629,6 +19642,8 @@
 *.ravensbourneuniversitylondon.ac.uk
 *.ravm.tv
 *.raxcdn.com
+*.rayark.download
+*.rayark.net
 *.razer.com
 *.razerofficial.com
 *.razersupport.com
@@ -21107,6 +21122,8 @@
 *.signalusers.org
 *.sigops.org
 *.sigopt.com
+*.sih-db.com
+*.sih.app
 *.sihe.ac.uk
 *.sikh-uni.ac.uk
 *.sikiswap.com
