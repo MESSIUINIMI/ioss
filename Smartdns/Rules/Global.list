@@ -84,7 +84,6 @@
 -.brightcove.imgix.net
 -.bybit-exchange.github.io
 -.bybit.ada.support
--.bytedance.map.fastly.net
 -.c.ppy.sh
 -.cbsi.live.ott.irdeto.com
 -.cbsplaylistserver.aws.syncbak.com
@@ -450,6 +449,8 @@
 -.spotify.map.fastly.net
 -.spotify.map.fastlylb.net
 -.ssl-lvlt.cdn.ea.com
+-.standchartbank.sc.omtrdc.net
+-.standchartbank.tt.omtrdc.net
 -.static-hamivideo.cdn.hinet.net
 -.static.siege-amazon.com
 -.statics-marketingsites-eas-ms-com.akamaized.net
@@ -502,7 +503,6 @@
 -.ubisoft-uplay-savegames.s3.amazonaws.com
 -.ubistatic3-a.akamaihd.net
 -.ulrichsweb.serialssolutions.com
--.upos-hz-mirrorakam.akamaized.net
 -.ut1-time.colorado.edu
 -.ut1-wwv.nist.gov
 -.utcnist.colorado.edu
@@ -1592,7 +1592,6 @@
 *.adwordsexpress.com
 *.adx.promo
 *.ae-ad-1.myhuaweicloud.com
-*.ae-rus.net
 *.aeasyshop.com
 *.aebn.com
 *.aecc-chiropractic.ac.uk
@@ -1607,11 +1606,8 @@
 *.aerospace-design.com
 *.aerospace-training-wales.ac.uk
 *.aes.ac.uk
-*.aestatic.net
 *.aesworkshops.com
-*.af-east-201.myhuaweicloud.com
 *.af-north-1.myhuaweicloud.com
-*.af-west-202.myhuaweicloud.com
 *.afao.ac.uk
 *.afappyending.com
 *.afewmomentswith.com
@@ -1769,9 +1765,6 @@
 *.ajplus.net
 *.ajsjx.com
 *.ajtalk.com
-*.ak-p.tripcdn.com
-*.ak-s-cw.tripcdn.com
-*.ak-s.tripcdn.com
 *.ak1.net
 *.aka-ai.com
 *.aka-ai.net
@@ -1832,7 +1825,6 @@
 *.akasha.world
 *.akastream.com
 *.akastream.net
-*.akatest.tripcdn.com
 *.akatns.net
 *.akiba-souken.com
 *.akita-bank.co.jp
@@ -2310,16 +2302,11 @@
 *.ap-jakarta.tencentcos.com
 *.ap-mumbai.myqcloud.com
 *.ap-mumbai.tencentcos.com
-*.ap-northeast-201.myhuaweicloud.com
 *.ap-seoul.myqcloud.com
 *.ap-seoul.tencentcos.com
 *.ap-singapore.myqcloud.com
 *.ap-singapore.tencentcos.com
-*.ap-southeast-201.myhuaweicloud.com
-*.ap-southeast-202.myhuaweicloud.com
-*.ap-southeast-203.myhuaweicloud.com
 *.ap-southeast-4.myhuaweicloud.com
-*.ap-southeast-5.myhuaweicloud.com
 *.ap-tokyo.myqcloud.com
 *.ap-tokyo.tencentcos.com
 *.ap0le.com
@@ -2783,10 +2770,6 @@
 *.arxiv.org
 *.arzon.jp
 *.as-hp.ca
-*.as-south-0.myhuaweicloud.com
-*.as-south-201.myhuaweicloud.com
-*.as-south-205.myhuaweicloud.com
-*.as-south-207.myhuaweicloud.com
 *.asagaku.com
 *.asahi.com
 *.asahicom.jp
@@ -3214,9 +3197,6 @@
 *.avxhm.se
 *.avxlive.icu
 *.avxxc.com
-*.aw-d.tripcdn.com
-*.aw-p.tripcdn.com
-*.aw-s.tripcdn.com
 *.awabank.co.jp
 *.awayoutgame.com
 *.aweencore.com
@@ -5250,8 +5230,6 @@
 *.byjhd.com
 *.bymj.io
 *.byspotify.com
-*.byteglb.com
-*.byteoversea.net
 *.bytick.com
 *.byzantine-ahrb-centre.ac.uk
 *.byzantium.ac.uk
@@ -5264,7 +5242,6 @@
 *.c4ccetl.ac.uk
 *.c4rex.co
 *.c4slive.com
-*.ca-east-201.myhuaweicloud.com
 *.ca.file.myqcloud.com
 *.caacentre.ac.uk
 *.caadoc.ac.uk
@@ -5575,6 +5552,7 @@
 *.castlereagh.ac.uk
 *.castro.fm
 *.casualhomemadesex.com
+*.cataboom.com
 *.catalina.hk
 *.catalinacruz.com
 *.cataloguementalhealth.ac.uk
@@ -6434,6 +6412,7 @@
 *.conquerwithcharacter.com
 *.conscrypt.com
 *.conscrypt.org
+*.consentpro.com
 *.conservatoiresuk.ac.uk
 *.consilience.ac.uk
 *.constructware.com
@@ -6728,7 +6707,6 @@
 *.cue.ac.uk
 *.cuebic.biz
 *.cuffiesaldi.com
-*.cuguplus.com
 *.cuhop.ac.uk
 *.cuinc.oen.tw
 *.cuinc.tw
@@ -6752,7 +6730,6 @@
 *.cumteenporn.com
 *.cunhua.pics
 *.cuniq.com
-*.cuniq.sg
 *.cuntempire.com
 *.cuntwars.com
 *.cunw.ac.uk
@@ -8845,17 +8822,12 @@
 *.ettrade.com.hk
 *.etviet.com
 *.etwealth.com
-*.eu-central-201.myhuaweicloud.com
-*.eu-central-202.myhuaweicloud.com
 *.eu-consumer-empowerment.com
 *.eu-frankfurt.myqcloud.com
 *.eu-frankfurt.tencentcos.com
 *.eu-moscow.myqcloud.com
 *.eu-moscow.tencentcos.com
-*.eu-north-201.myhuaweicloud.com
-*.eu-west-1.myhuaweicloud.com
 *.eu-west-101.myhuaweicloud.com
-*.eu-west-201.myhuaweicloud.com
 *.eu.org
 *.eubluecardvisa.com
 *.eued.ac.uk
@@ -14013,7 +13985,6 @@
 *.l-0005.dc-msedge.net
 *.l-msedge.net
 *.la-mama.ru
-*.la-north-205.myhuaweicloud.com
 *.laban.ac.uk
 *.labinacell.ac.uk
 *.labo.wovs.tk
@@ -14427,6 +14398,7 @@
 *.livejasminbabes.net
 *.livemodels.co
 *.livenet.ac.uk
+*.liveperson.net
 *.livephotos.tv
 *.liveporngirls.com
 *.liveprivates.com
@@ -14627,6 +14599,7 @@
 *.lp99.pw
 *.lpc.ac.uk
 *.lpmde.ac.uk
+*.lpsnmedia.net
 *.lputil.com
 *.lqh0bon3.xyz
 *.lqpjw.cyou
@@ -15272,9 +15245,6 @@
 *.mdx.ac.uk
 *.mdyy.de
 *.me-east-1.myhuaweicloud.com
-*.me-east-205.myhuaweicloud.com
-*.me-east-208.myhuaweicloud.com
-*.me-east-209.myhuaweicloud.com
 *.me-gay.com
 *.meadjohnson.com
 *.meadjohnson.com.hk
@@ -16505,7 +16475,6 @@
 *.na-ashburn.myqcloud.com
 *.na-ashburn.tencentcos.com
 *.na-att-idns.net
-*.na-east-0.myhuaweicloud.com
 *.na-me.ac.uk
 *.na-siliconvalley.myqcloud.com
 *.na-siliconvalley.tencentcos.com
@@ -17985,6 +17954,7 @@
 *.orzdream.com
 *.orzqwq.com
 *.osakamotion.net
+*.osano.com
 *.osc.ac.uk
 *.oscar.ac.uk
 *.oscg.ac.uk
@@ -20192,7 +20162,6 @@
 *.rtbcdn.ru
 *.rtings.com
 *.ru-moscow-1.myhuaweicloud.com
-*.ru-northwest-201.myhuaweicloud.com
 *.rua-project.ac.uk
 *.ruby-lang.org
 *.rubygems.org
@@ -20213,8 +20182,6 @@
 *.ruleporn.com
 *.rumah123.com
 *.rumporn.com
-*.rumt-sg.com
-*.rumt-us.com
 *.run.app
 *.rundf665.cyou
 *.runnike.com
@@ -20425,6 +20392,7 @@
 *.sbuxcard.com
 *.sc-cdn.net
 *.sc-toolkit.ac.uk
+*.sc.com
 *.sc1.ac.uk
 *.sca-tolo.info
 *.scaan.ac.uk
@@ -21783,6 +21751,7 @@
 *.stak.ac.uk
 *.stamford.ac.uk
 *.stamfordparktrust.ac.uk
+*.standardchartered.com
 *.standardsuniversity.org
 *.stanmore.ac.uk
 *.stanstedairportcollege.ac.uk
@@ -22686,7 +22655,6 @@
 *.thepaypalshop.com
 *.thepervs.com
 *.theplatform.com
-*.thepoizon.ru
 *.theporn.cc
 *.thepornarea.com
 *.thepornbest.com
@@ -23614,7 +23582,6 @@
 *.url.tw
 *.urlgalleries.net
 *.urukawa.com
-*.us-east-1.myhuaweicloud.com
 *.us.weibo.com
 *.usa-beatsbydreheadphonesonsale.net
 *.usablepast.ac.uk
@@ -23627,6 +23594,7 @@
 *.usenix.org
 *.useplannr.com
 *.userapi.com
+*.usercentrics.eu
 *.usercontent.dev
 *.userpxt.io
 *.ushare.ac.uk
@@ -25883,6 +25851,8 @@
 *.youflix.is
 *.youjism.com
 *.youjizz.sex
+*.youmind.ai
+*.youmind.site
 *.young-amateur-movies.com
 *.young-webcam.net
 *.young-xxx.net
@@ -32848,6 +32818,7 @@
 *.wefightcensorship.org
 *.wefong.com
 *.weiboleak.com
+*.weights.com
 *.weihuo.org
 *.weijingsheng.org
 *.weiming.info
@@ -33185,6 +33156,7 @@
 *.youjizz.com
 *.youlucky.com
 *.youmaker.com
+*.youmind.com
 *.youngpornvideos.com
 *.youngspiration.hk
 *.youpai.org
