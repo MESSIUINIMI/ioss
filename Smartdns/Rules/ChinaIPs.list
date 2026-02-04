@@ -7308,7 +7308,6 @@ blacklist-ip 118.24.0.0/15
 blacklist-ip 118.242.0.0/16
 blacklist-ip 118.242.0.0/22
 blacklist-ip 118.242.16.0/22
-blacklist-ip 118.242.238.0/24
 blacklist-ip 118.242.24.0/22
 blacklist-ip 118.242.32.0/22
 blacklist-ip 118.242.40.0/24

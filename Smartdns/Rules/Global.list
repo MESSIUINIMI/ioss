@@ -314,6 +314,7 @@
 -.osu.ppy.sh
 -.p-events-delivery.akamaized.net
 -.p16-tiktokcdn-com.akamaized.net
+-.packages.microsoft.com
 -.paper-attachments.s3.amazonaws.com
 -.payments-jp.amazon.com
 -.pchomeonline.com.tw
@@ -5046,6 +5047,7 @@
 *.bs-adreview.com
 *.bs-awh.ne.jp
 *.bsa.ac.uk
+*.bsappapi.com
 *.bsaw.ac.uk
 *.bsbec.ac.uk
 *.bsdc.ac.uk
@@ -18648,6 +18650,7 @@
 *.pjbyj.top
 *.pjful-app.lol
 *.pjgirls.com
+*.pjsekai.sega.jp
 *.pki-post.ch
 *.pki-posta.ch
 *.pki-poste.ch
@@ -20290,6 +20293,7 @@
 *.salebeatslasteststyle4you.com
 *.saleblackfridaydrebeats.com
 *.salecheaphandbags.com
+*.salesforce-setup.com
 *.salesforce.com
 *.salesforce.org
 *.salesforceiq.com
@@ -31887,6 +31891,7 @@
 *.tagwa.org.au
 *.tagwalk.com
 *.tahr.org.tw
+*.tails.net
 *.taipei.gov.tw
 *.taipeisociety.org
 *.taipeitimes.com
