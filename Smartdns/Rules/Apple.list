@@ -231,7 +231,6 @@
 -.audio.itunes.apple.com
 -.mvod.itunes.apple.com
 -.streamingaudio.itunes.apple.com
--.gspe1-ssl.ls.apple.com
 -.news-client-search.apple.com
 -.api-glb-sea.smoot.apple.com
 -.apple.comscoreresearch.com
@@ -242,6 +241,7 @@
 -.devimages-cdn.apple.com
 -.devstreaming-cdn.apple.com
 -.docs-assets.developer.apple.com
+-.gspe1-ssl.ls.apple.com
 -.js-cdn.music.apple.com
 -.lookup-api.apple.com
 -.mask-api.fe.apple-dns.net
@@ -1451,7 +1451,6 @@
 *.applepaysupplies.tv
 *.applewallet.com
 *.applewallet.tv
-*.appsto.re
 *.appstore.co.id
 *.appstore.com
 *.appstore.hk
@@ -1765,6 +1764,7 @@
 *.musickit.net
 *.wwwapplemusic.com
 *.apple-dns.net
+*.appsto.re
 *.digicert.com
 *.apple-cloudkit.com
 *.apple-icloud.cn
