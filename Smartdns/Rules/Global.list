@@ -320,6 +320,7 @@
 -.pchomeonline.com.tw
 -.pki.google.com
 -.poshtestgallery.cloudapp.net
+-.ppl-ai-file-upload.s3.amazonaws.com
 -.pplx-res.cloudinary.com
 -.practivate.adobe
 -.practivate.adobe.com
@@ -26068,6 +26069,7 @@
 *.yandexcloud.net
 *.yandexcom.net
 *.yandexmetrica.com
+*.yandexwebcache.net
 *.yandexwebcache.org
 *.yaohubaba.com
 *.yaoimangaonline.com
