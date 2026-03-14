@@ -5000,6 +5000,7 @@ blacklist-ip 104.212.68.152/32
 blacklist-ip 104.212.68.57/32
 blacklist-ip 104.212.68.58/32
 blacklist-ip 104.227.65.96/28
+blacklist-ip 104.233.144.0/21
 blacklist-ip 104.237.80.0/21
 blacklist-ip 104.28.101.0/27
 blacklist-ip 104.28.101.32/29
@@ -5690,7 +5691,6 @@ blacklist-ip 111.235.160.0/19
 blacklist-ip 111.235.160.0/21
 blacklist-ip 111.235.160.0/22
 blacklist-ip 111.235.164.0/23
-blacklist-ip 111.235.168.0/24
 blacklist-ip 111.235.170.0/23
 blacklist-ip 111.235.172.0/22
 blacklist-ip 111.235.172.0/23
@@ -9029,7 +9029,7 @@ blacklist-ip 144.7.0.0/17
 blacklist-ip 144.79.10.0/23
 blacklist-ip 144.79.148.0/24
 blacklist-ip 144.79.4.0/23
-blacklist-ip 144.79.70.0/24
+blacklist-ip 144.79.70.0/23
 blacklist-ip 145.14.71.0/24
 blacklist-ip 145.14.72.0/22
 blacklist-ip 145.14.81.0/24
@@ -9166,6 +9166,7 @@ blacklist-ip 151.242.10.0/24
 blacklist-ip 151.242.180.0/22
 blacklist-ip 151.243.25.0/24
 blacklist-ip 151.247.148.0/23
+blacklist-ip 151.247.174.0/24
 blacklist-ip 151.249.90.0/23
 blacklist-ip 152.104.128.0/17
 blacklist-ip 152.136.0.0/16
@@ -9193,7 +9194,6 @@ blacklist-ip 154.19.85.0/24
 blacklist-ip 154.19.86.0/23
 blacklist-ip 154.19.88.0/21
 blacklist-ip 154.19.96.0/19
-blacklist-ip 154.197.128.0/17
 blacklist-ip 154.209.251.0/24
 blacklist-ip 154.36.92.0/23
 blacklist-ip 154.72.42.0/24
@@ -9235,7 +9235,6 @@ blacklist-ip 156.109.34.0/31
 blacklist-ip 156.109.34.3/32
 blacklist-ip 156.109.34.4/30
 blacklist-ip 156.154.62.0/23
-blacklist-ip 156.224.128.0/17
 blacklist-ip 156.227.239.0/24
 blacklist-ip 156.230.11.0/24
 blacklist-ip 156.231.163.0/24
@@ -14169,6 +14168,7 @@ blacklist-ip 222.163.0.0/19
 blacklist-ip 222.163.128.0/17
 blacklist-ip 222.163.32.0/19
 blacklist-ip 222.163.64.0/18
+blacklist-ip 222.166.0.0/18
 blacklist-ip 222.166.0.224/27
 blacklist-ip 222.168.0.0/13
 blacklist-ip 222.168.0.0/15
@@ -16903,7 +16903,6 @@ blacklist-ip 52.82.134.0/23
 blacklist-ip 52.82.136.0/24
 blacklist-ip 52.82.144.0/23
 blacklist-ip 52.82.148.0/22
-blacklist-ip 52.82.153.0/24
 blacklist-ip 52.82.160.0/21
 blacklist-ip 52.82.170.0/23
 blacklist-ip 52.82.172.0/22
@@ -17088,7 +17087,6 @@ blacklist-ip 59.111.168.0/22
 blacklist-ip 59.111.17.0/24
 blacklist-ip 59.111.173.0/24
 blacklist-ip 59.111.175.0/24
-blacklist-ip 59.111.176.0/24
 blacklist-ip 59.111.178.0/23
 blacklist-ip 59.111.18.0/23
 blacklist-ip 59.111.181.0/24
@@ -17309,11 +17307,9 @@ blacklist-ip 60.31.0.0/16
 blacklist-ip 60.55.0.0/16
 blacklist-ip 60.63.0.0/16
 blacklist-ip 60.8.0.0/15
-blacklist-ip 61.10.128.0/20
 blacklist-ip 61.10.160.0/20
 blacklist-ip 61.10.208.0/20
 blacklist-ip 61.10.240.0/20
-blacklist-ip 61.10.96.0/20
 blacklist-ip 61.114.80.0/20
 blacklist-ip 61.128.0.0/10
 blacklist-ip 61.128.0.0/12
@@ -17627,6 +17623,7 @@ blacklist-ip 85.184.245.0/24
 blacklist-ip 85.209.40.0/22
 blacklist-ip 85.237.205.0/24
 blacklist-ip 87.254.207.0/24
+blacklist-ip 87.76.211.0/24
 blacklist-ip 87.76.221.0/24
 blacklist-ip 87.76.222.0/24
 blacklist-ip 89.30.124.160/30
@@ -17641,6 +17638,7 @@ blacklist-ip 93.113.109.8/29
 blacklist-ip 93.115.104.0/24
 blacklist-ip 93.183.14.0/24
 blacklist-ip 93.183.18.0/24
+blacklist-ip 93.95.117.0/24
 blacklist-ip 94.191.0.0/17
 blacklist-ip 96.45.38.79/32
 blacklist-ip 98.124.142.100/30
@@ -17668,7 +17666,6 @@ blacklist-ip 2001:678:10d0::/48
 blacklist-ip 2001:678:114c::/48
 blacklist-ip 2001:678:120::/48
 blacklist-ip 2001:678:53c::/48
-blacklist-ip 2001:67c:1233::/48
 blacklist-ip 2001:67c:a1c::/48
 blacklist-ip 2001:67c:a38:f086::/64
 blacklist-ip 2001:67c:aec::/48
@@ -17744,6 +17741,7 @@ blacklist-ip 2001:df3:a680::/48
 blacklist-ip 2001:df3:b380::/48
 blacklist-ip 2001:df3:c380::/48
 blacklist-ip 2001:df3:c680::/48
+blacklist-ip 2001:df3:d0c0::/48
 blacklist-ip 2001:df3:d880::/48
 blacklist-ip 2001:df3:ed80::/48
 blacklist-ip 2001:df3:ef80::/48
@@ -17770,6 +17768,7 @@ blacklist-ip 2001:df5:5f80::/48
 blacklist-ip 2001:df5:7800::/48
 blacklist-ip 2001:df6:100::/48
 blacklist-ip 2001:df6:3d00::/48
+blacklist-ip 2001:df6:40::/48
 blacklist-ip 2001:df6:5d00::/48
 blacklist-ip 2001:df6:6800::/48
 blacklist-ip 2001:df6:9e80::/48
@@ -20176,9 +20175,7 @@ blacklist-ip 2406:840:fc00::/39
 blacklist-ip 2406:840:fc10::/44
 blacklist-ip 2406:840:fc20::/43
 blacklist-ip 2406:840:fc40::/42
-blacklist-ip 2406:840:fc80::/46
-blacklist-ip 2406:840:fc85::/48
-blacklist-ip 2406:840:fc87::/48
+blacklist-ip 2406:840:fc80::/45
 blacklist-ip 2406:840:fc88::/48
 blacklist-ip 2406:840:fc8f::/48
 blacklist-ip 2406:840:fc90::/44
@@ -20190,6 +20187,7 @@ blacklist-ip 2406:840:fcf4::/47
 blacklist-ip 2406:840:fd40::/42
 blacklist-ip 2406:840:fd80::/42
 blacklist-ip 2406:840:fdc0::/44
+blacklist-ip 2406:840:fded::/48
 blacklist-ip 2406:840:fe00::/42
 blacklist-ip 2406:840:fe27::/48
 blacklist-ip 2406:840:fe4c::/46
@@ -21473,8 +21471,7 @@ blacklist-ip 2a00:8a05::/44
 blacklist-ip 2a01:b747:f4:11a::/64
 blacklist-ip 2a01:ce9e:8000::/33
 blacklist-ip 2a01:e281:aafa::/47
-blacklist-ip 2a01:e281:aafd::/48
-blacklist-ip 2a01:e281:aafe::/47
+blacklist-ip 2a01:e281:aafc::/46
 blacklist-ip 2a01:f100:1f8::/48
 blacklist-ip 2a02:26f7:c400:4000::/64
 blacklist-ip 2a02:26f7:c400:f400::/55
@@ -21614,8 +21611,7 @@ blacklist-ip 2a06:1287:3910::/48
 blacklist-ip 2a06:1287:3921::/48
 blacklist-ip 2a06:3600:e000::/40
 blacklist-ip 2a06:3600:fb00::/40
-blacklist-ip 2a06:3600:fc00::/40
-blacklist-ip 2a06:3600:fe00::/39
+blacklist-ip 2a06:3600:fc00::/38
 blacklist-ip 2a06:3604::/30
 blacklist-ip 2a06:9801:20::/48
 blacklist-ip 2a06:9f45:1111::/48
@@ -21637,8 +21633,7 @@ blacklist-ip 2a07:f480::/29
 blacklist-ip 2a09:2700:2800::/40
 blacklist-ip 2a09:2702:48::/48
 blacklist-ip 2a09:4c0:0:30::/64
-blacklist-ip 2a09:54c6:d000::/47
-blacklist-ip 2a09:54c6:d002::/48
+blacklist-ip 2a09:54c6:d000::/46
 blacklist-ip 2a09:54c6:e000::/36
 blacklist-ip 2a09:7c45:0:1000::/52
 blacklist-ip 2a09:7c45:0:100::/56
@@ -22739,8 +22734,7 @@ blacklist-ip 2a0a:79c0:f2b0::/44
 blacklist-ip 2a0a:8f40:9::/48
 blacklist-ip 2a0a:d681:e000::/40
 blacklist-ip 2a0a:d681:fb00::/40
-blacklist-ip 2a0a:d681:fc00::/40
-blacklist-ip 2a0a:d681:fe00::/39
+blacklist-ip 2a0a:d681:fc00::/38
 blacklist-ip 2a0b:2542::/48
 blacklist-ip 2a0b:4340:550::/44
 blacklist-ip 2a0b:4e07:b8::/47
@@ -22912,26 +22906,25 @@ blacklist-ip 2a0e:ec05:4800::/41
 blacklist-ip 2a0e:ec05:79c0::/42
 blacklist-ip 2a0e:ec05:7a00::/40
 blacklist-ip 2a0e:ec05:7b00::/42
-blacklist-ip 2a0f:1cc4::/32
 blacklist-ip 2a0f:1cc5:10::/48
 blacklist-ip 2a0f:1cc5:110::/44
+blacklist-ip 2a0f:1cc5:12::/47
 blacklist-ip 2a0f:1cc5:130::/44
 blacklist-ip 2a0f:1cc5:1310::/44
 blacklist-ip 2a0f:1cc5:1400::/48
 blacklist-ip 2a0f:1cc5:140::/44
+blacklist-ip 2a0f:1cc5:14::/47
 blacklist-ip 2a0f:1cc5:1c00::/47
 blacklist-ip 2a0f:1cc5:1c02::/48
 blacklist-ip 2a0f:1cc5:1cc0::/48
 blacklist-ip 2a0f:1cc5:1d10::/47
 blacklist-ip 2a0f:1cc5:1d14::/47
-blacklist-ip 2a0f:1cc5:203::/48
 blacklist-ip 2a0f:1cc5:20::/44
 blacklist-ip 2a0f:1cc5:2300::/40
-blacklist-ip 2a0f:1cc5:2600::/44
-blacklist-ip 2a0f:1cc5:2620::/43
+blacklist-ip 2a0f:1cc5:2600::/42
 blacklist-ip 2a0f:1cc5:2640::/44
 blacklist-ip 2a0f:1cc5:2d01::/48
-blacklist-ip 2a0f:1cc5:2d02::/48
+blacklist-ip 2a0f:1cc5:2d02::/47
 blacklist-ip 2a0f:1cc5:2e01::/48
 blacklist-ip 2a0f:1cc5:2e02::/48
 blacklist-ip 2a0f:1cc5:600::/47
@@ -22952,7 +22945,6 @@ blacklist-ip 2a0f:1cc6:b110::/47
 blacklist-ip 2a0f:1cc6:b120::/48
 blacklist-ip 2a0f:1cc6:bab4::/48
 blacklist-ip 2a0f:1cc6:bab9::/48
-blacklist-ip 2a0f:1cc7::/32
 blacklist-ip 2a0f:2706::/32
 blacklist-ip 2a0f:6284:3000::/39
 blacklist-ip 2a0f:6284:300::/40
@@ -23027,6 +23019,7 @@ blacklist-ip 2a12:49c4:9000::/40
 blacklist-ip 2a12:49c4:f400::/39
 blacklist-ip 2a12:49c4:f600::/40
 blacklist-ip 2a12:6f40:800::/37
+blacklist-ip 2a12:cb46::/36
 blacklist-ip 2a12:dd47:db2c::/48
 blacklist-ip 2a13:1800:10::/48
 blacklist-ip 2a13:1800:300::/44
@@ -23038,7 +23031,6 @@ blacklist-ip 2a13:8b40::/29
 blacklist-ip 2a13:a5c0:500::/40
 blacklist-ip 2a13:a5c3:d600::/42
 blacklist-ip 2a13:a5c3:f000::/40
-blacklist-ip 2a13:a5c3:f100::/40
 blacklist-ip 2a13:a5c3:f1c0::/44
 blacklist-ip 2a13:a5c3:ff21::/48
 blacklist-ip 2a13:a5c3:ff50::/44
@@ -23093,9 +23085,9 @@ blacklist-ip 2a14:67c1:a024::/48
 blacklist-ip 2a14:67c1:a02a::/48
 blacklist-ip 2a14:67c1:a02f::/48
 blacklist-ip 2a14:67c1:a040::/47
-blacklist-ip 2a14:67c1:a110::/44
+blacklist-ip 2a14:67c1:a100::/43
 blacklist-ip 2a14:67c1:a123::/48
-blacklist-ip 2a14:67c1:a126::/48
+blacklist-ip 2a14:67c1:a125::/48
 blacklist-ip 2a14:67c1:a128::/48
 blacklist-ip 2a14:67c1:a144::/48
 blacklist-ip 2a14:67c1:a150::/44
@@ -23107,8 +23099,7 @@ blacklist-ip 2a14:67c1:b100::/46
 blacklist-ip 2a14:67c1:b105::/48
 blacklist-ip 2a14:67c1:b107::/48
 blacklist-ip 2a14:67c1:b110::/48
-blacklist-ip 2a14:67c1:b130::/48
-blacklist-ip 2a14:67c1:b133::/48
+blacklist-ip 2a14:67c1:b130::/46
 blacklist-ip 2a14:67c1:b134::/48
 blacklist-ip 2a14:67c1:b136::/48
 blacklist-ip 2a14:67c1:b140::/46
@@ -23129,12 +23120,12 @@ blacklist-ip 2a14:67c1:b5e0::/44
 blacklist-ip 2a14:67c1:c300::/40
 blacklist-ip 2a14:67c1:c600::/40
 blacklist-ip 2a14:67c2:4400::/40
-blacklist-ip 2a14:67c2:801::/48
-blacklist-ip 2a14:67c2:802::/48
+blacklist-ip 2a14:67c2:800::/40
 blacklist-ip 2a14:67c3:30::/44
 blacklist-ip 2a14:67c3:360::/47
 blacklist-ip 2a14:67c3:362::/48
 blacklist-ip 2a14:67c3:520::/44
+blacklist-ip 2a14:67c3:888::/48
 blacklist-ip 2a14:67c3:9990::/44
 blacklist-ip 2a14:67c3:c0::/48
 blacklist-ip 2a14:67c3:d0::/44
