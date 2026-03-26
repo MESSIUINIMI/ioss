@@ -161,6 +161,7 @@
 -.docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
 -.docker-pinata-support.s3.amazonaws.com
 -.download.visualstudio.microsoft.com
+-.dqd0jw5gvbchn.cloudfront.net
 -.dqrpb9wgowsf5.cloudfront.net
 -.ds-linear-abematv.akamaized.net
 -.ds-vod-abematv.akamaized.net
@@ -18153,6 +18154,7 @@
 *.openlibrary.org
 *.openmaps.org
 *.openreality.com
+*.openrec.tv
 *.openresty.org
 *.openreview.net
 *.openrouter.ai
@@ -18333,8 +18335,15 @@
 *.ozeex.com
 *.ozodi.org
 *.ozodlik.org
+*.ozon.by
+*.ozon.com
+*.ozon.com.by
+*.ozon.com.kz
+*.ozon.kz
 *.ozon.ru
+*.ozon.tm
 *.ozone.ru
+*.ozonru.me
 *.ozonusercontent.com
 *.p-cdn.us
 *.pa9pal.com
@@ -31708,6 +31717,7 @@
 *.s-cute.com
 *.s-dragon.org
 *.s-nbcnews.com
+*.s.rmimg.com
 *.s.team
 *.s1heng.com
 *.s1s1s1.com
@@ -33417,6 +33427,7 @@
 *.xml-training-guide.com
 *.xmovies.com
 *.xn--11xs86f.icu
+*.xn--1jqvh729avzfcy2d8ummib.com
 *.xn--4gq171p.com
 *.xn--90wwvt03e.com
 *.xn--9iqy04a7fi01l.com
