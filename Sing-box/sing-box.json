@@ -13,8 +13,7 @@
             {"query_type": ["A","AAAA"],"action": "route","server": "Fakeip","rewrite_ttl": 1},
             {"rule_set": ["CNdomain","ChinaDomain","UnBan","Media-CN"],"action": "route","server": "Ali"}
         ],
-        "final": "Google",
-        "independent_cache": true
+        "final": "Google"
     },
     "outbounds": [
       
