@@ -4350,6 +4350,7 @@ blacklist-ip 103.72.180.0/22
 blacklist-ip 103.72.20.0/22
 blacklist-ip 103.72.224.0/19
 blacklist-ip 103.72.224.0/22
+blacklist-ip 103.72.224.0/24
 blacklist-ip 103.72.228.0/22
 blacklist-ip 103.72.232.0/22
 blacklist-ip 103.72.236.0/22
@@ -4484,6 +4485,7 @@ blacklist-ip 103.79.208.0/21
 blacklist-ip 103.79.208.0/22
 blacklist-ip 103.79.212.0/22
 blacklist-ip 103.79.228.0/23
+blacklist-ip 103.79.228.0/24
 blacklist-ip 103.79.24.0/21
 blacklist-ip 103.79.24.0/22
 blacklist-ip 103.79.240.0/22
@@ -5429,6 +5431,7 @@ blacklist-ip 107.155.25.116/31
 blacklist-ip 107.168.4.0/23
 blacklist-ip 107.176.0.0/15
 blacklist-ip 107.190.229.0/24
+blacklist-ip 108.186.72.0/24
 blacklist-ip 109.118.6.20/32
 blacklist-ip 109.118.6.23/32
 blacklist-ip 109.134.14.71/32
@@ -5443,7 +5446,6 @@ blacklist-ip 110.114.0.0/16
 blacklist-ip 110.115.128.0/17
 blacklist-ip 110.116.0.0/16
 blacklist-ip 110.120.0.0/16
-blacklist-ip 110.120.0.0/23
 blacklist-ip 110.152.0.0/14
 blacklist-ip 110.156.0.0/15
 blacklist-ip 110.16.0.0/14
@@ -5492,7 +5494,6 @@ blacklist-ip 110.203.0.0/23
 blacklist-ip 110.204.0.0/14
 blacklist-ip 110.208.0.0/12
 blacklist-ip 110.211.0.0/16
-blacklist-ip 110.211.0.0/23
 blacklist-ip 110.218.0.0/15
 blacklist-ip 110.228.0.0/14
 blacklist-ip 110.232.32.0/19
@@ -8143,7 +8144,6 @@ blacklist-ip 123.62.0.0/16
 blacklist-ip 123.64.0.0/11
 blacklist-ip 123.64.0.0/15
 blacklist-ip 123.66.0.0/16
-blacklist-ip 123.66.128.0/17
 blacklist-ip 123.77.0.0/16
 blacklist-ip 123.8.0.0/13
 blacklist-ip 123.83.128.0/17
@@ -8291,8 +8291,6 @@ blacklist-ip 124.42.0.0/16
 blacklist-ip 124.42.0.0/17
 blacklist-ip 124.42.128.0/17
 blacklist-ip 124.47.0.0/18
-blacklist-ip 124.47.58.0/23
-blacklist-ip 124.47.60.0/23
 blacklist-ip 124.6.64.0/18
 blacklist-ip 124.64.0.0/15
 blacklist-ip 124.66.0.0/17
@@ -9978,7 +9976,6 @@ blacklist-ip 182.61.96.0/24
 blacklist-ip 182.61.98.0/23
 blacklist-ip 182.80.0.0/13
 blacklist-ip 182.80.0.0/14
-blacklist-ip 182.80.0.0/16
 blacklist-ip 182.84.0.0/14
 blacklist-ip 182.88.0.0/14
 blacklist-ip 182.92.0.0/16
@@ -10564,7 +10561,6 @@ blacklist-ip 202.149.32.0/19
 blacklist-ip 202.150.16.0/20
 blacklist-ip 202.150.192.0/20
 blacklist-ip 202.150.224.0/19
-blacklist-ip 202.150.26.0/23
 blacklist-ip 202.150.32.0/20
 blacklist-ip 202.150.56.0/22
 blacklist-ip 202.151.0.0/22
@@ -12752,7 +12748,6 @@ blacklist-ip 210.87.128.0/18
 blacklist-ip 210.87.128.0/20
 blacklist-ip 210.87.144.0/20
 blacklist-ip 210.87.160.0/19
-blacklist-ip 210.87.189.0/24
 blacklist-ip 210.87.72.0/23
 blacklist-ip 211.100.0.0/16
 blacklist-ip 211.100.0.0/17
@@ -13755,8 +13750,7 @@ blacklist-ip 221.14.0.0/15
 blacklist-ip 221.172.0.0/14
 blacklist-ip 221.172.0.0/16
 blacklist-ip 221.174.0.0/16
-blacklist-ip 221.174.16.0/21
-blacklist-ip 221.174.24.0/23
+blacklist-ip 221.174.0.0/17
 blacklist-ip 221.176.0.0/13
 blacklist-ip 221.176.0.0/19
 blacklist-ip 221.176.128.0/17
@@ -13964,8 +13958,6 @@ blacklist-ip 222.42.115.0/24
 blacklist-ip 222.44.0.0/15
 blacklist-ip 222.49.128.0/17
 blacklist-ip 222.50.0.0/16
-blacklist-ip 222.50.120.0/24
-blacklist-ip 222.50.123.0/24
 blacklist-ip 222.59.128.0/17
 blacklist-ip 222.64.0.0/11
 blacklist-ip 222.64.0.0/13
@@ -17111,8 +17103,6 @@ blacklist-ip 61.190.0.0/15
 blacklist-ip 61.190.114.0/24
 blacklist-ip 61.191.60.0/24
 blacklist-ip 61.232.0.0/14
-blacklist-ip 61.232.0.0/15
-blacklist-ip 61.234.0.0/16
 blacklist-ip 61.236.0.0/15
 blacklist-ip 61.236.112.0/21
 blacklist-ip 61.236.80.0/20
