@@ -259,6 +259,7 @@
 -.np-edge.itunes.apple.com
 -.play-edge.itunes.apple.com
 -.sandbox.itunes.apple.com
+-.testflight.apple.com
 -.tv.applemusic.com
 -.uts-api.itunes.apple.com
 -.hls-amt.itunes.apple.com
@@ -268,7 +269,6 @@
 -.amp-api.fitness.apple.com
 -.guzzoni.apple.com
 -.beta.apple.com
--.testflight.apple.com
 -.www-cdn.icloud.com.akadns.net
 *.100beatscheap.com
 *.1monsterbeatsbydreus.com
@@ -1451,7 +1451,6 @@
 *.applepaysupplies.tv
 *.applewallet.com
 *.applewallet.tv
-*.appsto.re
 *.appstore.co.id
 *.appstore.com
 *.appstore.hk
@@ -1727,10 +1726,10 @@
 *.wwwipodlounge.com
 *.wwwmacbookair.com
 *.apple.comscoreresearch.com
-*.apple.news
 *.appleenews.com
 *.applemusic.berlin
 *.applemusic.co
+*.applemusic.com
 *.applemusic.com.au
 *.applemusic.hamburg
 *.applemusic.wang
@@ -1763,8 +1762,10 @@
 *.iphoto.wang
 *.musickit.net
 *.wwwapplemusic.com
-*.applemusic.com
 *.apple-dns.net
+*.apple.news
+*.appsto.re
+*.cdn-apple.com
 *.digicert.com
 *.apple-cloudkit.com
 *.apple-icloud.cn
@@ -1772,7 +1773,6 @@
 *.appleicloud.cn
 *.applemx-icloud.com
 *.apzones.com
-*.cdn-apple.com
 *.icloud-apple.cn
 *.icloud-content.com
 *.icloud-isupport.com

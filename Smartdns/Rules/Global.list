@@ -725,6 +725,7 @@
 -.wwis-dubc1-vip98.adobe.com
 -.wwis-dubc1-vip99.adobe.com
 -.www-cdn.icloud.com.akadns.net
+-.www.microsoft.com
 -.www.quora.com.cdn.cloudflare.net
 -.yangzhi.app
 -.yt3.googleusercontent.com
@@ -11256,8 +11257,10 @@
 *.gofit.ac.uk
 *.gofucker.com
 *.gofuckmenow.com
+*.gog-services.com
 *.gog-statics.com
 *.gog.com
+*.gogalaxy.com
 *.gogeo.ac.uk
 *.gogettaxi.org
 *.gogle.com
