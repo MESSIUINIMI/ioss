@@ -1,0 +1,331 @@
+
+# ================ 锚点定义 ================
+
+# proxy-provider 公共参数
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 300, timeout: 5000, lazy: true}}
+
+# proxy-group select 公共代理列表
+pg: &pg
+  type: select
+  proxies: 
+    - 🇭🇰 HK
+    - 🇼🇸 TW
+    - 🇸🇬 SG
+    - 🇯🇵 JP
+    - 🇺🇸 US
+    - 🇰🇷 KR
+    - 🇬🇧 UK
+    - 🇷🇺 RU
+    - 🇩🇪 DE
+    - 🇫🇷 FR
+    - 🇦🇺 AU
+    - 🇧🇷 BR
+    - 🇮🇳 IN
+    - 🇳🇱 NL
+    - 🇨🇦 CA
+    - 🇹🇷 TR
+    - 🇿🇦 ZA
+    - 🧐 Select
+
+# url-test 公共参数
+ut: &ut {type: url-test, include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 0, lazy: true}
+
+# rule-provider 公共参数（mrs 格式，性能最优）
+rp: &rp {type: http, behavior: domain, format: mrs, interval: 86400, proxy: 🇺🇸 US}
+
+# ================ 基础配置 ================
+
+mixed-port: 27753
+# redir-port: 27862
+# tproxy-port: 27863
+
+allow-lan: true
+bind-address: '*'
+mode: rule
+
+authentication:
+  - "AmbFrf341:u1f4nl3bBt3loWi1"
+skip-auth-prefixes:
+  - 127.0.0.1/8
+  - ::1/128
+  - 192.168.1.0/24
+
+log-level: info
+ipv6: true
+find-process-mode: strict
+
+geodata-mode: true
+tcp-concurrent: true
+unified-delay: true
+
+geo-auto-update: true
+geo-update-interval: 24
+
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+
+external-controller: 127.0.0.1:9090
+secret: "yijqBOhNfB1nVo02"
+external-controller-cors:
+  allow-origins:
+    - "*"
+  allow-private-network: true
+external-ui: ab
+external-ui-name: ab
+external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  force-dns-mapping: true    # 对 redir-host 流量强制嗅探
+  parse-pure-ip: true        # 对纯 IP 流量强制嗅探
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-detect-interface: true
+  auto-route: true
+  strict-route: true
+
+dns:
+  enable: true
+  cache-algorithm: arc
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: false
+  listen: 0.0.0.0:53
+  ipv6: true
+
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.localhost'
+    - '+.stun.*'
+    - '+.ntp.*'
+    - 'time*.cloud.tencent.com'
+    - 'time.android.com'
+    - 'ntp.aliyun.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - 'dns.msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    - '+.battlenet.com.cn'
+    - '+.battlenet.com'
+    - '+.blzstatic.cn'
+    - '+.steamcontent.com'
+
+  nameserver-policy:
+    '+.arpa': '223.5.5.5'
+    'rule-set:cn':
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query#h3=true
+      - quic://223.6.6.6
+    'geosite:category-ads-all': rcode://success
+
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query#h3=true
+    - quic://223.6.6.6
+
+  fallback:
+    - https://8.8.8.8/dns-query#🖲 Proxy&h3=true
+    - https://1.1.1.1/dns-query#🖲 Proxy&h3=true
+    - tls://9.9.9.10:853
+
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+
+  # direct-nameserver:
+  #  - system
+  # direct-nameserver-follow-policy: false
+
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+      - geolocation-!cn
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+
+# ================ 订阅 ================
+
+proxy-providers:
+  Sub-1:
+    url: "https://xxxxxxxxxxxxxx"
+    <<: *p
+    path: ./mihomo/sub/Sub-1.yaml
+
+proxies:
+
+# ================ 策略组 ================
+
+proxy-groups:
+  - {name: "🇭🇰 HK", <<: *ut, filter: "(?i)港|香港|🇭🇰|\\b(hk|hongkong|kong kong)\\b"}
+  - {name: "🇼🇸 TW", <<: *ut, filter: "(?i)台|台湾|🇹🇼|🇼🇸|\\b(tw|taiwan)\\b"}
+  - {name: "🇸🇬 SG", <<: *ut, filter: "(?i)新|新加坡|🇸🇬|\\b(sg|singapore)\\b"}
+  - {name: "🇯🇵 JP", <<: *ut, filter: "(?i)日本|🇯🇵|\\b(jp|japan|tokyo|osaka)\\b"}
+  - {name: "🇺🇸 US", <<: *ut, filter: "(?i)美|美国|🇺🇸|\\b(us|unitedstates|united states|los angeles|san jose|new york|seattle|siliconvalley)\\b"}
+  - {name: "🇰🇷 KR", <<: *ut, filter: "(?i)韩|韓|韩国|首尔|🇰🇷|\\b(kr|korea|seoul)\\b"}
+  - {name: "🇬🇧 UK", <<: *ut, filter: "(?i)英|英国|伦敦|🇬🇧|\\b(uk|united kingdom|gb|gbr|london)\\b"}
+  - {name: "🇷🇺 RU", <<: *ut, filter: "(?i)俄|俄罗斯|莫斯科|🇷🇺|\\b(ru|moscow|russia)\\b"}
+  - {name: "🇩🇪 DE", <<: *ut, filter: "(?i)德|德国|🇩🇪|\\b(de|germany|frankfurt|berlin)\\b"}
+  - {name: "🇫🇷 FR", <<: *ut, filter: "(?i)法|法国|巴黎|🇫🇷|\\b(fr|france|paris)\\b"}
+  - {name: "🇦🇺 AU", <<: *ut, filter: "(?i)澳|澳大利亚|悉尼|墨尔本|🇦🇺|\\b(au|australia|sydney|melbourne|perth|brisbane|adelaide|canberra)\\b"}
+  - {name: "🇧🇷 BR", <<: *ut, filter: "(?i)巴|巴西|圣保罗|🇧🇷|\\b(br|brazil|sao paulo)\\b"}
+  - {name: "🇮🇳 IN", <<: *ut, filter: "(?i)印|印度|孟买|🇮🇳|\\b(in|india|mumbai|bangalore|delhi|bengaluru)\\b"}
+  - {name: "🇳🇱 NL", <<: *ut, filter: "(?i)荷|荷兰|阿姆斯特丹|🇳🇱|\\b(nl|holland|netherlands|amsterdam)\\b"}
+  - {name: "🇨🇦 CA", <<: *ut, filter: "(?i)加拿大|🇨🇦|\\b(ca|canada|toronto|vancouver|montréal|montreal)\\b"}
+  - {name: "🇹🇷 TR", <<: *ut, filter: "(?i)土耳其|伊斯坦布尔|🇹🇷|\\b(tr(?!ojan)|tur|turkey|istanbul)\\b"}
+  - {name: "🇿🇦 ZA", <<: *ut, filter: "(?i)南非|约翰内斯堡|🇿🇦|\\b(za|south africa|johannesburg|capetown|cape town)\\b"}
+
+  - {name: "🕹 Final", <<: *pg}
+  - {name: "🖲 Proxy", <<: *pg}
+  - {name: "🖥 Netflix", <<: *pg}
+  - {name: "🎬 YouTube", <<: *pg}
+  - {name: "🧠 AI", <<: *pg}
+  - {name: "🎧 Spotily", <<: *pg}
+  - {name: "🪙 Crypto", <<: *pg}
+  - {name: "🇧 Bybit", <<: *pg}
+  - {name: "🔍 Google", <<: *pg}
+  - {name: "🗂️ Microsoft", <<: *pg}
+  - {name: "𝕏 Twitter", <<: *pg}
+  - {name: "📱 Telegram", <<: *pg}
+  - {name: "☁️ Amazon", <<: *pg}
+  - {name: "🔴 Twitch", <<: *pg}
+  - {name: "Ⓜ️ Meta", <<: *pg}
+  - {name: "🎉 Emby", <<: *pg}
+  - {name: "🎮 Game", <<: *pg}
+  - {name: "📺 GlobalMedia", <<: *pg}
+
+  - name: "🍎 Apple"
+    type: select
+    proxies:
+      - 🕹 Final
+      - 🖲 Proxy
+      - DIRECT
+
+  - name: "🧐 Select"
+    type: select
+    include-all: true
+
+# ================ 规则集 ================
+
+rule-providers:
+  category-ads-all: {<<: *rp, path: ./mihomo/ruleset/category-ads-all.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-ads-all.mrs"}
+  youtube: {<<: *rp, path: ./mihomo/ruleset/youtube.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs"}
+  netflix: {<<: *rp, path: ./mihomo/ruleset/netflix.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/netflix.mrs"}
+  spotify: {<<: *rp, path: ./mihomo/ruleset/spotify.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/spotify.mrs"}
+  openai: {<<: *rp, path: ./mihomo/ruleset/openai.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/openai.mrs"}
+  google-gemini: {<<: *rp, path: ./mihomo/ruleset/google-gemini.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google-gemini.mrs"}
+  category-ai-!cn: {<<: *rp, path: ./mihomo/ruleset/category-ai-!cn.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-ai-!cn.mrs"}
+  twitter: {<<: *rp, path: ./mihomo/ruleset/twitter.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/twitter.mrs"}
+  telegram: {<<: *rp, path: ./mihomo/ruleset/telegram.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs"}
+  facebook: {<<: *rp, path: ./mihomo/ruleset/facebook.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/facebook.mrs"}
+  github: {<<: *rp, path: ./mihomo/ruleset/github.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/github.mrs"}
+  microsoft: {<<: *rp, path: ./mihomo/ruleset/microsoft.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft.mrs"}
+  onedrive: {<<: *rp, path: ./mihomo/ruleset/onedrive.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/onedrive.mrs"}
+  google: {<<: *rp, path: ./mihomo/ruleset/google.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/google.mrs"}
+  binance: {<<: *rp, path: ./mihomo/ruleset/binance.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/binance.mrs"}
+  bybit: {<<: *rp, path: ./mihomo/ruleset/bybit.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bybit.mrs"}
+  category-cryptocurrency: {<<: *rp, path: ./mihomo/ruleset/category-cryptocurrency.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-cryptocurrency.mrs"}
+  amazon: {<<: *rp, path: ./mihomo/ruleset/amazon.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/amazon.mrs"}
+  twitch: {<<: *rp, path: ./mihomo/ruleset/twitch.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/twitch.mrs"}
+  steam: {<<: *rp, path: ./mihomo/ruleset/steam.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/steam.mrs"}
+  epicgames: {<<: *rp, path: ./mihomo/ruleset/epicgames.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/epicgames.mrs"}
+  category-enhance-gaming: {<<: *rp, path: ./mihomo/ruleset/category-enhance-gaming.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-enhance-gaming.mrs"}
+  category-emby: {<<: *rp, path: ./mihomo/ruleset/category-emby.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-emby.mrs"}
+  apple: {<<: *rp, path: ./mihomo/ruleset/apple.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple.mrs"}
+  category-speedtest: {<<: *rp, path: ./mihomo/ruleset/category-speedtest.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-speedtest.mrs"}
+  disney: {<<: *rp, path: ./mihomo/ruleset/disney.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/disney.mrs"}
+  primevideo: {<<: *rp, path: ./mihomo/ruleset/primevideo.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/primevideo.mrs"}
+  hbo: {<<: *rp, path: ./mihomo/ruleset/hbo.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/hbo.mrs"}
+  bahamut: {<<: *rp, path: ./mihomo/ruleset/bahamut.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/bahamut.mrs"}
+  tiktok: {<<: *rp, path: ./mihomo/ruleset/tiktok.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/tiktok.mrs"}
+  biliintl: {<<: *rp, path: ./mihomo/ruleset/biliintl.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/biliintl.mrs"}
+  category-games@cn: {<<: *rp, path: ./mihomo/ruleset/category-games@cn.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-games@cn.mrs"}
+  steam@cn: {<<: *rp, path: ./mihomo/ruleset/steam@cn.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/steam@cn.mrs"}
+  cn: {<<: *rp, path: ./mihomo/ruleset/cn.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/cn.mrs"}
+  private: {<<: *rp, path: ./mihomo/ruleset/private.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/private.mrs"}
+  geolocation-!cn: {<<: *rp, path: ./mihomo/ruleset/geolocation-!cn.mrs, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/geolocation-!cn.mrs"}
+
+# ================ 规则 ================
+
+rules:
+  - RULE-SET,category-ads-all,REJECT
+  - GEOIP,private,DIRECT,no-resolve
+  - RULE-SET,openai,🧠 AI
+  - RULE-SET,google-gemini,🧠 AI
+  - RULE-SET,category-ai-!cn,🧠 AI
+  - RULE-SET,youtube,🎬 YouTube
+  - RULE-SET,netflix,🖥 Netflix
+  - RULE-SET,spotify,🎧 Spotily
+  - RULE-SET,twitter,𝕏 Twitter
+  - RULE-SET,telegram,📱 Telegram
+  - RULE-SET,facebook,Ⓜ️ Meta
+  - RULE-SET,github,🗂️ Microsoft
+  - RULE-SET,microsoft,🗂️ Microsoft
+  - RULE-SET,onedrive,🗂️ Microsoft
+  - RULE-SET,google,🔍 Google
+  - RULE-SET,category-speedtest,🖲 Proxy
+  - RULE-SET,binance,🪙 Crypto
+  - RULE-SET,bybit,🇧 Bybit
+  - RULE-SET,category-cryptocurrency,🪙 Crypto
+  - RULE-SET,amazon,☁️ Amazon
+  - RULE-SET,twitch,🔴 Twitch
+  - RULE-SET,steam,🎮 Game
+  - RULE-SET,epicgames,🎮 Game
+  - RULE-SET,category-enhance-gaming,🎮 Game
+  - RULE-SET,category-emby,🎉 Emby
+  - RULE-SET,apple,🍎 Apple
+  - RULE-SET,disney,📺 GlobalMedia
+  - RULE-SET,primevideo,📺 GlobalMedia
+  - RULE-SET,hbo,📺 GlobalMedia
+  - RULE-SET,bahamut,📺 GlobalMedia
+  - RULE-SET,tiktok,📺 GlobalMedia
+  - RULE-SET,biliintl,📺 GlobalMedia
+  - RULE-SET,private,DIRECT
+  - RULE-SET,category-games@cn,DIRECT
+  - RULE-SET,steam@cn,DIRECT
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,geolocation-!cn,🖲 Proxy
+  - GEOIP,CN,DIRECT,no-resolve
+  - MATCH,🕹 Final
