@@ -10,6 +10,7 @@
 -.a4e8s8k3.map2.ssl.hwcdn.net
 -.a771.dscq.akamai.net
 -.abematv.akamaized.net
+-.acd89244c803f7181.awsglobalaccelerator.com
 -.activate-sea.adobe.com
 -.activate-sjc0.adobe.com
 -.activate.adobe.com
@@ -24,6 +25,7 @@
 -.adobe-dns-4.adobe.com
 -.adobe-dns.adobe.com
 -.adobeereg.com
+-.afa7f374f51cc8991.awsglobalaccelerator.com
 -.ai.google.dev
 -.alkalicore-pa.clients6.google.com
 -.alkalimakersuite-pa.clients6.google.com
@@ -333,6 +335,7 @@
 -.oneocsp.microsoft.com
 -.ood.opsource.net
 -.openaiapi-site.azureedge.net
+-.openaiassets.blob.core.windows.net
 -.openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 -.openaicom.imgix.net
 -.openaicomproductionae4b.blob.core.windows.net
@@ -4515,6 +4518,7 @@
 *.blackstonespoliceservice.com
 *.blacktowhite.net
 *.blake.ac.uk
+*.blanc.ru
 *.blaoshi.cc
 *.blast.io
 *.blazor.net
@@ -5135,6 +5139,7 @@
 *.bostoncentre.ac.uk
 *.boswp.com
 *.botframework.com
+*.botim.me
 *.botmechanic.io
 *.botorch.org
 *.botstop.com
@@ -6841,6 +6846,7 @@
 *.coova.net
 *.coova.org
 *.copac.ac.uk
+*.copilot.com
 *.copim.ac.uk
 *.copior.ac.uk
 *.copro.pw
@@ -12324,6 +12330,9 @@
 *.horizontal-systems.com
 *.horizontalglue.com
 *.horizontalsystems.com
+*.hornet.com
+*.hornetapp.com
+*.hornetx.com
 *.horniman.ac.uk
 *.hornyasianmilfs.com
 *.hornybitches.org
@@ -15234,6 +15243,7 @@
 *.listerpostgraduate.ac.uk
 *.listinganalytics.net
 *.litbus-anime.com
+*.litecoin.org
 *.literatumonline.com
 *.literotica.com
 *.litt.ac.uk
@@ -17787,7 +17797,9 @@
 *.netflixtechblog.com
 *.netlab.ac.uk
 *.netlify.com
+*.netlifydns.com
 *.netlifystatus.com
+*.netlifyusercontent.com
 *.netlock.hu
 *.netname.com.br
 *.netpornsex.com
@@ -18434,6 +18446,7 @@
 *.ntec.ac.uk
 *.ntfs.ac.uk
 *.ntidagenham.ac.uk
+*.ntl.fyi
 *.ntnews.com.au
 *.ntp-os01.ocn.ad.jp
 *.ntp-tk01.ocn.ad.jp
@@ -34797,6 +34810,7 @@
 *.webrush.net
 *.webs-tv.net
 *.websdr.org
+*.webshare.io
 *.website.new
 *.websitepulse.com
 *.websnapr.com
