@@ -255,7 +255,6 @@
 -.img-s-msn-com.akamaized.net
 -.impala-media-production.s3.amazonaws.com
 -.imperial.insendi.com
--.ingest.apple-studies.com
 -.lab.skk.moe
 -.lastfm.freetls.fastly.net
 -.lazer.ppy.sh
@@ -2629,6 +2628,7 @@
 *.apple-pay.wang
 *.apple-store.net
 *.apple-store.wang
+*.apple-studies.com
 *.apple-usa.net
 *.apple.ae
 *.apple.at
@@ -3155,6 +3155,7 @@
 *.atlassian-dev.net
 *.atlassian.com
 *.atlassian.net
+*.atmeta.com
 *.atokara.jp
 *.atom.io
 *.atomyze.ru
@@ -3535,6 +3536,7 @@
 *.aziani.com
 *.aznude.com
 *.azubu.tv
+*.azure-api.net
 *.azure-devices-int.net
 *.azure-devices.net
 *.azure-dns.com
@@ -3570,6 +3572,7 @@
 *.azureserviceprofiler.com
 *.azuresmartspaces.net
 *.azurestackvalidation.com
+*.azurestaticapps.net
 *.b-cdn.net
 *.b-eroland.net
 *.b-ok.africa
