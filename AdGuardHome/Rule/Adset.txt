@@ -6,8 +6,8 @@
 ! Description: List for blocking ads in the Chinese region. Block Ads, Trackers, Malware, HTTPDNS, PCDN. 
 ! License: Inherits upstream licenses (GPL-3.0, CC BY-SA 4.0, etc.)
 ! Upstream Sources: https://github.com/Cats-Team/AdRules/blob/script/Source.md
-! Update: 2026-09-02 23:47:40(GMT+8)
-! Total count: 198609
+! Update: 2026-09-03 10:31:14(GMT+8)
+! Total count: 198619
 /^.+stat\.kugou\.com/
 /^admarvel\./
 /^admaster\./
@@ -21327,6 +21327,7 @@
 ||bbrdbr.com^
 ||bbs.theacademyforconsciousleadership.com^
 ||bbs.ws^
+||bbs.xhamster.com^
 ||bbssgjpbdrurh.space^
 ||bbtpl.finney-co.com^
 ||bbtuvgqhflajx.com^
@@ -25992,6 +25993,7 @@
 ||bybyuxxgcqoze.space^
 ||bycarver.com^
 ||bycathyhoughsheu.org^
+||bycsg.oii.la^
 ||bycvdrvphznyr.site^
 ||bydpbpjtbsfta.online^
 ||bydst.com^
@@ -30776,6 +30778,7 @@
 ||clientlog.music.163.com^
 ||clientlog.perfectworldgames.com^
 ||clientlog.pwsdk.com^
+||clientlog.wanmei.com^
 ||clientlog3.music.163.com^
 ||clientlogdep.music.163.com^
 ||clientlogger.marketplace.aws.a2z.com^
@@ -32933,6 +32936,7 @@
 ||consumeairlinercalligraphy.com^
 ||consumer.equifax.com^
 ||consumer.inform.equifax.com^
+||consumerdebtnegotiation.com^
 ||consumeririssalary.com^
 ||consumerknowhow.com^
 ||consumerpilot.mektri.com^
@@ -80712,6 +80716,7 @@
 ||jnrtavp2x66u.com^
 ||jnsol.sokolovelaw.com^
 ||jnsoxa.fcmm.kr^
+||jnt.welt.de^
 ||jntmwrm.com^
 ||jnunn.alppouch.com^
 ||jnvfm.blackmagic.com^
@@ -124511,6 +124516,7 @@
 ||renteostend.com^
 ||rentfavourablecashmere.com^
 ||rentinfinity.com^
+||rentinfrared.com^
 ||renting.aldautomotive.es^
 ||rentpenny.com^
 ||renzhen8.cn^
@@ -124677,6 +124683,7 @@
 ||reptilecategory.com^
 ||reptiledoodle.com^
 ||republica.cursodetti.com.br^
+||republicfarm.net^
 ||republika.onet.pl^
 ||repulsiveformerlydevaluation.com^
 ||repuremucro.qpon^
@@ -125015,6 +125022,7 @@
 ||retro.geeklife.fr^
 ||retrocrypt.com^
 ||retrofuture.fr^
+||retrorays.com^
 ||retrudewomprewires.qpon^
 ||retruseairshedpurples.qpon^
 ||retscopperchorook.cyou^
@@ -190332,6 +190340,7 @@
 ||www.jhsmiami.com^
 ||www.jianpian.vip^
 ||www.jipinyouwu.com^
+||www.jjbenefitsguide.com^
 ||www.jmine.cn^
 ||www.jnhjf.com^
 ||www.jody0sora.com^
@@ -190811,6 +190820,7 @@
 ||www.poukladanyswiat.com^
 ||www.ppslsa.com^
 ||www.prabvisa.com^
+||www.premiercountrymeats.com^
 ||www.premiumbrandszonalibre.com^
 ||www.presidency.site^
 ||www.prgwbn.cfd^
@@ -227518,11 +227528,10 @@
 !
 ! Title: AdGuard DNS filter
 ! Description: List composed of several filters (AdGuard Base filter, Social Media filter, Tracking Protection filter, Mobile Ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking
-! Version: 1.0.77.97
+! Version: 1.0.78.2
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
-! Last modified: 2026-09-02T16:20:13.468Z
+! Last modified: 2026-09-03T03:03:53.849Z
 ! Compiled by @adguard/hostlist-compiler v2.1.0
-||bycsg.oii.la^
 ||greekexternal.com^
 ||go.mobisla.com^
 ||go.mobtrks.com^
@@ -228040,9 +228049,94 @@ wykop.pl$badfilter
 vkcdnservice.appspot.com^
 ||freecontent.date
 ||freecontent.stream
+||31npe74m8qm5wjkmb5g7zhw.rest^
+||aldiminyerking.qpon^
+||anulomadonated.shop^
+||atlishudna.cfd^
+||b4ffghwq74mm2fpplktfu9tbhc.rest^
+||bearcatsputta.cyou^
+||berthsosselet.cfd^
+||bitechemalmier.cfd^
+||bulkingpiffero.shop^
+||busmencoelar.cyou^
+||caltrappeacheslola.qpon^
+||cariouscotys.qpon^
+||catchupversate.qpon^
+||chesountamped.cyou^
+||cjr364hqf9enhplwct7l9u9xwkx.cfd^
+||condignstigma.qpon^
+||cresylsaccurseaffinal.cfd^
+||culsucqivn.in^
+||cytulaprizes.cyou^
 ||daleelerah.info
+||datariaregatta.cyou^
+||daturasthurgi.cfd^
+||dc649f3e46.com^
+||debordgenoa.cfd^
+||dietherhitched.cfd^
+||distaliturite.com^
+||djvdghbu.com^
+||dkenfoazc.in^
+||dqlnwrulga.com^
+||drevelextendparamo.qpon^
+||eightypotline.cfd^
+||exciterspasmus.qpon^
+||forumpreamp.qpon^
+||fugarafilters.cfd^
+||gardennyet.cfd^
 ||get-me-wow.
+||gqtvkxhycjthdx.com^
+||gqvqlasfg.com^
+||groanedzar.cfd^
+||gumschultz.cfd^
+||hailingoilyoliban.cfd^
+||heiscoquettef.org^
+||hibbinbod.cfd^
+||holsstola.qpon^
+||ilealkddly.com^
+||inkishjolting.cyou^
+||iyarpupaeoscines.cyou^
+||k6wh2riqtbpfxn5r3o5ucfq.cfd^
+||kaingaloratehistie.cfd^
+||lindybelie.shop^
+||looverolent.shop^
+||luimangeao.cfd^
+||lz6gcju4lrmjip.rest^
+||mdvjxbtcsgkft.com^
+||milliontelfer.cfd^
+||mixtionoogone.qpon^
+||nandinslends.cyou^
+||nnequjqx761vyr.cfd^
+||oilcampshift.qpon^
+||pectinweskits.com^
+||qxrnjsfbibhylb.com^
+||qzybrmkkkrez.top^
+||regtboiette.qpon^
 ||reviledmakers.com^
+||ripenedtola.com^
+||saigascopolar.shop^
+||sbkiuqhmsgxpc.com^
+||scimedusas.qpon^
+||seitymaizes.qpon^
+||shacklerocklet.com^
+||silliesairparkfolia.cyou^
+||slupgetaway.cyou^
+||speersgeigerrhebok.cfd^
+||swardssecurer.cyou^
+||talsitcomparer.cfd^
+||tarsiustembeshines.cfd^
+||torchetpatters.qpon^
+||trudysklate.shop^
+||unchidarrau.qpon^
+||unpaperxeriff.cfd^
+||unwombtapsman.qpon^
+||vaazaraokaym.top^
+||vawscrawler.cfd^
+||vintoutfluerengue.cfd^
+||whatdcampman.cyou^
+||wundeeer.com^
+||wuwtvaybej.com^
+||zqjklzlezklj.top^
 ||3ckz.com^
 ||3vetz.com^
 ||adblockermax.com^
@@ -228960,8 +229054,6 @@ vkcdnservice.appspot.com^
 ||countly.
 ||countly-
 |piwik.
-||clientlog.wanmei.com^
-||jnt.welt.de^
 ||analytics.netronline.dev^
 ||faro.civitai.
 ||sync.inmobi.com^
@@ -229210,6 +229302,7 @@ dlsdk.appsflyer.com^
 -ulog.region.kwai-pro.com^
 -ulogl2.kwai-pro.com^
 -ulogl2.kwaipros.com^
+||analytics-assets.tes.com^
 ||analytics.fabricators.ltd^
 ||analytics.shorte.st^
 ||api.reo.dev^
@@ -229224,7 +229317,6 @@ dlsdk.appsflyer.com^
 ||d241ujsiy3yht0.cloudfront.net
 ||d2fj3s7h83rb61.cloudfront.net
 ||verify.authorize.net^
-||rentinfrared.com^
 ||leserservice-tracking.de^
 ||lokalleads-cci.com^
 ||trkme.net^
@@ -229243,6 +229335,7 @@ dlsdk.appsflyer.com^
 ||percycle.com^
 ||targetix.net^
 ||socy.es^
+||tracking.vviinn.com^
 -logging.nextmedia.com^
 ||mtm.qdqmedia.com
 ||ads.comunidades.net^
@@ -229338,6 +229431,8 @@ dlsdk.appsflyer.com^
 ||seomaster.com.br^
 ||solution911.com^
 ||templates.buscape.com^
+||sentry.rstprgapipt.com^
+||vertiguzha.link^
 ||dteifi.com^
 ||thtrck.com^
 ||crmared.com^
@@ -237480,6 +237575,13 @@ dlsdk.appsflyer.com^
 ||121.204.246.*.gif
 ||38.33.15.*.gif
 ||67.21.92.*.gif
+||rxzfhfmoegfvts.com^
+||zhifupaypay.com^
+||reflector19.com^
+||0mkeb9vth.com^
+||uj6i2bo3o.com^
+||weiakbtck.com^
+||pincers55.com^
 ||farm-cn.plista.com^
 ||static-cn.plista.com^
 ||1024wanzhai.
