@@ -2,11 +2,12 @@
     "$schema": "https://sing-box.sagernet.org/schema.json",
     "dns": {
         "servers": [
-            {
-                "tag": "hosts_fix",
-                "type": "hosts",
-                "predefined": {"dns.alidns.com": ["223.5.5.5","223.6.6.6"],"doh.pub": ["1.12.12.21","120.53.53.53"],"dns.google": ["8.8.8.8","8.8.4.4"],"cloudflare-dns.com": ["1.1.1.1","1.0.0.1"]}
-            },
+            {"tag": "hosts_fix","type": "hosts","predefined": {
+                "dns.alidns.com": ["223.5.5.5","223.6.6.6"],
+                "doh.pub": ["1.12.12.21","120.53.53.53"],
+                "dns.google": ["8.8.8.8","8.8.4.4"],
+                "cloudflare-dns.com": ["1.1.1.1","1.0.0.1"]
+            }},
             {"tag": "AQUIC","type": "quic","server": "223.6.6.6","server_port": 853},
             {"tag": "TDOH","type": "https","server": "doh.pub","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"}},
             {"tag": "AH3","type": "h3","server": "dns.alidns.com","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"}},
@@ -28,8 +29,8 @@
             {"match_response": "tdoh","response_rcode": "NOERROR","action": "respond","race": true}
         ],
         "final": "AQUIC",
-        "optimistic": true,
-        "reverse_mapping": true
+        "reverse_mapping": true,
+        "optimistic": true
     },
     "outbounds": [
         {"tag": "🖲 Proxy","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇹🇼 TW","🇰🇷 KR","🇬🇧 UK","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
@@ -106,15 +107,7 @@
         ],
         "rules": [
             {"action": "sniff","sniffer": ["http","tls","quic","dns"],"timeout": "500ms"},
-            {
-                "type": "logical",
-                "mode": "or",
-                "rules": [
-                    {"port": 53},
-                    {"protocol": "dns"}
-                ],
-                "action": "hijack-dns"
-            },
+            {"protocol": "dns","action": "hijack-dns"},
             {"ip_is_private": true,"action": "route","outbound": "🎯 Direct"},
             {"clash_mode": "❌ Direct","action": "route","outbound": "🎯 Direct"},
             {"clash_mode": "🌍 Global","action": "route","outbound": "🖲 Proxy"},
@@ -149,25 +142,66 @@
         "final": "🕹 Final",
         "default_http_client": "rule-set-download"
     },
-    "log": {"disabled": false,"level": "info","output": "sing-box.log","timestamp": true},
+    "log": {
+        "disabled": false,
+        "level": "info",
+        "output": "sing-box.log",
+        "timestamp": true
+    },
     "http_clients": [
-        {"tag": "rule-set-download","version": 2,"detour": "🇺🇸 US"}
+        {
+            "tag": "rule-set-download",
+            "version": 2,
+            "detour": "🇺🇸 US"
+        }
     ],
     "services": [
-        {"type": "api","tag": "sing-box api","listen": "127.0.0.1","listen_port": 9292,"access_control_allow_origin": ["http://sing-box-dashboard.sagernet.org","https://sing-box-dashboard.sagernet.org","http://dash.sing-box.app","https://dash.sing-box.app"],"access_control_allow_private_network": true}
+        {
+            "type": "api",
+            "tag": "sing-box api",
+            "listen": "127.0.0.1",
+            "listen_port": 9292,
+            "access_control_allow_origin": [
+                "http://sing-box-dashboard.sagernet.org",
+                "https://sing-box-dashboard.sagernet.org",
+                "http://dash.sing-box.app",
+                "https://dash.sing-box.app"
+            ],
+            "access_control_allow_private_network": true
+        }
     ],
     "experimental": {
-        "cache_file": {"enabled": true,"store_fakeip": true,"store_dns": true},
-        "clash_api": {"default_mode": "🔀 Rule","external_controller": "127.0.0.1:9090","external_ui": "ui","external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip","external_ui_download_detour": "🖲 Proxy"}
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": true,
+            "store_dns": true
+        },
+        "clash_api": {
+            "default_mode": "🔀 Rule",
+            "external_controller": "127.0.0.1:9090",
+            "external_ui": "ui",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+            "external_ui_download_detour": "🖲 Proxy"
+        }
     },
     "inbounds": [
-        {"type": "mixed","tag": "mixed","listen": "127.0.0.1","listen_port": 7080,"set_system_proxy": false},
+        {
+            "type": "mixed",
+            "tag": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 7080,
+            "set_system_proxy": false
+        },
         {
             "type": "tun",
             "tag": "tun",
             "address": ["172.18.0.1/30","fdfe:dcba:9876::1/126"],
             "platform": {
-                "http_proxy": {"enabled": true,"server": "127.0.0.1","server_port": 7080}
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 7080
+                }
             },
             "stack": "mixed",
             "strict_route": true,
