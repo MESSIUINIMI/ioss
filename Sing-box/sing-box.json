@@ -1,74 +1,37 @@
 {
     "$schema": "https://sing-box.sagernet.org/schema.json",
     "dns": {
-      "servers": [
-          {"tag": "hosts_fix","type":
-  "hosts","predefined": {
-              "dns.alidns.com":
-  ["223.5.5.5","223.6.6.6"],
-              "doh.pub":
-  ["1.12.12.21","120.53.53.53"],
-              "dns.google":
-  ["8.8.8.8","8.8.4.4"],
-              "cloudflare-dns.com":
-  ["1.1.1.1","1.0.0.1"]
-          }},
-          {"tag": "AQUIC","type":
-  "quic","server": "223.6.6.6","server_port":
-  853},
-          {"tag": "TDOH","type":
-  "https","server": "doh.pub","server_port":
-  443,"path": "/dns-query","domain_resolver":
-  {"server": "hosts_fix"}},
-          {"tag": "AH3","type": "h3","server":
-  "dns.alidns.com","server_port": 443,"path":
-  "/dns-query","domain_resolver": {"server":
-  "hosts_fix"}},
-          {"tag": "GH3","type": "h3","server":
-  "dns.google","server_port": 443,"path":
-  "/dns-query","domain_resolver": {"server":
-  "hosts_fix"},"detour": "🖲 Proxy"},
-          {"tag": "CH3","type": "h3","server":
-  "cloudflare-dns.com","server_port":
-  443,"path": "/dns-query","domain_resolver":
-  {"server": "hosts_fix"},"detour": "🖲 Proxy"},
-          {"tag": "Fakeip","type":
-  "fakeip","inet4_range":
-  "198.18.0.0/15","inet6_range": "fc00::/18"},
-          {"tag": "local","type":
-  "local","neighbor_domain": [".local",".lan"]}
-      ],
-      "rules": [
-          {"rule_set": ["Ads_SukkaW","category-h
-  ttpdns-cn@ads"],"action": "reject"},
-          {"query_type": "HTTPS","action":
-  "reject"},
-          {"domain_suffix": ["lancache.steamcont
-  ent.com","10099.com.cn","msftconnecttest.com",
-  "msftncsi.com","local","lan","home","internal"
-  ,"corp","example.com"],"server": "local"},
-          {"query_type": ["A","AAAA"],"action":
-  "route","server": "Fakeip","rewrite_ttl": 1},
-          {"clash_mode": "🌍 Global","action":
-  "route","server": "Fakeip"},
-          {"clash_mode": "❌ Direct","action":
-  "route","server": "local"},
-          {"rule_set":
-  ["geolocation-cn","cn"],"action":
-  "evaluate","server": "AQUIC","tag": "aquic"},
-          {"rule_set":
-  ["geolocation-cn","cn"],"action":
-  "evaluate","server": "TDOH","tag": "tdoh"},
-          {"rule_set":
-  ["geolocation-cn","cn"],"match_response":
-  "aquic","response_rcode": "NOERROR","action":
-  "respond","race": true},
-          {"rule_set":
-  ["geolocation-cn","cn"],"match_response":
-  "tdoh","response_rcode": "NOERROR","action":
-      "reverse_mapping": true,
-      "optimistic": true,
-      "final": "GH3"
+        "servers": [
+            {"tag": "hosts_fix","type": "hosts","predefined": {
+                "dns.alidns.com": ["223.5.5.5","223.6.6.6"],
+                "doh.pub": ["1.12.12.21","120.53.53.53"],
+                "dns.google": ["8.8.8.8","8.8.4.4"],
+                "cloudflare-dns.com": ["1.1.1.1","1.0.0.1"]
+            }},
+            {"tag": "AQUIC","type": "quic","server": "223.6.6.6","server_port": 853},
+            {"tag": "TDOH","type": "https","server": "doh.pub","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"}},
+            {"tag": "AH3","type": "h3","server": "dns.alidns.com","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"}},
+            {"tag": "GH3","type": "h3","server": "dns.google","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"},"detour": "🖲 Proxy"},
+            {"tag": "CH3","type": "h3","server": "cloudflare-dns.com","server_port": 443,"path": "/dns-query","domain_resolver": {"server": "hosts_fix"},"detour": "🖲 Proxy"},
+            {"tag": "Fakeip","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"},
+            {"tag": "local","type": "local","neighbor_domain": [".local",".lan"]}
+        ],
+        "rules": [
+            {"rule_set": ["Ads_SukkaW","category-httpdns-cn@ads"],"action": "reject"},
+            {"query_type": "HTTPS","action": "reject"},
+            {"domain_suffix": ["lancache.steamcontent.com","10099.com.cn","msftconnecttest.com","msftncsi.com","local","lan","home","internal","corp","example.com"],"server": "local"},
+            {"query_type": ["A","AAAA"],"action": "route","server": "Fakeip","rewrite_ttl": 1},
+            {"clash_mode": "🌍 Global","action": "route","server": "Fakeip"},
+            {"clash_mode": "❌ Direct","action": "route","server": "AQUIC"},
+            {"rule_set": ["geolocation-!cn"],"action": "route","server": "GH3"},
+            {"rule_set": ["geolocation-cn","cn"],"action": "evaluate","server": "AQUIC","tag": "aquic"},
+            {"rule_set": ["geolocation-cn","cn"],"action": "evaluate","server": "TDOH","tag": "tdoh"},
+            {"rule_set": ["geolocation-cn","cn"],"match_response": "aquic","response_rcode": "NOERROR","action": "respond","race": true},
+            {"rule_set": ["geolocation-cn","cn"],"match_response": "tdoh","response_rcode": "NOERROR","action": "respond","race": true}
+        ],
+        "reverse_mapping": true,
+        "optimistic": true,
+        "final": "GH3"
   },
     "outbounds": [
         {"tag": "🖲 Proxy","type": "selector","outbounds": ["🇭🇰 HK","🇺🇸 US","🇸🇬 SG","🇯🇵 JP","🇹🇼 TW","🇰🇷 KR","🇬🇧 UK","🇩🇪 DE","🇫🇷 FR","🇦🇺 AU","🇧🇷 BR","🇮🇳 IN","🇳🇱 NL","🇨🇦 CA","🇹🇷 TR","🇿🇦 ZA","🧐 Select"],"default": "🇺🇸 US","interrupt_exist_connections": true},
