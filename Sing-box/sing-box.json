@@ -162,10 +162,9 @@
             "listen": "127.0.0.1",
             "listen_port": 9292,
             "access_control_allow_origin": [
-                "http://sing-box-dashboard.sagernet.org",
-                "https://sing-box-dashboard.sagernet.org",
-                "http://dash.sing-box.app",
-                "https://dash.sing-box.app"
+                "http://sing-box-dashboard.sagernet.org",              
+                "http://dash.sing-box.app"
+                
             ],
             "access_control_allow_private_network": true
         }
