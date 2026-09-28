@@ -240,7 +240,6 @@
 -.gamer-cds.cdn.hinet.net
 -.gamer2-cds.cdn.hinet.net
 -.gigabyte2.azureedge.net
--.github-api.arkoselabs.com
 -.github-cloud.s3.amazonaws.com
 -.github-production-release-asset-2e65be.s3.amazonaws.com
 -.github-production-repository-file-5c1aeb.s3.amazonaws.com
@@ -779,6 +778,7 @@
 -.d2wy8f7a9ursnm.cloudfront.net
 -.d36jcksde1wxzq.cloudfront.net
 -.developer.apple.com
+-.github-api.arkoselabs.com
 -.lens.l.google.com
 -.location.microsoft.com
 -.login.microsoftonline.com
@@ -2805,7 +2805,6 @@
 *.applecomputerinc.info
 *.applecomputers.co.nz
 *.applecoronavirus.com
-*.appledaily.hk
 *.appledarwin.com
 *.appledarwin.net
 *.appleenews.com
@@ -8364,15 +8363,6 @@
 *.drns.ac.uk
 *.drobbox.pro
 *.drom.ru
-*.dropbox-dns.com
-*.dropbox.tech
-*.dropboxbusiness.com
-*.dropboxcaptcha.com
-*.dropboxforum.com
-*.dropboxforums.com
-*.dropboxinsiders.com
-*.dropboxmail.com
-*.dropboxpartners.com
 *.drpc.org
 *.drunk6.com
 *.drunkenstepfather.com
@@ -9650,7 +9640,6 @@
 *.facebook-texas-holdem.net
 *.facebook.ca
 *.facebook.cc
-*.facebook.org
 *.facebook.shop
 *.facebook.tv
 *.facebook.us
@@ -9668,7 +9657,6 @@
 *.facebookatschool.com
 *.facebookawards.com
 *.facebookblueprint.net
-*.facebookbrand.com
 *.facebookbrand.net
 *.facebookcanadianelectionintegrityinitiative.com
 *.facebookcareer.com
@@ -11099,7 +11087,6 @@
 *.getcomposer.org
 *.getdirect.tv
 *.getdrebeatssale.com
-*.getdropbox.com
 *.getfappy.com
 *.getfedora.org
 *.getfiddler.com
@@ -11220,17 +11207,7 @@
 *.gisplanning.com
 *.git-scm.com
 *.gitgud.io
-*.github.ai
-*.github.career
-*.github.community
-*.github.dev
 *.github1s.com
-*.githubhackathon.com
-*.githubnext.com
-*.githubpreview.dev
-*.githubstatus.com
-*.githubsupport.com
-*.githubuniverse.com
 *.gitlab-static.net
 *.gitstar.com
 *.gitstar.net
@@ -11449,12 +11426,10 @@
 *.google-syndication.com
 *.google.berlin
 *.google.co
-*.google.net
 *.google.ventures
 *.googleacquisitionmigration.com
 *.googleadapis.com
 *.googleadservices-cn.com
-*.googleadservices.com
 *.googleapis-cn.com
 *.googleapps-cn.com
 *.googlecapital.com
@@ -11462,16 +11437,12 @@
 *.googlecompare.co.uk
 *.googledanmark.com
 *.googlee.com
-*.googlefiber.com
 *.googlefinland.com
 *.googleflights-cn.net
-*.googlemaps.com
 *.googleoptimize-cn.com
 *.googleoptimize.com
-*.googlephotos.com
 *.googleplex.com
 *.googlescholar.comusa
-*.googlestore.com
 *.googlesverige.com
 *.googlesyndication-cn.com
 *.googletagmanager-cn.com
@@ -20788,7 +20759,6 @@
 *.qmzdd.com
 *.qnap.com
 *.qnapsupport.net
-*.qobuz.com
 *.qombol.com
 *.qoo-app.com
 *.qoo10.jp
@@ -24187,10 +24157,8 @@
 *.terragraph.com
 *.terrapeak.com
 *.terrlficdates.com
-*.tesla.com
 *.tesla.services
 *.teslaenergy.services
-*.teslamotors.com
 *.teslazta.net
 *.test-ipv6.alpinedc.ch
 *.test-ipv6.arauc.br
@@ -24314,7 +24282,6 @@
 *.thegatewaypundit.com
 *.thegayoffice.com
 *.thegeorgiascene.com
-*.thegithubshop.com
 *.theglobalsite.ac.uk
 *.thegooglestore.com
 *.thegraduationproject.ac.uk
@@ -24980,12 +24947,6 @@
 *.twitchcon.com
 *.twitchsvc.net
 *.twitcomike.jp
-*.twitter.biz
-*.twittercommunity.com
-*.twitterflightschool.com
-*.twitterinc.com
-*.twitteroauth.com
-*.twitterstat.us
 *.twlegs.com
 *.twline5.com
 *.twnextdigital.com
@@ -26664,7 +26625,6 @@
 *.whatsapp.info
 *.whatsapp.org
 *.whatsapp.tv
-*.whatsappbrand.com
 *.whatscotlandthinks.ac.uk
 *.whatthefox.com
 *.whatworksscotland.ac.uk
@@ -28580,7 +28540,6 @@
 *.abebooks.co.uk
 *.abebooks.com
 *.ablwang.com
-*.about.google
 *.about.me
 *.abpchina.org
 *.abplive.com
@@ -28607,6 +28566,7 @@
 *.adblockplus.org
 *.adcex.com
 *.addictedtocoffee.de
+*.addtodropbox.com
 *.addyoutube.com
 *.adelaidebbs.com
 *.adguard-vpn.com
@@ -28637,7 +28597,6 @@
 *.ai-kan.net
 *.ai-wen.net
 *.ai.dev
-*.ai.google
 *.ai.studio
 *.aihub.top
 *.aiosearch.com
@@ -28820,6 +28779,7 @@
 *.appledaily.com
 *.appledaily.com.hk
 *.appledaily.com.tw
+*.appledaily.hk
 *.appshopper.com
 *.appsocks.net
 *.appspot-preview.com
@@ -29121,7 +29081,6 @@
 *.blocktempo.com
 *.blog.com
 *.blog.de
-*.blog.google
 *.blog.jp
 *.blogblog.com
 *.blogcdn.com
@@ -29331,6 +29290,7 @@
 *.c-span.org
 *.c-spanvideo.org
 *.c.gle
+*.c.go-mpulse.net
 *.c.mi.com
 *.c100tibet.org
 *.c2cx.com
@@ -29571,7 +29531,6 @@
 *.chrlawyers.hk
 *.chrome.com
 *.chromecast.com
-*.chromeenterprise.google
 *.chromeexperiments.com
 *.chromercise.com
 *.chromestatus.com
@@ -29691,7 +29650,6 @@
 *.colacloud.net
 *.collateralmurder.com
 *.collateralmurder.org
-*.com.google
 *.comedycentral.com
 *.comefromchina.com
 *.comic-mega.me
@@ -29740,7 +29698,6 @@
 *.creaders.net
 *.creadersnet.com
 *.creativelab5.com
-*.crisisresponse.google
 *.crisp.chat
 *.cristyli.com
 *.crittercism.com
@@ -29892,7 +29849,6 @@
 *.deno.dev
 *.depositphotos.com
 *.desc.se
-*.design.google
 *.desipro.de
 *.deskconnect.com
 *.dessci.com
@@ -29962,7 +29918,6 @@
 *.dmm.com
 *.dns-dns.com
 *.dns-stuff.com
-*.dns.google
 *.dns.sb
 *.dns04.com
 *.dns05.com
@@ -29990,7 +29945,6 @@
 *.dolf.org.hk
 *.dollf.com
 *.domain.club.tw
-*.domains.google
 *.domaintoday.com.au
 *.donga.com
 *.dongtaiwang.net
@@ -30033,9 +29987,21 @@
 *.drmingxia.org
 *.dronedj.com
 *.dropbooks.tv
+*.dropbox-dns.com
 *.dropbox.com
+*.dropbox.tech
 *.dropboxapi.com
+*.dropboxbusiness.com
+*.dropboxcaptcha.com
+*.dropboxexperiment.com
+*.dropboxforum.com
+*.dropboxforums.com
+*.dropboxinsiders.com
+*.dropboxlegal.com
+*.dropboxmail.com
+*.dropboxpartners.com
 *.dropboxstatic.com
+*.dropboxteam.com
 *.dropboxusercontent.com
 *.droplr.com
 *.drsunacademy.com
@@ -30184,7 +30150,6 @@
 *.entermap.com
 *.entnt.com
 *.entrust.net
-*.environment.google
 *.epac.to
 *.episcopalchurch.org
 *.epochhk.com
@@ -30286,7 +30251,9 @@
 *.facebook.in
 *.facebook.net
 *.facebook.nl
+*.facebook.org
 *.facebook.se
+*.facebookbrand.com
 *.facebookmail.com
 *.facebookquotes4u.com
 *.faceless.me
@@ -30737,6 +30704,7 @@
 *.getchu.com
 *.getcloak.com
 *.getcloudapp.com
+*.getdropbox.com
 *.getfoxyproxy.org
 *.getfreedur.com
 *.getgom.com
@@ -30793,13 +30761,23 @@
 *.gitbook.io
 *.gitbooks.io
 *.githack.com
+*.github.ai
 *.github.blog
+*.github.career
 *.github.com
+*.github.community
+*.github.dev
 *.github.io
 *.githubapp.com
 *.githubassets.com
 *.githubcopilot.com
+*.githubhackathon.com
 *.githubmemory.com
+*.githubnext.com
+*.githubpreview.dev
+*.githubstatus.com
+*.githubsupport.com
+*.githubuniverse.com
 *.githubusercontent.com
 *.gitlab.com
 *.gitlab.io
@@ -30885,6 +30863,7 @@
 *.goodtv.com.tw
 *.goodtv.tv
 *.goofind.com
+*.google
 *.google-analytics.com
 *.google.ac
 *.google.ad
@@ -31077,6 +31056,7 @@
 *.google.mw
 *.google.mx
 *.google.ne
+*.google.net
 *.google.nl
 *.google.no
 *.google.nr
@@ -31113,6 +31093,7 @@
 *.google.vn
 *.google.vu
 *.google.ws
+*.googleadservices.com
 *.googleanalytics.com
 *.googleapis.com
 *.googleapps.com
@@ -31126,6 +31107,7 @@
 *.googledomains.com
 *.googledrive.com
 *.googleearth.com
+*.googlefiber.com
 *.googlefiber.net
 *.googlegroups.com
 *.googlehosted.com
@@ -31133,13 +31115,16 @@
 *.googleinsidesearch.com
 *.googlelabs.com
 *.googlemail.com
+*.googlemaps.com
 *.googlemashups.com
 *.googlepagecreator.com
+*.googlephotos.com
 *.googleplay.com
 *.googleplus.com
 *.googlescholar.com
 *.googlesile.com
 *.googlesource.com
+*.googlestore.com
 *.googleusercontent.com
 *.googlevideo.com
 *.googleweblight.com
@@ -31193,7 +31178,6 @@
 *.grokipedia.com
 *.grotty-monday.com
 *.ground.news
-*.grow.google
 *.gs-discuss.com
 *.gsearch.media
 *.gstatic.com
@@ -32053,7 +32037,6 @@
 *.lenwhite.com
 *.leonardo.ai
 *.lerosua.org
-*.lers.google
 *.lesoir.be
 *.lester850.info
 *.letou.com
@@ -32732,7 +32715,6 @@
 *.nhk-ondemand.jp
 *.nhncorp.jp
 *.nianticlabs.com
-*.nic.google
 *.nic.gov
 *.nicoseiga.jp
 *.nicovideo.jp
@@ -33273,7 +33255,6 @@
 *.president.ir
 *.presidentlee.tw
 *.prestige-av.com
-*.pride.google
 *.primevideo.com
 *.printfriendly.com
 *.prism-break.org
@@ -33374,6 +33355,7 @@
 *.qiwen.lu
 *.qkshare.com
 *.qmp4.com
+*.qobuz.com
 *.qoos.com
 *.qpoe.com
 *.qq.co.za
@@ -33484,7 +33466,6 @@
 *.redtube.com
 *.referer.us
 *.reflectivecode.com
-*.registry.google
 *.reimu.net
 *.relaxbbs.com
 *.relay.com.tw
@@ -33493,7 +33474,6 @@
 *.religioustolerance.org
 *.rentry.co
 *.renyurenquan.org
-*.research.google
 *.resilio.com
 *.resistchina.org
 *.restofworld.org
@@ -33596,7 +33576,6 @@
 *.safechat.com
 *.safeguarddefenders.com
 *.safervpn.com
-*.safety.google
 *.sagernet.org
 *.saintyculture.com
 *.saiq.me
@@ -34018,7 +33997,6 @@
 *.stoporganharvesting.org
 *.stoptibetcrisis.net
 *.storagenewsletter.com
-*.stories.google
 *.storify.com
 *.storj.io
 *.storm.mg
@@ -34078,7 +34056,6 @@
 *.surge.run
 *.suroot.com
 *.surrenderat20.net
-*.sustainability.google
 *.suyangg.com
 *.suyingtv.com
 *.svsfx.com
@@ -34233,6 +34210,8 @@
 *.terabox.com
 *.teraboxcdn.com
 *.terobox.com
+*.tesla.com
+*.teslamotors.com
 *.tew.org
 *.textnow.com
 *.textnow.me
@@ -34266,6 +34245,7 @@
 *.thefrontier.hk
 *.thegay.com
 *.thegioitinhoc.vn
+*.thegithubshop.com
 *.thegly.com
 *.theguardian.com
 *.thehansindia.com
@@ -34686,15 +34666,21 @@
 *.twitpic.com
 *.twitstat.com
 *.twittbot.net
+*.twitter.biz
 *.twitter.com
 *.twitter.jp
 *.twitter4j.org
+*.twittercommunity.com
 *.twittercounter.com
 *.twitterfeed.com
+*.twitterflightschool.com
 *.twittergadget.com
+*.twitterinc.com
 *.twitterkr.com
 *.twittermail.com
+*.twitteroauth.com
 *.twitterrific.com
+*.twitterstat.us
 *.twittertim.es
 *.twitthat.com
 *.twitturk.com
@@ -34879,6 +34865,7 @@
 *.vansky.com
 *.vaticannews.va
 *.vatn.org
+*.vava8.com
 *.vbstatic.co
 *.vcf-online.org
 *.vcfbuilder.org
@@ -35137,6 +35124,7 @@
 *.whats.new
 *.whatsapp.com
 *.whatsapp.net
+*.whatsappbrand.com
 *.whatsonweibo.com
 *.wheatseeds.org
 *.wheelockslatin.com
