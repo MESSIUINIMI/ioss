@@ -1,11 +1,11 @@
 # from https://github.com/Repcz/Tool/blob/X/.github/workflows/Build.yml
 #
-# Final Workflow with Prioritized, Lossless Deduplication
+# Final Workflow with Multi-Client Lossless Ad Rules Compilation
 #
 name: Build
 on:
-  workflow_dispatch:  # Allows manual triggering
-  schedule:           # Triggers the workflow on a schedule
+  workflow_dispatch:  # 允许手动触发
+  schedule:           # 定时触发
     - cron: "5 0,12 * * *"
 
 jobs:
@@ -14,16 +14,17 @@ jobs:
     env:
       TZ: "Asia/Shanghai"
       SING_BOX_VERSION: "1.10.5"
+      MIHOMO_VERSION: "1.19.30"
 
     steps:
-    # Step 1: Checkout the repository code
+    # Step 1: 检出 ioss 仓库代码
     - name: Checkout ioss Repository
       uses: actions/checkout@v4
       with:
         repository: MESSIUINIMI/ioss
         path: ioss-repo
 
-    # Step 2: Download all rule files
+    # Step 2: 集中下载所有上游源规则
     - name: Download All Source Rules
       run: |
         mkdir -p ioss-repo/Ruleset
@@ -48,85 +49,353 @@ jobs:
           "adguard_filter_1.txt https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt"
           "neodev_adblocker.txt https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker"
           "cats_dns.txt https://raw.githubusercontent.com/Cats-Team/AdRules/main/dns.txt"
+          # --- Multi-client Ad Blacklist Sources ---
+          "category-ads-all.raw https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.list"
+          "Ads_SukkaW.raw https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Ads_SukkaW.list"
+          "Advertising.raw https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.list"
         )
         for item in "${files[@]}"; do
           set -- $item
           echo "Downloading: $1 from $2"
-          curl -A "Mozilla/5.0" --connect-timeout 15 -f -L -o "ioss-repo/Ruleset/$1" "$2" || { echo "Download failed: $2"; exit 1; }
+          curl -A "Mozilla/5.0" --connect-timeout 20 --retry 3 -f -sL -o "ioss-repo/Ruleset/$1" "$2" || { echo "Download failed: $2"; exit 1; }
         done
         echo "All source files downloaded successfully."
 
-    # Step 3: Process SmartDNS rules
+    # Step 3: 处理 SmartDNS 规则（语法翻译、单文件去重、conf 深度子域剪枝与纯域名列表导出）
     - name: Process SmartDNS Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-        echo "Processing *.list files..."
+        echo "Processing *.list files with syntax translation and deduplication..."
         for file in "$SRC_DIR"/*.list; do
           if [[ ! -f "$file" || ! -s "$file" ]]; then continue; fi
           TEMP_FILE="$file.tmp"
           case "$(basename "$file")" in
-            "apple-cn.list") grep '^full:' "$file" | awk -F ':' '{print "-." $2}' > "$TEMP_FILE";;
-            "ChinaIPs.list") grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub("IP-CIDR,|IP6-CIDR,", ""); print "blacklist-ip " $1 }' > "$TEMP_FILE";;
-            *) grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ if ($1 == "HOST") print "-." $2; else if ($1 == "HOST-SUFFIX") print "*." $2 }' > "$TEMP_FILE";;
+            "apple-cn.list") 
+              grep '^full:' "$file" | awk -F ':' '{ gsub(/[ \t\r]/, "", $2); if ($2) print "-." $2 }' | awk '!seen[$0]++' > "$TEMP_FILE"
+              ;;
+            "ChinaIPs.list") 
+              grep -E '^IP-CIDR|^IP6-CIDR' "$file" | awk -F ',' '{ gsub(/[ \t\r]/, "", $2); if ($2) print "blacklist-ip " $2 }' | awk '!seen[$0]++' > "$TEMP_FILE"
+              ;;
+            *) 
+              grep -E '^HOST|^HOST-SUFFIX' "$file" | awk -F ',' '{ gsub(/[ \t\r]/, "", $2); if ($1 == "HOST") print "-." $2; else if ($1 == "HOST-SUFFIX") print "*." $2 }' | awk '!seen[$0]++' > "$TEMP_FILE"
+              ;;
           esac
           if [[ -s "$TEMP_FILE" ]]; then mv "$TEMP_FILE" "$file"; else rm -f "$TEMP_FILE"; fi
         done
 
-        echo "Generating merged .conf and .list files..."
-        CONF_MERGED="$SRC_DIR/Adrulesnoedevhost.conf"
-        LIST_MERGED="$SRC_DIR/Adrulesnoedevhost.list"
-        awk 'BEGIN { FS = "/" } NR==FNR { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } next } { if ($0 ~ /^address \// && !seen[$2]++) { lines[$2] = $0 } } END { for (domain in lines) { print lines[domain] } }' "$SRC_DIR/Adrules.conf" "$SRC_DIR/neodevhost.conf" | sort > "$CONF_MERGED"
-        awk -F'/' '{print $2}' "$CONF_MERGED" > "$LIST_MERGED"
-        echo "Generated merged files successfully."
+        echo "Generating merged SmartDNS conf and domain-list with Subdomain Pruning..."
+        python3 - << 'EOF'
+        import os
+
+        src_dir = "ioss-repo/Ruleset"
+        conf_files = [os.path.join(src_dir, "Adrules.conf"), os.path.join(src_dir, "neodevhost.conf")]
         
-    # Step 4: Process AdGuard Home rules with prioritized deduplication
+        domains = set()
+        for cfile in conf_files:
+            if not os.path.exists(cfile):
+                continue
+            with open(cfile, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("address /") and line.endswith("/#"):
+                        parts = line.split('/')
+                        if len(parts) >= 3:
+                            d = parts[1].strip().lower().strip('.')
+                            if d and not d.split('.')[-1].isdigit():
+                                domains.add(d)
+
+        # SmartDNS 的 address /domain/# 自动包含子域，父域存在时安全剪枝子域
+        sorted_domains = sorted(domains, key=lambda x: (x.count('.'), len(x)))
+        minimal_domains = set()
+        for d in sorted_domains:
+            parts = d.split('.')
+            is_sub = False
+            for i in range(1, len(parts)):
+                parent = '.'.join(parts[i:])
+                if parent in minimal_domains:
+                    is_sub = True
+                    break
+            if not is_sub:
+                minimal_domains.add(d)
+
+        final_sorted = sorted(minimal_domains)
+        with open("ioss-repo/Ruleset/Adrulesnoedevhost.conf", "w", encoding="utf-8") as f_conf, \
+             open("ioss-repo/Ruleset/Adrulesnoedevhost.list", "w", encoding="utf-8") as f_list:
+            for d in final_sorted:
+                f_conf.write(f"address /{d}/#\n")
+                f_list.write(f"{d}\n")
+        EOF
+
+        echo "Generated Adrulesnoedevhost.conf and Adrulesnoedevhost.list successfully."
+
+    # Step 4: 处理 AdGuard Home 规则（标准黑名单树形剪枝，严格保留所有白名单与修饰符）
     - name: Process AdGuard Home Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
-        
-        echo "Merging AdGuard Home rules with strict priority and no modification..."
-        
-        # 核心逻辑: 使用 awk 按顺序处理文件，只添加新行，不修改任何内容
-        awk '!seen[$0]++' \
-          "$SRC_DIR/cats_dns.txt" \
-          "$SRC_DIR/neodev_adblocker.txt" \
-          "$SRC_DIR/adguard_filter_1.txt" \
-          > "$SRC_DIR/Adset.txt"
-        
+        echo "Merging and pruning AdGuard Home rules safely..."
+
+        python3 - << 'EOF'
+        import os
+
+        src_dir = "ioss-repo/Ruleset"
+        adg_files = [
+            os.path.join(src_dir, "cats_dns.txt"),
+            os.path.join(src_dir, "neodev_adblocker.txt"),
+            os.path.join(src_dir, "adguard_filter_1.txt")
+        ]
+
+        standard_block = set()
+        other_rules = []
+        seen_other = set()
+
+        for fpath in adg_files:
+            if not os.path.exists(fpath):
+                continue
+            with open(fpath, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith('!') or line.startswith('#'):
+                        continue
+                    
+                    if line.startswith('||') and line.endswith('^') and '$' not in line:
+                        d = line[2:-1].strip().lower().strip('.')
+                        if d and not d.split('.')[-1].isdigit():
+                            standard_block.add(d)
+                    else:
+                        if line not in seen_other:
+                            seen_other.add(line)
+                            other_rules.append(line)
+
+        # 树形剪枝去重
+        sorted_block = sorted(standard_block, key=lambda x: (x.count('.'), len(x)))
+        minimal_block = set()
+        for d in sorted_block:
+            parts = d.split('.')
+            is_sub = False
+            for i in range(1, len(parts)):
+                parent = '.'.join(parts[i:])
+                if parent in minimal_block:
+                    is_sub = True
+                    break
+            if not is_sub:
+                minimal_block.add(d)
+
+        with open("ioss-repo/Ruleset/Adset.txt", "w", encoding="utf-8") as out:
+            # 1. 优先写入特权规则与白名单 (保证 AdGuard 匹配优先级)
+            for r in other_rules:
+                out.write(f"{r}\n")
+            # 2. 写入深度剪枝去重后的标准黑名单
+            for d in sorted(minimal_block):
+                out.write(f"||{d}^\n")
+        EOF
+
         echo "Generated Adset.txt successfully."
-        echo "Final Adset.txt total line count:"
         wc -l "$SRC_DIR/Adset.txt"
 
-    # Step 5: Deploy all final rules
-    - name: Deploy All Final Rules
+    # Step 5: 部署 SmartDNS 与 AdGuard Home 规则
+    - name: Deploy SmartDNS and AdGuard Home Rules
       run: |
         set -e
         SRC_DIR="ioss-repo/Ruleset"
         
-        # Deploy SmartDNS Rules
         SMARTDNS_DEST_DIR="ioss-repo/Smartdns/Rules"
-        echo "Deploying final SmartDNS rules to $SMARTDNS_DEST_DIR"
         rm -rf "$SMARTDNS_DEST_DIR"
         mkdir -p "$SMARTDNS_DEST_DIR"
         cp "$SRC_DIR"/*.list "$SMARTDNS_DEST_DIR/"
         cp "$SRC_DIR/Adrulesnoedevhost.conf" "$SMARTDNS_DEST_DIR/"
         
-        # Deploy AdGuard Home Rules
         ADG_DEST_DIR="ioss-repo/AdGuardHome/Rule"
-        echo "Deploying final AdGuard Home rules to $ADG_DEST_DIR"
         rm -rf "$ADG_DEST_DIR"
         mkdir -p "$ADG_DEST_DIR"
         cp "$SRC_DIR/Adset.txt" "$ADG_DEST_DIR/"
+
+    # Step 6: 广告三源去重剪枝，适配并生成各客户端专属规则
+    - name: Process and Generate Rules for All Clients
+      run: |
+        set -e
+        SRC_DIR="ioss-repo/Ruleset"
+
+        echo "Installing Mihomo Core..."
+        curl -sL -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/v${MIHOMO_VERSION}/mihomo-linux-amd64-compatible-v${MIHOMO_VERSION}.gz"
+        gzip -d mihomo.gz
+        chmod +x mihomo
+        sudo mv mihomo /usr/local/bin/mihomo
+        mihomo -v
+
+        echo "Parsing, deduplicating, and formatting for all target clients..."
+        python3 - << 'EOF'
+        import sys, os, re, json
+
+        suffixes = set()
+        fulls = set()
+        DOMAIN_REGEX = re.compile(r'^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-_]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z0-9-_]{1,63}$')
+
+        def is_ip(d):
+            return d.split('.')[-1].isdigit()
+
+        def clean_domain(d):
+            d = d.strip().lower().strip("'\"")
+            d = re.sub(r'^https?://', '', d)
+            d = d.split('/')[0].split(':')[0]
+            return d.strip('.')
+
+        files = [
+            "ioss-repo/Ruleset/category-ads-all.raw",
+            "ioss-repo/Ruleset/Ads_SukkaW.raw",
+            "ioss-repo/Ruleset/Advertising.raw"
+        ]
+
+        total_raw = 0
+        for fpath in files:
+            if not os.path.exists(fpath):
+                print(f"Warning: File not found {fpath}")
+                continue
+            with open(fpath, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith('#') or line.startswith('//'):
+                        continue
+                    if '#' in line:
+                        line = line.split('#')[0].strip()
+                    total_raw += 1
+
+                    # 1. Classical 格式 (DOMAIN-SUFFIX / DOMAIN)
+                    if ',' in line:
+                        parts = [p.strip() for p in line.split(',')]
+                        rtype = parts[0].upper()
+                        if len(parts) >= 2:
+                            target = clean_domain(parts[1])
+                            if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                                if rtype in ('DOMAIN-SUFFIX', 'HOST-SUFFIX'):
+                                    suffixes.add(target)
+                                elif rtype in ('DOMAIN', 'HOST'):
+                                    fulls.add(target)
+                        continue
+
+                    # 2. Geosite 格式 (domain: / full:)
+                    if line.startswith('domain:'):
+                        target = clean_domain(line[7:])
+                        if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                            suffixes.add(target)
+                        continue
+                    elif line.startswith('full:'):
+                        target = clean_domain(line[5:])
+                        if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                            fulls.add(target)
+                        continue
+
+                    # 3. Mihomo 文本格式 (+. / .)
+                    if line.startswith('+.'):
+                        target = clean_domain(line[2:])
+                        if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                            suffixes.add(target)
+                        continue
+                    elif line.startswith('.'):
+                        target = clean_domain(line[1:])
+                        if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                            suffixes.add(target)
+                        continue
+
+                    # 4. 单行纯域名格式
+                    token = line.split()[0].split('@')[0]
+                    target = clean_domain(token)
+                    if target and not is_ip(target) and DOMAIN_REGEX.match(target):
+                        suffixes.add(target)
+
+        print(f"Total raw lines: {total_raw}")
+
+        # 核心前缀剪枝去重
+        sorted_suffixes = sorted(suffixes, key=lambda x: (x.count('.'), len(x)))
+        minimal_suffixes = set()
+        for d in sorted_suffixes:
+            parts = d.split('.')
+            is_sub = False
+            for i in range(1, len(parts)):
+                parent = '.'.join(parts[i:])
+                if parent in minimal_suffixes:
+                    is_sub = True
+                    break
+            if not is_sub:
+                minimal_suffixes.add(d)
+
+        minimal_fulls = set()
+        for d in fulls:
+            parts = d.split('.')
+            is_covered = False
+            for i in range(len(parts)):
+                parent = '.'.join(parts[i:])
+                if parent in minimal_suffixes:
+                    is_covered = True
+                    break
+            if not is_covered:
+                minimal_fulls.add(d)
+
+        sorted_final_suffixes = sorted(minimal_suffixes)
+        sorted_final_fulls = sorted(minimal_fulls)
+
+        print(f"Optimized suffixes: {len(sorted_final_suffixes)}, exact domains: {len(sorted_final_fulls)}")
+
+        # ==================== 1. Mihomo (.list) ====================
+        # 原生 domain 格式输出：泛域名以 "+." 开头，精确域名为纯文本
+        mihomo_path = "ioss-repo/Mihomo/Rules/Ad.list"
+        os.makedirs(os.path.dirname(mihomo_path), exist_ok=True)
+        with open(mihomo_path, "w", encoding="utf-8") as f:
+            for d in sorted_final_suffixes:
+                f.write(f"+.{d}\n")
+            for d in sorted_final_fulls:
+                f.write(f"{d}\n")
+
+        # ==================== 2. Surge / Loon / Shadowrocket (.list) ====================
+        classical_lines = []
+        for d in sorted_final_suffixes:
+            classical_lines.append(f"DOMAIN-SUFFIX,{d}\n")
+        for d in sorted_final_fulls:
+            classical_lines.append(f"DOMAIN,{d}\n")
+        classical_content = "".join(classical_lines)
+
+        for dest_path in [
+            "ioss-repo/Surge/rule/Ad.list",
+            "ioss-repo/Loon/rule/Ad.list",
+            "ioss-repo/Shadowrocket/rule/Ad.list"
+        ]:
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            with open(dest_path, "w", encoding="utf-8") as f:
+                f.write(classical_content)
+
+        # ==================== 3. Quantumult X (.list) ====================
+        qx_lines = []
+        for d in sorted_final_suffixes:
+            qx_lines.append(f"HOST-SUFFIX,{d},reject\n")
+        for d in sorted_final_fulls:
+            qx_lines.append(f"HOST,{d},reject\n")
+        qx_path = "ioss-repo/QuantumultX/rule/Ad.list"
+        os.makedirs(os.path.dirname(qx_path), exist_ok=True)
+        with open(qx_path, "w", encoding="utf-8") as f:
+            f.write("".join(qx_lines))
+
+        # ==================== 4. Sing-box 标准 JSON 规则集 (.json) ====================
+        rule_item = {}
+        if sorted_final_suffixes:
+            rule_item["domain_suffix"] = sorted_final_suffixes
+        if sorted_final_fulls:
+            rule_item["domain"] = sorted_final_fulls
+
+        singbox_data = {
+            "version": 1,
+            "rules": [rule_item]
+        }
+        singbox_path = "ioss-repo/Sing-box/ruleset/Ad.json"
+        os.makedirs(os.path.dirname(singbox_path), exist_ok=True)
+        with open(singbox_path, "w", encoding="utf-8") as f:
+            json.dump(singbox_data, f, indent=2, ensure_ascii=False)
+        EOF
+
+        echo "Compiling Mihomo Ad.mrs directly from Ad.list..."
+        mihomo convert-ruleset domain text ioss-repo/Mihomo/Rules/Ad.list ioss-repo/Mihomo/Rules/Ad.mrs
         
-        echo "--- Verification ---"
-        echo "Contents of SmartDNS destination:"
-        ls -l "$SMARTDNS_DEST_DIR"
-        echo "Contents of AdGuard Home destination:"
-        ls -l "$ADG_DEST_DIR"
-        
-    # Step 6: Install and configure sing-box
+    # Step 7: 安装配置 sing-box，编译规则集并统一清理临时 Ruleset
     - name: Install and Configure sing-box
       run: |
         echo "Downloading and installing sing-box..."
@@ -136,13 +405,28 @@ jobs:
         sudo mv sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box /usr/local/bin/
         rm -rf sing-box.tar.gz sing-box-${SING_BOX_VERSION}-linux-amd64
         sing-box version
-        echo "Compiling .srs rule sets..."
+
+        echo "Compiling all .json rule sets to .srs (including Ad.json)..."
         for file in ioss-repo/Sing-box/ruleset/*.json; do
+            [ -f "$file" ] || continue
+            echo "Compiling: $file -> ${file%.json}.srs"
             sing-box rule-set compile "$file" -o "${file%.json}.srs"
         done
+
+        echo "Cleaning up temporary Ruleset workspace..."
         rm -rf ioss-repo/Ruleset
 
-    # Step 7: 将更新推送到 ioss 仓库
+        echo "=== Output Verification ==="
+        ls -lh ioss-repo/Mihomo/Rules/
+        ls -lh ioss-repo/Surge/rule/
+        ls -lh ioss-repo/Loon/rule/
+        ls -lh ioss-repo/Shadowrocket/rule/
+        ls -lh ioss-repo/QuantumultX/rule/
+        ls -lh ioss-repo/Sing-box/ruleset/
+        ls -lh ioss-repo/Smartdns/Rules/
+        ls -lh ioss-repo/AdGuardHome/Rule/
+
+    # Step 8: 将所有更新推送到 ioss 仓库
     - name: Commit and Push Updates
       run: |
         cd ioss-repo
@@ -156,7 +440,7 @@ jobs:
           echo "No changes to commit."
         fi
 
-    # Step 8: 清理历史 Workflow Runs
+    # Step 9: 清理历史 Workflow Runs
     - name: Cleanup Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
       with:
