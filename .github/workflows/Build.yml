@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: "Asia/Shanghai"
-      SING_BOX_VERSION: "1.10.5"
+      SING_BOX_VERSION: "1.14.2"
       MIHOMO_VERSION: "1.19.30"
 
     steps:
@@ -383,7 +383,7 @@ jobs:
             rule_item["domain"] = sorted_final_fulls
 
         singbox_data = {
-            "version": 1,
+            "version": 5,
             "rules": [rule_item]
         }
         singbox_path = "ioss-repo/Sing-box/ruleset/Ad.json"
