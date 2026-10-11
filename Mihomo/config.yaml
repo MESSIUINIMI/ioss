@@ -64,7 +64,7 @@ geo-update-interval: 24
 geox-url:
   geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
   geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://github.com/Loyalsoldier/geoip/raw/release/Country.mmdb"
+  mmdb: "https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb"
   asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 
 external-controller: 127.0.0.1:9090
