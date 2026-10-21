@@ -101,13 +101,14 @@ sniffer:
 
 tun:
   enable: true
-  stack: mixed
+  stack: mips
   dns-hijack:
     - any:53
     - tcp://any:53
   auto-detect-interface: true
   auto-route: true
   strict-route: true
+  congestion-controller: bbr3
 
 dns:
   enable: true
@@ -141,8 +142,11 @@ dns:
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query#h3=true
       - quic://223.6.6.6
-    'geosite:category-ads-all': rcode://success
     'rule-set:Ad': rcode://success
+    'rule-set:Global':
+    - https://8.8.8.8/dns-query#🖲 Proxy&h3=true
+    - https://1.1.1.1/dns-query#🖲 Proxy&h3=true
+    - tls://9.9.9.10:853#🖲 Proxy
 
   nameserver:
     - https://doh.pub/dns-query
@@ -152,7 +156,7 @@ dns:
   fallback:
     - https://8.8.8.8/dns-query#🖲 Proxy&h3=true
     - https://1.1.1.1/dns-query#🖲 Proxy&h3=true
-    - tls://9.9.9.10:853
+    - tls://9.9.9.10:853#🖲 Proxy
 
   proxy-server-nameserver:
     - https://doh.pub/dns-query
@@ -164,9 +168,6 @@ dns:
   fallback-filter:
     geoip: true
     geoip-code: CN
-    geosite:
-      - gfw
-      - geolocation-!cn
     ipcidr:
       - 240.0.0.0/4
     domain:
@@ -178,28 +179,24 @@ dns:
 
 proxy-providers:
   Sub-T:
-    url: "https://xxxxxxxxx"
+    url: "https://xxxxxxxxxxxxx"
     <<: *p
     path: ./mihomo/sub/Sub-T.yaml
 
   Sub-0:
-    url: "https://xxxxxxxxxx"
-    <<: *p
+    url: "https://xxxxxxxxxxxxx"
     path: ./mihomo/sub/Sub-0.yaml
 
   Sub-1:
-    url: "https://xxxxxxxxxx"
-    <<: *p
+    url: "https://xxxxxxxxxxxxx"
     path: ./mihomo/sub/Sub-1.yaml
 
   Sub-2:
-    url: "https://xxxxxxxxxx"
-    <<: *p
+    url: "https://xxxxxxxxxxxxx"
     path: ./mihomo/sub/Sub-2.yaml
 
   Sub-3:
-    url: "https://xxxxxxxxxx"
-    <<: *p
+    url: "https://xxxxxxxxxxxxx"
     path: ./mihomo/sub/Sub-3.yaml
 
 proxies:
