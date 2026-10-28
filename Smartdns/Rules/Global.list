@@ -55,6 +55,9 @@
 -.apple.comscoreresearch.com
 -.appleworldwidedeveloper.hb-api.omtrdc.net
 -.appleworldwidedeveloper.sc.omtrdc.net
+-.appsgenaiserver-pa.clients.google.com
+-.appsgenaiserver-pa.clients6.google.com
+-.appsgenaiserver-pa.googleapis.com
 -.as-dash-uk-live.akamaized.net
 -.as-hls-uk-live.akamaized.net
 -.asahishimbun.sc.omtrdc.net
@@ -171,6 +174,8 @@
 -.databank.worldbank.org
 -.database.asahi.com
 -.datarouter.apps.netherrealm.com
+-.dc.applicationinsights.azure.com
+-.dc.services.visualstudio.com
 -.dcb0z5ovq92mz.cloudfront.net
 -.ddacn6pr5v0tl.cloudfront.net
 -.ddpjwstwtpszg.cloudfront.net
@@ -194,6 +199,7 @@
 -.doy2mn9upadnk.cloudfront.net
 -.dqd0jw5gvbchn.cloudfront.net
 -.dqrpb9wgowsf5.cloudfront.net
+-.dropbox.zendesk.com
 -.ds-linear-abematv.akamaized.net
 -.ds-vod-abematv.akamaized.net
 -.ds0h3roq6wcgc.cloudfront.net
@@ -298,6 +304,7 @@
 -.link.theplatform.com
 -.linkedin.sc.omtrdc.net
 -.live-patreon-marketing.pantheonsite.io
+-.live.applicationinsights.azure.com
 -.lm.licenses.adobe.com
 -.lmlicenses.wip4.adobe.com
 -.lolstatic-a.akamaihd.net
@@ -323,7 +330,6 @@
 -.na1r.services.adobe.com
 -.nationalaustraliaban.tt.omtrdc.net
 -.nbbb1bb7.pmhcjk.com
--.netflix.com.edgesuite.net
 -.news-assets.apple.com
 -.news-client-search.apple.com
 -.news-client.apple.com
@@ -452,6 +458,7 @@
 -.rsshub.umzzz.com
 -.rsshub.woodland.cafe
 -.rsshub2.asailor.org
+-.rt.services.visualstudio.com
 -.rtm.tnt-ea.com
 -.s3-ap-northeast-1.amazonaws.com
 -.s3-ap-southeast-2.amazonaws.com
@@ -538,7 +545,6 @@
 -.servd-anthropic-website.b-cdn.net
 -.sni1dcb6gl.wpc.edgecastcdn.net
 -.spectator.ppy.sh
--.spotify.com.edgesuite.net
 -.spotify.map.fastly.net
 -.spotify.map.fastlylb.net
 -.ssl-lvlt.cdn.ea.com
@@ -7457,6 +7463,7 @@
 *.dasaob.online
 *.dasg.ac.uk
 *.dash-1.ac.uk
+*.dash.ai
 *.dashly.app
 *.dashly.help
 *.dashly.io
@@ -8258,6 +8265,7 @@
 *.docs.com
 *.docs.rs
 *.docs.rw
+*.docsend.com
 *.doctor-videos.com
 *.documentforce.com
 *.docusend.ac.uk
@@ -12098,9 +12106,11 @@
 *.heise360181.buzz
 *.heise360182.buzz
 *.helf.ac.uk
+*.hellofax.com
 *.hellofuture.ac.uk
 *.hellokittybeats.com
 *.hellomoto.com
+*.hellosign.com
 *.hellosmartbook.com
 *.hellporno.com
 *.hellven.net
@@ -15343,6 +15353,7 @@
 *.library.lol
 *.librarylovefest.com
 *.libraryofthumbs.com
+*.librewolf.dev
 *.librewolf.net
 *.libsolutions.app
 *.libsolutions.domains
