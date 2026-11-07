@@ -13065,6 +13065,7 @@ HOST-SUFFIX,ads-admin.hubs.vn,reject
 HOST-SUFFIX,ads-adv.top,reject
 HOST-SUFFIX,ads-alpha.ewscloud.com,reject
 HOST-SUFFIX,ads-api-o.api.leiniao.com,reject
+HOST-SUFFIX,ads-api-t.my7v.com,reject
 HOST-SUFFIX,ads-api.duolingo.com,reject
 HOST-SUFFIX,ads-api.kidsnote.com,reject
 HOST-SUFFIX,ads-api.playfun.vn,reject
@@ -13115,6 +13116,7 @@ HOST-SUFFIX,ads-m.rustore.ru,reject
 HOST-SUFFIX,ads-media.gameforge.com,reject
 HOST-SUFFIX,ads-media.wildberries.ru,reject
 HOST-SUFFIX,ads-monitor.xyz,reject
+HOST-SUFFIX,ads-o.res.leiniao.com,reject
 HOST-SUFFIX,ads-partners.coupang.com,reject
 HOST-SUFFIX,ads-pixiv.net,reject
 HOST-SUFFIX,ads-platform.zalo.me,reject
@@ -114793,6 +114795,7 @@ HOST-SUFFIX,ismatlab.com,reject
 HOST-SUFFIX,ismdomslocken.cfd,reject
 HOST-SUFFIX,ismlks.com,reject
 HOST-SUFFIX,ismranojgdqvh.website,reject
+HOST-SUFFIX,isms-o.api.my7v.com,reject
 HOST-SUFFIX,ismscoldnesfspl.info,reject
 HOST-SUFFIX,ismtpfncxnelg.online,reject
 HOST-SUFFIX,ismwmovapolli.website,reject
