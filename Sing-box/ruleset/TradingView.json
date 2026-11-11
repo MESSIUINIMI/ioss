@@ -2,14 +2,14 @@
   "version": 2,
   "rules": [
     {
-      "domain_keyword": [
-        "tradingview"
-      ],
       "domain_suffix": [
         "tradingview.com",
         "tradingview-widget.com",
         "tradingview-gateway.com",
         "xstaging.tv"
+      ]
+      "domain_keyword": [
+        "tradingview"
       ]
     }
   ]
